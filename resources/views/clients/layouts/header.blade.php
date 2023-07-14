@@ -1,5 +1,5 @@
 <section id="header">
-    <a href="" class="logo"><img src="./img/logo.png" alt=""></a>
+    <a href="" class="logo"><img src="{{ asset('assets/imgs/logo.png') }}" alt=""></a>
 
     <div>
         <ul id="navbar">

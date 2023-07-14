@@ -522,7 +522,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url(../imgs/banner/b2.jpg);
+    background-image: url(../../imgs/banner/b2.jpg);
     width: 100%;
     height: 40vh;
     background-size: cover;
@@ -560,7 +560,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url(../imgs/banner/b17.jpg);
+    background-image: url(../../imgs/banner/b17.jpg);
     min-width: 662px;
     width:49%;
     height: 50vh;
@@ -570,7 +570,7 @@ body {
 }
 
 #sm-banner .banner-box2 {
-    background-image: url(../imgs/banner/b10.jpg);
+    background-image: url(../../imgs/banner/b10.jpg);
 }
 
 
@@ -609,7 +609,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url(../imgs/banner/b7.jpg);
+    background-image: url(../../imgs/banner/b7.jpg);
     min-width: 32%;
     height: 30vh;
     background-size: cover;
@@ -619,11 +619,11 @@ body {
 }
 
 #banner3 .banner-box2 {
-    background-image: url(../imgs/banner/b4.jpg);
+    background-image: url(../../imgs/banner/b4.jpg);
 }
 
 #banner3 .banner-box3 {
-    background-image: url(../imgs/banner/b18.jpg);
+    background-image: url(../../imgs/banner/b18.jpg);
 }
 
 
@@ -644,7 +644,7 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url(../imgs/banner/b14.png);
+    background-image: url(../../imgs/banner/b14.png);
     background-repeat: no-repeat;
     background-position: 20% 30%;
     background-color: #041e42;
@@ -759,7 +759,7 @@ footer .copyright {
 }
 /* Shop page */
 #page-header {
-    background-image: url(../imgs/banner/b1.jpg);
+    background-image: url(../../imgs/banner/b1.jpg);
     width: 100%;
     height: 40vh;
     background-size: cover;
@@ -858,7 +858,7 @@ footer .copyright {
 /* Blog page */
 
 #page-header.blog-header {
-    background-image: url('../imgs/banner/b19.jpg');
+    background-image: url('../../imgs/banner/b19.jpg');
 }
 
 #blog {
@@ -928,7 +928,7 @@ footer .copyright {
 /* About page */
 
 #page-header.about-header {
-    background-image: url('../imgs/about/banner.png');
+    background-image: url('../../imgs/about/banner.png');
 }
 
 #about-head {
