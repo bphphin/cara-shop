@@ -1,0 +1,10 @@
+.forget_pass {
+    position: absolute;
+    top: 320px;
+}
+.model {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
