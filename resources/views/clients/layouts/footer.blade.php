@@ -45,4 +45,4 @@
         <img src="{{ asset('assets/imgs/pay/pay.png') }}" alt="">
     </div>
 </footer>
-<script src="{{ asset('assets/js/home-script.js')  }}"></script>
+<script src="{{ asset('assets/js/clients/home-script.js')  }}"></script>
