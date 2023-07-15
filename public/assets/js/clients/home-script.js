@@ -40,3 +40,4 @@ function buy () {
     console.log(list_cart)
 }
 console.log(list_cart)
+// Drop down info user
