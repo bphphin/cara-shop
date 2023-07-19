@@ -24,7 +24,7 @@ return [
         'debug'             => false,
         'escapeHtml'        => false,
         'extendedTimeOut'   => 10000,
-        'hideDuration'      => 1000,
+        'hideDuration'      => 200,
         'hideEasing'        => 'linear',
         'hideMethod'        => 'fadeOut',
         'iconClass'         => 'toast-info',
