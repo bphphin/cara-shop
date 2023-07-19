@@ -23,14 +23,27 @@
             @csrf
             <p>Email đăng nhập</p>
             <input type="text" name="email" value="{{ old('email') }}">
+            @error('email')
+            <style>
+                input[name="email"] {
+                    border: 1px solid red;
+                }
+            </style>
+            <span class="text-danger my-2">{{ $message }}</span>
+            @enderror
             <p>Mật khẩu</p>
             <input type="password" name="password">
-            <button class="normal text-white">Đăng nhập</button>
-        </form>
-        <a href="#" class="text-decoration-none forget_pass">Quên mật khẩu?</a>
-        {{-- @if(Session::has('fail'))
-
-        @endif --}}
+            @error('password')
+            <style>
+                input[name="password"] {
+                    border: 1px solid red;
+                }
+            </style>
+            <span class="text-danger my-2">{{ $message }}</span>
+            @enderror
+                <button class="normal text-white">Đăng nhập</button>
+            </form>
+            {{-- <a href="#" class="text-decoration-none forget_pass">Quên mật khẩu?</a> --}}
     </div>
 </body>
 </html>

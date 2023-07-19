@@ -21,6 +21,11 @@
         <span>Đăng ký</span>
         <span><a href="{{ route('auth.loginForm') }}" class="text-decoration-none">Đăng nhập</a></span>
         </div>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div>{{$error}}</div>
+            @endforeach
+        @endif
         <form action="" method="POST">
             @csrf
             <p>Họ và tên</p>
@@ -28,9 +33,9 @@
             <p>Email</p>
             <input type="text" name="email">
             <p>Mật khẩu</p>
-            <input type="password" name="name">
-            <p>Xác nhận mật khẩu</p>
             <input type="password" name="password">
+            <p>Xác nhận mật khẩu</p>
+            <input type="password" name="password_confirm">
             <button class="normal text-white">Đăng ký</button>
         </form>
     </div>
