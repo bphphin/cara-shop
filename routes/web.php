@@ -3,6 +3,8 @@
 use App\Http\Controllers\Clients\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Clients\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,14 @@ use App\Http\Controllers\Clients\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Admin
+Route::prefix('admin')->middleware(['auth,isAdmin'])->group(function() {
+    Route::get('/',[DashboardController::class,'index'])->name('admin');
+    Route::get('product',[ProductController::class,'index']);
+});
+
+
 
 // Clients
 Route::get('/',[HomeController::class,'home'])->name('home-client');
