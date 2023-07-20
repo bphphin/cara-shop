@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $avatarDefault = 'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA0L3BmLWljb240LWppcjIwNjItcG9yLWwtam9iNzg4LnBuZw.png';
+            $avatarDefault = 'https://cdn-icons-png.flaticon.com/512/1255/1255974.png';
             $table->increments('id');
             $table->string('name');
             $table->string('avatar')->default($avatarDefault);
