@@ -17,15 +17,15 @@ class AuthController extends Controller
     {
         return view('clients.pages.auth.login');
     }
-    public function login(Request $request)
+    public function login(AuthRequest $request)
     {
         $infoLogin = $request->only('email', 'password');
         if (Auth::attempt($infoLogin)) {
-            if($this) {
-
+            if(Auth::user()->role === 1) {
+                toastr()->success('Đăng nhập thành công', 'Thành công');
+                return redirect()->route('admin');
             }
             toastr()->success('Đăng nhập thành công', 'Thành công');
-            // Toastr::success('Đăng nhập thành công', 'Thành công');
             return redirect()->route('home-client');
         }
         toastr()->error('Đăng nhập thất bại', 'Lỗi');
