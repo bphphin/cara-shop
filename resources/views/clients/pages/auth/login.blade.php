@@ -19,7 +19,7 @@
         <span>Đăng nhập</span>
         <span><a href="{{ route('auth.registerForm') }}" class="text-decoration-none">Đăng ký</a></span>
         </div>
-        <form action="{{ route('auth.login') }}" method="POST">
+        <form action="{{ route('auth.login') }}" method="POST" id="login-form">
             @csrf
             <p>Email đăng nhập</p>
             <input type="text" name="email" value="{{ old('email') }}">
@@ -31,6 +31,7 @@
             </style>
             <span class="text-danger my-2">{{ $message }}</span>
             @enderror
+{{--            <span class="text-danger error email-error"></span>--}}
             <p>Mật khẩu</p>
             <input type="password" name="password">
             @error('password')
@@ -41,9 +42,12 @@
             </style>
             <span class="text-danger my-2">{{ $message }}</span>
             @enderror
+{{--            <span class="text-danger error password-error"></span>--}}
                 <button class="normal text-white">Đăng nhập</button>
             </form>
             {{-- <a href="#" class="text-decoration-none forget_pass">Quên mật khẩu?</a> --}}
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+{{--    <script src="{{ asset('assets/js/clients/login-form.js')  }}"></script>--}}
 </body>
 </html>
