@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Clients\Auth\AuthRequest;
-use Brian2694\Toastr\Facades\Toastr as FacadesToastr;
-use Brian2694\Toastr\Toastr;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NotifyMail;
 class AuthController extends Controller
 {
+
     public function loginForm()
     {
         return view('clients.pages.auth.login');
@@ -41,8 +41,10 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ])->save();
+        ]);
         if ($infoRegister) {
+            $emailRegister = $request->email;
+            Mail::to($emailRegister)->send(new NotifyMail());
             toastr()->success('Đăng ký thành công', 'Thành công');
             return redirect()->route('auth.loginForm');
         }
