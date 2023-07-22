@@ -3,8 +3,7 @@
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h1><span class="fab fa-asymmetrik"> </span> <span>Aizcar</span>
-            </h1>
+            <h1><a href="{{ route('home-client')  }}"><span>Cara</span></a></h1>
         </div>
 
         @include('admin.layouts.side-bar')
