@@ -24,15 +24,15 @@
     </div>
 @endsection
 @push('script')
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#message'))
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+{{--    <script>--}}
+{{--        ClassicEditor--}}
+{{--            .create(document.querySelector('#message'))--}}
+{{--            .then( editor => {--}}
+{{--                console.log( editor );--}}
+{{--            } )--}}
+{{--            .catch( error => {--}}
+{{--                console.error( error );--}}
+{{--            } );--}}
+{{--    </script>--}}
 @endpush
 
