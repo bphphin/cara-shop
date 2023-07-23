@@ -37,17 +37,21 @@
                                     <td class="px-6 py-4">
                                         {{ $brand->description ?? '' }}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 flex gap-x-4">
                                         <button
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                             Edit
                                             <i class="fa-solid fa-pen"></i>
                                         </button>
-                                        <button
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                                            Remove
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
+                                        <form action="{{ route('admin.brand.softDelete',$brand->id)  }}" method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                                                Remove
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
