@@ -42,13 +42,16 @@
                                         Restore
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <button
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-                                        onclick="return confirm('Bạn có chắc muốn xóa không???')">
-                                        Remove
-                                        <i class="fa-solid fa-xmark"></i>
-                                    </button>
-                                    
+                                    <form action="{{ route('admin.brand.destroy',$brand->id)  }}" method="POST">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                            onclick="return confirm('Bạn có chắc muốn xóa không???')">
+                                            Remove
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </form>
 
                                 </td>
                             </tr>

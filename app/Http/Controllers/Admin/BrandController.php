@@ -55,4 +55,12 @@ class BrandController extends Controller
         }
     }
 
+    public function destroy($id) {
+        $isSuccess = Brand::whereId($id)->forceDelete();
+        if($isSuccess) {
+            toastr()->success('Xóa thành công','success');
+            return redirect()->route('admin.brand.index');
+        }
+    }
+
 }
