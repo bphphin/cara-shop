@@ -38,11 +38,11 @@
                                         {{ $brand->description ?? '' }}
                                     </td>
                                     <td class="px-6 py-4 flex gap-x-4">
-                                        <button
+                                        <a href="{{ route('admin.brand.edit',$brand->id)  }}"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                             Edit
                                             <i class="fa-solid fa-pen"></i>
-                                        </button>
+                                        </a>
                                         <form action="{{ route('admin.brand.softDelete',$brand->id)  }}" method="POST">
                                             @csrf
                                             @method("DELETE")
