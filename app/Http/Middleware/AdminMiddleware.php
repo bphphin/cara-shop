@@ -23,7 +23,7 @@ class AdminMiddleware
                 return redirect()->route('home-client')->with('msgRole','Bạn không có quyền truy cập');
             }
         }else {
-            return redirect()->route('auth.loginForm');
+            return view('errors.404');
         }
     }
 }
