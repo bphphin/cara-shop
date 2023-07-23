@@ -20,7 +20,7 @@ class AdminMiddleware
             if(Auth::user()->role === 1) {
                 return $next($request);
             }else {
-                return redirect()->route('home-client')->with('msgRole','Bạn không có quyền truy cập');
+                return redirect()->route('404');
             }
         }else {
             return view('errors.404');
