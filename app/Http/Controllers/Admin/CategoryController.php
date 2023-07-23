@@ -35,4 +35,9 @@ class CategoryController extends Controller
         ]);
          return checkEndDisplayMsg($isSuccess,'Thêm mới thành công','success','admin.category.index');
     }
+
+    public function softDelete($id) {
+        $isSuccess = Category::destroy($id);
+        return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.category.index');
+    }
 }
