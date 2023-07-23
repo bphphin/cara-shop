@@ -47,6 +47,9 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
     // Categories
     Route::prefix('category')->group(function() {
        Route::get('/',[CategoryController::class,'index'])->name('admin.category.index');
+       Route::get('trash-list',[CategoryController::class,'trash'])->name('admin.category.trash');
+
+       
     });
 });
 
