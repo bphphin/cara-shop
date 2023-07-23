@@ -48,6 +48,18 @@ class BrandController extends Controller
         return view('admin.pages.brands.edit-form', compact('brand'));
     }
 
+    public function update(Request $request,$id){
+        $isSuccess = Brand::where('id',$id)->update([
+            'name' => $request->name,
+            'slug' => $request->slug ?? '',
+            'description' => $request->description ?? ''
+        ]);
+        if ($isSuccess) {
+            toastr()->success('Cập nhật thành công', 'success');
+            return redirect()->route('admin.brand.index');
+        }
+    }
+
     public function softDelete($id)
     {
 //        $isSuccess = Brand::whereId($id)->forceDelete();
