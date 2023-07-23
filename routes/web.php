@@ -33,9 +33,13 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
     Route::prefix('brand')->group(function() {
         Route::get('/',[BrandController::class,'index'])->name('admin.brand.index');
         Route::get('trash-list',[BrandController::class,'trash'])->name('admin.brand.trash');
+
         Route::get('create',[BrandController::class,'create'])->name('admin.brand.create');
         Route::post('create',[BrandController::class,'store'])->name('admin.brand.store');
+
         Route::delete('soft-delete/{id}',[BrandController::class,'softDelete'])->name('admin.brand.softDelete');
+        Route::get('restore/{id}',[BrandController::class,'restore'])->name('admin.brand.restore');
+        
     });
 
     // Categories
