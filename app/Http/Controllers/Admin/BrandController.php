@@ -15,7 +15,7 @@ class BrandController extends Controller
     }
 
     public function trash() {
-        $brands = Brand::onlyTrashed();
+        $brands = Brand::onlyTrashed()->get();
         return view('admin.pages.brands.trash-list',compact('brands'));
     }
 
@@ -30,8 +30,19 @@ class BrandController extends Controller
             'description' => $request->description ?? '',
         ]);
         if($isSuccess) {
+//            alert()->flash('Tạo mới thành công','success');
+            toastr()->success('Thêm mới thành công','success');
             return redirect()->route('admin.brand.index');
         }
         return back()->withErrors('fail','Thêm mới không thành công');
+    }
+
+    public function softDelete($id) {
+//        $isSuccess = Brand::whereId($id)->forceDelete();
+        $isSuccess = Brand::destroy($id);
+        if($isSuccess) {
+            toastr()->success('Xóa thành công','success');
+            return redirect()->route('admin.brand.index');
+        }
     }
 }
