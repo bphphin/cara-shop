@@ -34,12 +34,7 @@ class BrandController extends Controller
             'slug' => $request->slug ?? '',
             'description' => $request->description ?? '',
         ]);
-        if ($isSuccess) {
-//            alert()->flash('Tạo mới thành công','success');
-            toastr()->success('Thêm mới thành công', 'success');
-            return redirect()->route('admin.brand.index');
-        }
-        return back()->withErrors('fail', 'Thêm mới không thành công');
+        return checkEndDisplayMsg($isSuccess,'Thêm mới thành công','success','admin.brand.index');
     }
 
     public function edit($id)
@@ -54,38 +49,26 @@ class BrandController extends Controller
             'slug' => $request->slug ?? '',
             'description' => $request->description ?? ''
         ]);
-        if ($isSuccess) {
-            toastr()->success('Cập nhật thành công', 'success');
-            return redirect()->route('admin.brand.index');
-        }
+        return checkEndDisplayMsg($isSuccess,'Cập nhật thành công','success','admin.brand.index');
     }
 
     public function softDelete($id)
     {
 //        $isSuccess = Brand::whereId($id)->forceDelete();
         $isSuccess = Brand::destroy($id);
-        if ($isSuccess) {
-            toastr()->success('Xóa thành công', 'success');
-            return redirect()->route('admin.brand.index');
-        }
+        return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.brand.index');
     }
 
     public function restore($id)
     {
         $isSuccess = Brand::onlyTrashed()->whereId($id)->restore();
-        if ($isSuccess) {
-            toastr()->success('Cập nhật thành công', 'success');
-            return redirect()->route('admin.brand.index');
-        }
+        return checkEndDisplayMsg($isSuccess,'Hoàn tác thành công','success','admin.brand.index');
     }
 
     public function destroy($id)
     {
         $isSuccess = Brand::whereId($id)->forceDelete();
-        if ($isSuccess) {
-            toastr()->success('Xóa thành công', 'success');
-            return redirect()->route('admin.brand.index');
-        }
+        return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.brand.index');
     }
 
 }
