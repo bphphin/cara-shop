@@ -4,8 +4,10 @@
         <div class="activity py-20">
             <div class="flex justify-end my-2">
                 <a
-                    class="bg-[#4fd1c5] text-white font-bold py-2 px-4 rounded-full" href="{{ route('admin.brand.index')  }}">
+                    class="bg-[#4fd1c5] text-white font-bold py-2 px-4 rounded-full"
+                    href="{{ route('admin.brand.index')  }}">
                     Back
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
                 </a>
             </div>
             <div class="relative overflow-x-auto">
@@ -34,17 +36,20 @@
                                 <td class="px-6 py-4">
                                     {{ $brand->description ?? '' }}
                                 </td>
-                                <td class="px-6 py-4">
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                <td class="px-6 py-4 flex gap-x-4">
+                                    <a href="{{ route('admin.brand.restore',$brand->id)  }}"
+                                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Restore
                                         <i class="fa-solid fa-pen"></i>
-                                    </button>
+                                    </a>
                                     <button
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+                                        onclick="return confirm('Bạn có chắc muốn xóa không???')">
                                         Remove
                                         <i class="fa-solid fa-xmark"></i>
                                     </button>
+                                    
+
                                 </td>
                             </tr>
                         @endforeach
