@@ -11,11 +11,13 @@
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
     <title>@yield('title','Dashboard')</title>
 </head>
-<body>
+<body class="text-black">
 @include('admin.layouts.header')
 @yield('app')
+@stack('script')
 <script src="{{ asset('assets/js/admin/dashboard.js')  }}"></script>
 </body>
 </html>
