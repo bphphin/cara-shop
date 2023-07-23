@@ -12,4 +12,12 @@ class CategoryController extends Controller
         $cates = Category::all();
         return view('admin.pages.categories.index',compact('cates'));
     }
+
+    public function trash() {
+        $cates = Category::onlyTrashed()->get();
+        return view('admin.pages.categories.trash-list',compact('cates'));
+    }
+
+    public function create() {
+    }
 }
