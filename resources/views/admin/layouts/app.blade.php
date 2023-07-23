@@ -10,7 +10,11 @@
 
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    {{--  tailwind  --}}
     <script src="https://cdn.tailwindcss.com"></script>
+    {{-- ckeditor   --}}
+    {{--  sweet alert  --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
     <title>@yield('title','Dashboard')</title>
 </head>
@@ -19,5 +23,7 @@
 @yield('app')
 @stack('script')
 <script src="{{ asset('assets/js/admin/dashboard.js')  }}"></script>
+{{-- Sweet alert --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 </body>
 </html>
