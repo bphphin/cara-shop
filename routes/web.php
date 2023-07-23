@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
-
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,19 @@ use App\Http\Controllers\Admin\ProductController;
 // Admin
 
 Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
+    // Dashboard
     Route::get('/',[DashboardController::class,'index'])->name('admin');
+
+    //Product
+    Route::prefix('san-pham')->group(function() {
+        Route::get('/',[ProductController::class,'index'])->name('admin.product.index');
+    });
+    Route::prefix('thuong-hieu')->group(function() {
+        Route::get('/',[BrandController::class,'index'])->name('admin.brand.index');
+    });
+    Route::prefix('danh-muc')->group(function() {
+       Route::get('/',[CategoryController::class,'index'])->name('admin.category.index');
+    });
 });
 // Clients
 Route::get('/',[HomeController::class,'home'])->name('home-client');
@@ -34,4 +47,3 @@ Route::get('register',[AuthController::class,'registerForm'])->name('auth.regist
 Route::post('register',[AuthController::class,'register'])->name('auth.register');
 // Logout
 Route::get('logout',[AuthController::class,'logout'])->name('auth.logout');
-Route::view('err','errors.404');
