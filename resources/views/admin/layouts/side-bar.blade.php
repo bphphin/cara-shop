@@ -19,15 +19,15 @@
                 </a></li>
             <li><a href="{{ route('admin.product.index')  }}">
                     <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Sản Phẩm</span>
+                    <span class="link-name">Product</span>
                 </a></li>
             <li><a href="{{ route('admin.brand.index')  }}">
                     <i class="uil uil-chart"></i>
-                    <span class="link-name">Thương Hiệu</span>
+                    <span class="link-name">Brand</span>
                 </a></li>
             <li><a href="{{ route('admin.category.index')  }}">
                     <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Danh Mục</span>
+                    <span class="link-name">Category</span>
                 </a></li>
             <li><a href="#">
                     <i class="uil uil-comments"></i>
