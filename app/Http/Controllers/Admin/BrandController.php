@@ -11,8 +11,8 @@ class BrandController extends Controller
 {
     public function index()
     {
-//        $brands = Brand::paginate(6);
-        $brands = Brand::all();
+        $brands = Brand::paginate(6);
+//        $brands = Brand::all();
         return view('admin.pages.brands.index', compact('brands'));
     }
 
