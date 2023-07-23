@@ -37,6 +37,7 @@ class BrandController extends Controller
         return back()->withErrors('fail','Thêm mới không thành công');
     }
 
+
     public function softDelete($id) {
 //        $isSuccess = Brand::whereId($id)->forceDelete();
         $isSuccess = Brand::destroy($id);
@@ -45,4 +46,13 @@ class BrandController extends Controller
             return redirect()->route('admin.brand.index');
         }
     }
+
+    public function restore($id) {
+        $isSuccess = Brand::onlyTrashed()->whereId($id)->restore();
+        if($isSuccess) {
+            toastr()->success('Cập nhật thành công','success');
+            return redirect()->route('admin.brand.index');
+        }
+    }
+
 }
