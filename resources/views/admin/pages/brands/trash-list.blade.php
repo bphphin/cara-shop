@@ -64,7 +64,7 @@
                             <i class="fa-solid fa-exclamation"></i>
                         </div>
                         <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-                            <p>Không tồn tại dữ liệu , vui lòng thêm mới!!</p>
+                            <p>Danh sách trống</p>
                         </div>
                     </div>
                 @endif
