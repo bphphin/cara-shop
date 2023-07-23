@@ -49,7 +49,8 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
        Route::get('/',[CategoryController::class,'index'])->name('admin.category.index');
        Route::get('trash-list',[CategoryController::class,'trash'])->name('admin.category.trash');
 
-       
+       Route::get('create',[CategoryController::class,'create'])->name('admin.category.create');
+       Route::post('create',[CategoryController::class,'store'])->name('admin.category.store');
     });
 });
 
