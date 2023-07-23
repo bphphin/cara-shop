@@ -1,227 +1,37 @@
 @extends('admin.layouts.app')
 @section('app')
-    <div class="main-content">
-        <main>
-            <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1>50</h1>
-                        <span>Customers</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-users"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1>12</h1>
-                        <span>Projects</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-clipboard-list"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1>15</h1>
-                        <span>Orders</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-shopping-cart"></span>
-                    </div>
-                </div>
-                <div class="card-single">
-                    <div>
-                        <h1>$50K</h1>
-                        <span>Income</span>
-                    </div>
-                    <div>
-                        <span class="fas fa-wallet"></span>
-                    </div>
-                </div>
-
+    <div class="dash-content">
+        <div class="overview">
+            <div class="title">
+                <i class="uil uil-tachometer-fast-alt"></i>
+                <span class="text">Dashboard</span>
             </div>
 
-            <div class="recent-grid">
-                <div class="projects">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Recent Projects</h2>
-                            <button>See all <span class="fas fa-arrow-right"></span> </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                    <tr>
-                                        <td>Project Title</td>
-                                        <td>Department</td>
-                                        <td>Status</td>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Website</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status purple"></span>
-                                            Review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Website</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status orange"></span>
-                                            Pending
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Website</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status pink"></span>
-                                            In Progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Website</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status purple"></span>
-                                            Review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Website</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status pink"></span>
-                                            In Progress
-                                        </td>
-                                    </tr>
-                                    </tbody>
-
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-
+            <div class="boxes">
+                <div class="box box1">
+                    <i class="uil uil-thumbs-up"></i>
+                    <span class="text">Total Likes</span>
+                    <span class="number">50,120</span>
                 </div>
-                <div class="customers">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>New Customers</h2>
-                            <button>See all <span class="fas fa-arrow-right"></span> </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="https://bit.ly/3bvT89p" height="40px" width="40px" alt="customer">
-                                    <div>
-                                        <h4>Malik Abushabab</h4>
-                                        <small>CEO</small>
-                                    </div>
-                                </div>
-                                <div class="contact">
-                                    <span class="fas fa-user-circle"></span>
-                                    <span class="fas fa-comment"></span>
-                                    <span class="fas fa-phone-alt"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="box box2">
+                    <i class="uil uil-comments"></i>
+                    <span class="text">Comments</span>
+                    <span class="number">20,120</span>
                 </div>
-
+                <div class="box box3">
+                    <i class="uil uil-share"></i>
+                    <span class="text">Total Share</span>
+                    <span class="number">10,120</span>
+                </div>
             </div>
+        </div>
 
-        </main>
+        <div class="activity">
+            <div class="title">
+                <i class="uil uil-clock-three"></i>
+                <span class="text">Recent Activity</span>
+            </div>
+        </div>
     </div>
+        </section>
 @endsection
