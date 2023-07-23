@@ -35,6 +35,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
         Route::get('trash-list',[BrandController::class,'trash'])->name('admin.brand.trash');
         Route::get('create',[BrandController::class,'create'])->name('admin.brand.create');
         Route::post('create',[BrandController::class,'store'])->name('admin.brand.store');
+        Route::delete('soft-delete/{id}',[BrandController::class,'softDelete'])->name('admin.brand.softDelete');
     });
 
     // Categories
@@ -67,3 +68,4 @@ Route::get('register',[AuthController::class,'registerForm'])->name('auth.regist
 Route::post('register',[AuthController::class,'register'])->name('auth.register');
 // Logout
 Route::get('logout',[AuthController::class,'logout'])->name('auth.logout');
+Route::view('not-found','errors.404')->name('404');
