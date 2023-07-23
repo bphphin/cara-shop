@@ -24,16 +24,36 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
     Route::get('/',[DashboardController::class,'index'])->name('admin');
 
     //Product
-    Route::prefix('san-pham')->group(function() {
+    Route::prefix('product')->group(function() {
         Route::get('/',[ProductController::class,'index'])->name('admin.product.index');
     });
-    Route::prefix('thuong-hieu')->group(function() {
+
+
+    //Brand
+    Route::prefix('brand')->group(function() {
         Route::get('/',[BrandController::class,'index'])->name('admin.brand.index');
+        Route::get('trash-list',[BrandController::class,'trash'])->name('admin.brand.trash');
+        Route::get('create',[BrandController::class,'create'])->name('admin.brand.create');
+        Route::post('create',[BrandController::class,'store'])->name('admin.brand.store');
     });
-    Route::prefix('danh-muc')->group(function() {
+
+    // Categories
+    Route::prefix('category')->group(function() {
        Route::get('/',[CategoryController::class,'index'])->name('admin.category.index');
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
 // Clients
 Route::get('/',[HomeController::class,'home'])->name('home-client');
 
