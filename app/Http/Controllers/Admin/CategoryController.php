@@ -40,4 +40,9 @@ class CategoryController extends Controller
         $isSuccess = Category::destroy($id);
         return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.category.index');
     }
+
+    public function destroy($id) {
+        $isSuccess = Category::whereId($id)->forceDelete();
+        return checkEndDisplayMsg($isSuccess,'Xóa thành công','Success','admin.category.index');
+    }
 }
