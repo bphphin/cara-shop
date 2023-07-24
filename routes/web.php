@@ -39,7 +39,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
 
         Route::delete('soft-delete/{id}',[BrandController::class,'softDelete'])->name('admin.brand.softDelete');
         Route::get('restore/{id}',[BrandController::class,'restore'])->name('admin.brand.restore');
-        Route::delete('destroy/{id}',[BrandController::class,'destroy'])->name('admin.brand.destroy');
+        Route::delete('delete/{id}',[BrandController::class,'destroy'])->name('admin.brand.destroy');
         Route::get('edit/{id}',[BrandController::class,'edit'])->name('admin.brand.edit');
         Route::post('edit/{id}',[BrandController::class,'update'])->name('admin.brand.update');
     });
@@ -52,6 +52,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
        Route::get('create',[CategoryController::class,'create'])->name('admin.category.create');
        Route::post('create',[CategoryController::class,'store'])->name('admin.category.store');
        Route::delete('soft-delete/{id}',[CategoryController::class,'softDelete'])->name('admin.category.softDelete');
+       Route::delete('delete/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
     });
 });
 
