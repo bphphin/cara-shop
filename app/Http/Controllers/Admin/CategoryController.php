@@ -6,19 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\CategoryRequest;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $cates = Category::all();
+        $cates = Category::paginate(6);
         return view('admin.pages.categories.index', compact('cates'));
     }
 
     public function trash()
     {
-        $cates = Category::onlyTrashed()->get();
+        $cates = Category::onlyTrashed()->paginate(5);
         return view('admin.pages.categories.trash-list', compact('cates'));
     }
 
