@@ -58,10 +58,8 @@
                                     </td>
                                 </tr>
                             @endforeach
-{{--                            <div class="block">{{ $brands->links()  }}</div>--}}
                             </tbody>
                         </table>
-
                     @else
                         <div role="alert">
                             <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -74,6 +72,7 @@
                     @endif
                 </div>
             </div>
+            {{ $brands->links('admin.layouts.pagination')  }}
         </div>
     </div>
 
