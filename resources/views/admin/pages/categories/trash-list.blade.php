@@ -42,7 +42,7 @@
                                         Restore
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('admin.brand.destroy',$cate->id)  }}" method="POST">
+                                    <form action="{{ route('admin.category.destroy',$cate->id)  }}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <button
