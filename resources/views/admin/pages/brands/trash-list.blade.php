@@ -69,6 +69,7 @@
                     </div>
                 @endif
             </div>
+            {{ $brands->links('admin.layouts.pagination')  }}
         </div>
     </div>
 @endsection

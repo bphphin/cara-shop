@@ -63,8 +63,8 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
+            {{ $cates->links('admin.layouts.pagination')  }}
         </div>
     </div>
 @endsection
