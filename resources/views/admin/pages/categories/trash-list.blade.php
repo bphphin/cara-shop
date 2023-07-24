@@ -37,7 +37,7 @@
                                     {{ $cate->description ?? '' }}
                                 </td>
                                 <td class="px-6 py-4 flex gap-x-4">
-                                    <a href="{{ route('admin.brand.restore',$cate->id)  }}"
+                                    <a href="{{ route('admin.category.restore',$cate->id)  }}"
                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Restore
                                         <i class="fa-solid fa-pen"></i>
@@ -47,7 +47,7 @@
                                         @method("DELETE")
                                         <button
                                             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-                                            onclick="return confirm('Bạn có chắc muốn xóa không???')">
+                                            data-confirm-delete="true" onclick="return afterRemove()">
                                             Remove
                                             <i class="fa-solid fa-xmark"></i>
                                         </button>
@@ -71,4 +71,17 @@
             </div>
         </div>
     </div>
+    @push('script')
+        <script>
+            function afterRemove() {
+                // swal({
+                //     title: 'Bạn có muốn xóa không',
+                //     icon: 'danger',
+                //     buttons: true,
+                //     dangerMode: true
+                // });
+                return confirm('Bạn có muốn xóa không??');
+            }
+        </script>
+    @endpush
 @endsection
