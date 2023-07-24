@@ -52,7 +52,6 @@
                                             <i class="fa-solid fa-xmark"></i>
                                         </button>
                                     </form>
-
                                 </td>
                             </tr>
                         @endforeach
@@ -69,6 +68,7 @@
                     </div>
                 @endif
             </div>
+            {{ $cates->links('admin.layouts.pagination')  }}
         </div>
     </div>
     @push('script')
