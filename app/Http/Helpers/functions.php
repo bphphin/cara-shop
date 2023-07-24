@@ -1,7 +1,7 @@
 <?php
-function checkEndDisplayMsg($flat=true,$mgs='',$title='',$route='') {
+function checkEndDisplayMsg($flat=true,$type,$title='',$mgs='',$route='') {
     if($flat) {
-        toastr()->success($mgs, $title);
+        Alert::$type($title, $mgs);
         return redirect()->route($route);
     }
 }
