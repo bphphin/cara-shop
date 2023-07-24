@@ -34,7 +34,7 @@ class BrandController extends Controller
             'slug' => $request->slug ?? '',
             'description' => $request->description ?? '',
         ]);
-        return checkEndDisplayMsg($isSuccess,'Thêm mới thành công','success','admin.brand.index');
+        return checkEndDisplayMsg($isSuccess,'success','Success','Thêm mới thành công','admin.brand.index');
     }
 
     public function edit($id)
@@ -49,26 +49,28 @@ class BrandController extends Controller
             'slug' => $request->slug ?? '',
             'description' => $request->description ?? ''
         ]);
-        return checkEndDisplayMsg($isSuccess,'Cập nhật thành công','success','admin.brand.index');
+        return checkEndDisplayMsg($isSuccess,'success','Success','Cập nhật thành công','admin.brand.index');
     }
 
     public function softDelete($id)
     {
-//        $isSuccess = Brand::whereId($id)->forceDelete();
         $isSuccess = Brand::destroy($id);
-        return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.brand.index');
+        return checkEndDisplayMsg($isSuccess,'success','Success','Xóa thành công','admin.brand.index');
+
     }
 
     public function restore($id)
     {
         $isSuccess = Brand::onlyTrashed()->whereId($id)->restore();
-        return checkEndDisplayMsg($isSuccess,'Hoàn tác thành công','success','admin.brand.index');
+        return checkEndDisplayMsg($isSuccess,'success','Success','Hoàn tác thành công','admin.brand.index');
+
     }
 
     public function destroy($id)
     {
         $isSuccess = Brand::whereId($id)->forceDelete();
-        return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.brand.index');
+        return checkEndDisplayMsg($isSuccess,'success','Success','Xóa thành công','admin.brand.trash');
+
     }
 
 }
