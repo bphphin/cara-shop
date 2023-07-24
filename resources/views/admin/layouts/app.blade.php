@@ -14,14 +14,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     {{-- ckeditor   --}}
     {{--  sweet alert  --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
     <title>@yield('title','Dashboard')</title>
 </head>
 <body class="text-black">
 @include('admin.layouts.header')
 @yield('app')
+@include('sweetalert::alert')
 @stack('script')
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 <script src="{{ asset('assets/js/admin/dashboard.js')  }}"></script>
 {{-- Sweet alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
