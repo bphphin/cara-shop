@@ -33,17 +33,35 @@ class CategoryController extends Controller
             'slug' => $request->slug ?? '',
             'description' => $request->description ?? ''
         ]);
-         return checkEndDisplayMsg($isSuccess,'success','Success','Thêm mới thành công','admin.category.index');
+        return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Thêm mới thành công', 'admin.category.index');
     }
 
-    public function restore($id) {
+    public function restore($id)
+    {
         $isSuccess = Category::onlyTrashed()->whereId($id)->restore();
-        return checkEndDisplayMsg($isSuccess,'success','Success','Hoàn tác thành công','admin.category.trash');
+        return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Hoàn tác thành công', 'admin.category.trash');
+    }
+
+    public function edit($id)
+    {
+        $cate = Category::find($id);
+        return view('admin.pages.categories.edit-form', compact('cate'));
+    }
+
+    public function update(Request $request,$id) {
+        if ($request->method() === 'POST') {
+            $isSuccess = Category::where('id', $id)->update([
+                'name' => $request->name,
+                'slug' => $request->slug ?? '',
+                'description' => $request->description ?? ''
+            ]);
+            return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Cập nhật thành công', 'admin.category.index');
+        }
     }
     public function softDelete($id)
     {
         $isSuccess = Category::destroy($id);
-        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.index');
+        return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.category.index');
 
     }
 
@@ -56,6 +74,6 @@ class CategoryController extends Controller
 //            confirmDelete($title,$text);
 //        }
 //        return redirect()->route('admin.category.trash');
-        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.trash');
+        return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.category.trash');
     }
 }

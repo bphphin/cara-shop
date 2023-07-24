@@ -45,10 +45,10 @@
                                     {{ $cate->description  }}
                                 </td>
                                 <td class="px-6 py-4 flex gap-x-4">
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                    <a href="{{ route('admin.category.edit',$cate->id)  }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Edit
                                         <i class="fa-solid fa-pen"></i>
-                                    </button>
+                                    </a>
                                     <form action="{{ route('admin.category.softDelete',$cate->id)  }}" method="POST">
                                         @csrf
                                         @method('DELETE')

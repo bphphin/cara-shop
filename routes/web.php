@@ -54,6 +54,8 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
        Route::delete('soft-delete/{id}',[CategoryController::class,'softDelete'])->name('admin.category.softDelete');
        Route::delete('delete/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
        Route::get('restore/{id}',[CategoryController::class,'restore'])->name('admin.category.restore');
+       Route::get('edit/{id}',[BrandController::class,'edit'])->name('admin.category.edit');
+       Route::post('edit/{id}',[BrandController::class,'update'])->name('admin.category.update');
     });
 });
 
