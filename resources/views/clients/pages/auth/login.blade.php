@@ -33,7 +33,7 @@
             @enderror
 {{--            <span class="text-danger error email-error"></span>--}}
             <p>Mật khẩu</p>
-            <input type="password" name="password">
+            <input type="password" name="password" value="{{ old('password')  }}">
             @error('password')
             <style>
                 input[name="password"] {
