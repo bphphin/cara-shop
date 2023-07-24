@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Clients\Auth\AuthRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotifyMail;
+
 class AuthController extends Controller
 {
 
@@ -17,24 +18,27 @@ class AuthController extends Controller
     {
         return view('clients.pages.auth.login');
     }
+
     public function login(AuthRequest $request)
     {
         $infoLogin = $request->only('email', 'password');
         if (Auth::attempt($infoLogin)) {
-            if(Auth::user()->role === 1) {
-                toastr()->success('Đăng nhập thành công', 'Thành công');
+            if (Auth::user()->role === 1) {
+                toast('Đăng nhập thành công!', 'success');
                 return redirect()->route('admin');
             }
-            toastr()->success('Đăng nhập thành công', 'Thành công');
+            toast('Đăng nhập thành công!', 'success');
             return redirect()->route('home-client');
         }
-        toastr()->error('Đăng nhập thất bại', 'Lỗi');
+        toast('Đăng nhập không thành công', 'info');
         return back();
     }
+
     public function registerForm()
     {
         return view('clients.pages.auth.register');
     }
+
     public function register(AuthRequest $request)
     {
         $infoRegister = User::create([
@@ -45,16 +49,17 @@ class AuthController extends Controller
         if ($infoRegister) {
             $emailRegister = $request->email;
             Mail::to($emailRegister)->send(new NotifyMail());
-            toastr()->success('Đăng ký thành công', 'Thành công');
+            toast('Đăng ký tài khoản thành công', 'success');
             return redirect()->route('auth.loginForm');
         }
-        toastr()->error('Đăng ký không thành công', 'Lỗi');
+        toast('Đăng ký không thành công, vui lòng thử lại','warning');
         return back();
     }
+
     public function logout()
     {
         Auth::logout();
-        toastr()->info('Logout Successfully', 'Thành công');
+        toast('Logout successfully', 'success');
         return redirect()->route('auth.loginForm');
     }
 }
