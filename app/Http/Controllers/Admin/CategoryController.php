@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\CategoryRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -33,16 +34,19 @@ class CategoryController extends Controller
             'slug' => $request->slug ?? '',
             'description' => $request->description ?? ''
         ]);
-         return checkEndDisplayMsg($isSuccess,'Thêm mới thành công','success','admin.category.index');
+         return checkEndDisplayMsg($isSuccess,'success','Success','Thêm mới sản phẩm thành công','admin.category.index');
     }
 
-    public function softDelete($id) {
+    public function softDelete($id)
+    {
         $isSuccess = Category::destroy($id);
-        return checkEndDisplayMsg($isSuccess,'Xóa thành công','success','admin.category.index');
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.index');
+
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $isSuccess = Category::whereId($id)->forceDelete();
-        return checkEndDisplayMsg($isSuccess,'Xóa thành công','Success','admin.category.index');
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.trash');
     }
 }
