@@ -26,12 +26,12 @@
                     <span class="link-name">Brand</span>
                 </a></li>
             <li><a href="{{ route('admin.category.index')  }}">
-                    <i class="uil uil-thumbs-up"></i>
+                    <i class="fa-solid fa-coins"></i>
                     <span class="link-name">Category</span>
                 </a></li>
-            <li><a href="#">
-                    <i class="uil uil-comments"></i>
-                    <span class="link-name">Comment</span>
+            <li><a href="{{ route('admin.att.index')  }}">
+                    <i class="fa-solid fa-industry"></i>
+                    <span class="link-name">Attribute</span>
                 </a></li>
             <li><a href="#">
                     <i class="uil uil-share"></i>
