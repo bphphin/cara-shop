@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SizeController;
+use App\Http\Controllers\Admin\AttributeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,6 +59,15 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
        Route::get('restore/{id}',[CategoryController::class,'restore'])->name('admin.category.restore');
        Route::get('edit/{id}',[BrandController::class,'edit'])->name('admin.category.edit');
        Route::post('edit/{id}',[BrandController::class,'update'])->name('admin.category.update');
+    });
+
+
+    //Attribute
+    Route::prefix('attribute')->group(function() {
+        Route::get('/',[AttributeController::class,'index'])->name('admin.att.index');
+        Route::prefix('size')->group(function() {
+            Route::get('/',[SizeController::class,'index'])->name('admin.att.size.index');
+        });
     });
 });
 
