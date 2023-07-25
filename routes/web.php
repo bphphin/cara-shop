@@ -67,6 +67,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
         Route::get('/',[AttributeController::class,'index'])->name('admin.att.index');
         Route::prefix('size')->group(function() {
             Route::get('/',[SizeController::class,'index'])->name('admin.att.size.index');
+            Route::match(['GET','POST'],'create',[SizeController::class,'store'])->name('admin.att.size.store');
         });
     });
 });
