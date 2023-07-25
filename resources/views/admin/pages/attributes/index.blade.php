@@ -75,7 +75,7 @@
                     </div>
                     <div class="w-[100%] hidden box-size">
                         <div class="flex justify-start my-2">
-                            <a href="{{ route('admin.category.create')  }}"
+                            <a href="{{ route('admin.att.size.store')  }}"
                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+ Size
                             </a>
                         </div>
@@ -101,7 +101,7 @@
                                         </th>
                                         <td class="px-6 py-4 w-[200px]">
                                             <div class="flex gap-x-4">
-                                                <a href="" class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+                                                <a href="" class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                                     Detail
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </a>
