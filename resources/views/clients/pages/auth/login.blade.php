@@ -47,6 +47,8 @@
             </form>
             {{-- <a href="#" class="text-decoration-none forget_pass">Quên mật khẩu?</a> --}}
     </div>
+    @include('sweetalert::alert')
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 {{--    <script src="{{ asset('assets/js/clients/login-form.js')  }}"></script>--}}
 </body>
