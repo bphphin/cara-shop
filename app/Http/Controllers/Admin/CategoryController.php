@@ -72,9 +72,9 @@ class CategoryController extends Controller
     {
         $isSuccess = Category::whereId($id)->forceDelete();
 //        if($isSuccess) {
-//            $title = 'Remove Category';
-//            $text = 'Bạn có muốn xóa không??';
-//            confirmDelete($title,$text);
+//            $title = 'Delete User!';
+//            $text = "Are you sure you want to delete?";
+//            confirmDelete($title, $text);
 //        }
 //        return redirect()->route('admin.category.trash');
         return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.category.trash');
