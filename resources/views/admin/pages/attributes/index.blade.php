@@ -11,6 +11,9 @@
             </select>
             <div class="my-20">
                 <div class="">
+                    <div class="flex box-default justify-center align-center">
+                        <img src="{{ url('https://cdn.dribbble.com/users/77598/screenshots/16399264/media/d86ceb1ad552398787fb76f343080aa6.gif')  }}" alt="" class="h-[300px]">
+                    </div>
                     <div class="w-[100%] hidden box-color">
                         <div class="flex justify-start my-2">
                             <a href="{{ route('admin.category.create')  }}"
@@ -109,10 +112,18 @@
                                                     Edit
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
-                                                <a href="" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                                                    Remove
-                                                    <i class="fa-solid fa-x"></i>
-                                                </a>
+{{--                                                <a href="{{ route('admin.att.size.destroy',$size->id)  }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" date-confirm-delete="true">--}}
+{{--                                                    Remove--}}
+{{--                                                    <i class="fa-solid fa-pen"></i>--}}
+{{--                                                </a>--}}
+                                                <form action="{{ route('admin.att.size.destroy',$size->id)  }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" onclick="return confirm('Bạn có muốn xóa không??')">
+                                                        Remove
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -133,13 +144,16 @@
                 if(_select === 'color'){
                     $('.box-color').show();
                     $('.box-size').hide();
+                    $('.box-default').hide();
                 }
                 else if(_select === 'size'){
                     $('.box-color').hide();
                     $('.box-size').show();
+                    $('.box-default').hide();
                 }else {
                     $('.box-color').hide();
                     $('.box-size').hide();
+                    $('.box-default').show();
                 }
             } );
         </script>
