@@ -42,6 +42,12 @@
                                         Restore
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
+{{--                                    <a href="{{ route('admin.category.destroy',$cate->id)  }}"--}}
+{{--                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"--}}
+{{--                                        data-confirm-delete="true">--}}
+{{--                                        Remove--}}
+{{--                                        <i class="fa-solid fa-xmark"></i>--}}
+{{--                                    </a>--}}
                                     <form action="{{ route('admin.category.destroy',$cate->id)  }}" method="POST">
                                         @csrf
                                         @method("DELETE")
