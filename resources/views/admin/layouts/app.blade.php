@@ -26,5 +26,6 @@
 <script src="{{ asset('assets/js/admin/dashboard.js')  }}"></script>
 {{-- Sweet alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>
