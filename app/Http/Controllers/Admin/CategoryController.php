@@ -28,12 +28,15 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
-        $isSuccess = Category::create([
-            'name' => $request->name,
-            'slug' => $request->slug ?? '',
-            'description' => $request->description ?? ''
-        ]);
-        return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Thêm mới thành công', 'admin.category.index');
+        if($request->method() === 'POST') {
+            $isSuccess = Category::create([
+                'name' => $request->name,
+                'slug' => $request->slug ?? '',
+                'description' => $request->description ?? ''
+            ]);
+            return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Thêm mới thành công', 'admin.category.index');
+        }
+
     }
 
     public function restore($id)
