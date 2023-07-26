@@ -62,11 +62,7 @@
                                         </th>
                                         <td class="px-6 py-4 w-[200px]">
                                             <div class="flex gap-x-4">
-                                                <a href="" class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                                    Detail
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                                <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                                <a href="{{ route('admin.att.color.update',$color->id)  }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                                     Edit
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
@@ -123,9 +119,9 @@
                                             <div class="flex gap-x-4">
                                                 <a href="{{ route('admin.att.size.show',$size->id)  }}" class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                                     Detail
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <i class="fa-solid fa-eye"></i>
                                                 </a>
-                                                <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                                <a href="{{ route('admin.att.size.update',$size->id)  }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                                     Edit
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
