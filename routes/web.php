@@ -75,6 +75,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
             Route::match(['GET','POST'],'create',[SizeController::class,'store'])->name('admin.att.size.store');
             Route::delete('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
 //            Route::get('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
+            Route::match(['GET','POST'],'edit/{id}',[SizeController::class,'update'])->name('admin.att.size.update');
         });
 
         //Color
