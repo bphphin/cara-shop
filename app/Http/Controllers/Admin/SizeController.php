@@ -31,6 +31,17 @@ class SizeController extends Controller
         return view('admin.pages.attributes.sizes.create-form');
     }
 
+    public function update(Request $request, $id) {
+        $size = Size::find($id);
+        if($request->method() === 'POST') {
+            $isSuccess = Size::where('id',$id)->update([
+                'name' => $request->name,
+                'description' => $request->description ?? ''
+            ]);
+            return checkEndDisplayMsg($isSuccess,'success','success','Cập nhật thành công','admin.att.index');
+        }
+        return view('admin.pages.attributes.sizes.edit-form',compact('size'));
+    }
     public function destroy($id) {
         $isSuccess = Size::whereId($id)->forceDelete();
         return checkEndDisplayMsg($isSuccess,'success','Success','Xóa thành công','admin.att.index');
