@@ -38,5 +38,8 @@ class ColorController extends Controller
         return view('admin.pages.attributes.colors.edit-form',compact('color'));
     }
 
-    
+    public function destroy($id) {
+        $isSuccess = Color::destroy($id);
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.att.index');
+    }
 }
