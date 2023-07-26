@@ -25,4 +25,18 @@ class ColorController extends Controller
         }
         return view('admin.pages.attributes.colors.create-form');
     }
+
+    public function update(Request $request,$id) {
+        $color = Color::find($id);
+        if($request->method() === 'POST') {
+            $isSuccess = Color::where('id',$id)->update([
+                'name' => $request->name,
+                'code' => $request->code ?? ''
+            ]);
+            return checkEndDisplayMsg($isSuccess,'success','Success','Chỉnh sửa thành công','admin.att.index');
+        }
+        return view('admin.pages.attributes.colors.edit-form',compact('color'));
+    }
+
+    
 }
