@@ -3,6 +3,7 @@
     <div class="dash-content">
         <div class="activity">
             <div class="py-20">
+                <h3 class="text-gray-400">Chỉnh sửa danh mục</h3>
                 <form method="POST" action="{{ route('admin.category.update',$brand->id)  }}">
                     @csrf
                     <div class="relative z-0 w-full mb-6 group">
