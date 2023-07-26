@@ -3,18 +3,6 @@
     <div class="dash-content">
         <div class="activity">
             <div class="py-20">
-                <div class="flex justify-end my-2">
-                    <a href="{{ route('admin.category.create')  }}"
-                       class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+ New
-                        Customer
-                    </a>
-                    <a
-                        class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
-                        href="{{ route('admin.category.trash')  }}">
-                        Trash
-                        <i class="fa-solid fa-trash"></i>
-                    </a>
-                </div>
                 {{--Table--}}
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -32,7 +20,7 @@
                             <th scope="col" class="px-6 py-3">
                                 Role
                             </th>
-                            <th scope="col" class="px-6 py-3 w-[400px]">
+                            <th scope="col" class="px-6 py-3 w-[300px]">
                                 Action
                             </th>
                         </tr>
@@ -67,15 +55,6 @@
                                         Edit
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <form action="" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                                            Remove
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                             @endif
