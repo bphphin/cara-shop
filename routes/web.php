@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\CustomerController;
 */
 // Admin
 
-Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
+Route::prefix('dashboard')->middleware(['isAdmin','auth'])->group(function() {
     // Dashboard
     Route::get('/',[DashboardController::class,'index'])->name('admin');
 
@@ -59,8 +59,8 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
 //       Route::get('delete/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
        Route::delete('delete/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
        Route::get('restore/{id}',[CategoryController::class,'restore'])->name('admin.category.restore');
-       Route::get('edit/{id}',[BrandController::class,'edit'])->name('admin.category.edit');
-       Route::post('edit/{id}',[BrandController::class,'update'])->name('admin.category.update');
+       Route::get('edit/{id}',[CategoryController::class,'edit'])->name('admin.category.edit');
+       Route::post('edit/{id}',[CategoryController::class,'update'])->name('admin.category.update');
     });
 
 
