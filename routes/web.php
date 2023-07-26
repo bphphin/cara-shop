@@ -81,6 +81,8 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
         //Color
         Route::prefix('color')->group(function() {
             Route::match(['GET','POST'],'create',[ColorController::class,'store'])->name('admin.att.color.store');
+            Route::match(['GET','POST'],'edit/{id}',[ColorController::class,'update'])->name('admin.att.color.update');
+//            Route::delete('delete/{id}',[ColorController::class]);
         });
 
     });
