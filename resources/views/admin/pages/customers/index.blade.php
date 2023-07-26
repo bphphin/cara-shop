@@ -12,10 +12,10 @@
                                 Name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Address
+                                Email
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Phone
+                                Address
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Role
@@ -33,10 +33,10 @@
                                     {{ $cus->name  }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $cus->address  }}
+                                    {{ $cus->email  }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $cus->phone  }}
+                                    {{ $cus->address  }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <span
@@ -50,7 +50,7 @@
                                         Detail
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href=""
+                                    <a href="{{ route('admin.customer.update',$cus->id)  }}"
                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Edit
                                         <i class="fa-solid fa-pen"></i>
