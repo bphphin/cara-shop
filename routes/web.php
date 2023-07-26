@@ -88,6 +88,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
     });
     Route::prefix('customer')->group(function(){
         Route::get('/',[CustomerController::class,'index'])->name('admin.customer.index');
+        Route::match(['GET','POST'],'edit/{id}',[CustomerController::class,'update'])->name('admin.customer.update');
     });
 });
 
