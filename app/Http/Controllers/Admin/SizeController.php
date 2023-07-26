@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
+
+    public function show($id) {
+        $size = Size::find($id);
+        return view('admin.pages.attributes.sizes.detail-size',compact('size'));
+    }
+
     public function store(Request $request) {
 
         if($request->method() === 'POST') {
