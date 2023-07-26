@@ -3,7 +3,7 @@
     <div class="dash-content">
         <div class="activity">
             <div class="py-20">
-                <h3 class="text-gray-400">Thêm mới danh mục</h3>
+                <h3 class="text-gray-400 mb-4">Thêm mới danh mục</h3>
                 <form method="POST" action="{{ route('admin.category.store')  }}">
                     @csrf
                     <div class="relative z-0 w-full mb-6 group">

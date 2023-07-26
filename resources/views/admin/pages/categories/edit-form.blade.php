@@ -3,8 +3,8 @@
     <div class="dash-content">
         <div class="activity">
             <div class="py-20">
-                <h3 class="text-gray-400">Chỉnh sửa danh mục</h3>
-                <form method="POST" action="{{ route('admin.category.update',$brand->id)  }}">
+                <h3 class="text-gray-400 mb-4">Chỉnh sửa danh mục</h3>
+                <form method="POST" action="{{ route('admin.category.update',$cate->id)  }}">
                     @csrf
                     <div class="relative z-0 w-full mb-6 group">
                         <input type="text" name="name" id="floating_email"
