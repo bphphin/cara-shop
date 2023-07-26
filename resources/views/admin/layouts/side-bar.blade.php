@@ -33,9 +33,9 @@
                     <i class="fa-solid fa-industry"></i>
                     <span class="link-name">Attribute</span>
                 </a></li>
-            <li><a href="#">
-                    <i class="uil uil-share"></i>
-                    <span class="link-name">Share</span>
+            <li><a href="{{ route('admin.customer.index')  }}">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span class="link-name">Customer</span>
                 </a></li>
         </ul>
 
@@ -46,13 +46,13 @@
                 </a></li>
 
             <li class="mode">
-{{--                <a href="#">--}}
-{{--                    <i class="uil uil-moon"></i>--}}
-{{--                    <span class="link-name">Dark Mode</span>--}}
-{{--                </a>--}}
+                <a href="#">
+                    <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
 
                 <div class="mode-toggle">
-{{--                    <span class="switch"></span>--}}
+                    <span class="switch"></span>
                 </div>
             </li>
         </ul>
