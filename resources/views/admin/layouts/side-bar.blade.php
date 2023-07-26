@@ -37,6 +37,10 @@
                     <i class="fa-solid fa-user-tie"></i>
                     <span class="link-name">Customer</span>
                 </a></li>
+            <li><a href="{{ route('admin.customer.index')  }}">
+                    <i class="fa-solid fa-user-secret"></i>
+                    <span class="link-name">Administrators</span>
+                </a></li>
         </ul>
 
         <ul class="logout-mode">
