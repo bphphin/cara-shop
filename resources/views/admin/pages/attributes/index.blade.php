@@ -20,12 +20,6 @@
                             <a href="{{ route('admin.att.color.store')  }}"
                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+ Color
                             </a>
-                            <a
-                                class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
-                                href="">
-                                Trash
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
                         </div>
                         <div class="relative overflow-x-auto">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -72,7 +66,7 @@
 {{--                                                    Remove--}}
 {{--                                                    <i class="fa-solid fa-x"></i>--}}
 {{--                                                </a>--}}
-                                                <form action="" method="POST">
+                                                <form action="{{ route('admin.att.color.destroy',$color->id)  }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" onclick="return confirm('Bạn có muốn xóa không??')">
