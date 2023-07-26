@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AttributeController;
+use App\Http\Controllers\Admin\ColorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,12 +66,22 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
     //Attribute
     Route::prefix('attribute')->group(function() {
         Route::get('/',[AttributeController::class,'index'])->name('admin.att.index');
+
+        //Size
         Route::prefix('size')->group(function() {
+
             Route::get('/',[SizeController::class,'index'])->name('admin.att.size.index');
+            Route::get('detail/{id}',[SizeController::class,'show'])->name('admin.att.size.show');
             Route::match(['GET','POST'],'create',[SizeController::class,'store'])->name('admin.att.size.store');
-//            Route::delete('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
-            Route::get('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
+            Route::delete('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
+//            Route::get('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
         });
+
+        //Color
+        Route::prefix('color')->group(function() {
+            Route::match(['GET','POST'],'create',[ColorController::class,'store'])->name('admin.att.color.store');
+        });
+
     });
 });
 
