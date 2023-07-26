@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -84,7 +85,9 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function() {
             Route::match(['GET','POST'],'edit/{id}',[ColorController::class,'update'])->name('admin.att.color.update');
             Route::delete('delete/{id}',[ColorController::class,'destroy'])->name('admin.att.color.destroy');
         });
-
+    });
+    Route::prefix('customer')->group(function(){
+        Route::get('/',[CustomerController::class,'index'])->name('admin.customer.index');
     });
 });
 
