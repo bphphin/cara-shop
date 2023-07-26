@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('price');
             $table->integer('quantity');
             $table->text('description')->nullable();
-            $table->tinyInteger('view')->default(0);
+            $table->integer('view')->default(0);
             $table->string('slug')->nullable();
             $table->integer('cate_id');
             $table->integer('brand_id');
