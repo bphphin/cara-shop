@@ -21,7 +21,7 @@
                             <th scope="col" class="px-6 py-3">
                                 Name
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-6 py-3 w-[200px]">
                                 Slug
                             </th>
                             <th scope="col" class="px-6 py-3">
