@@ -1,4 +1,12 @@
 <div class="hidden box-style">
+    <div class="flex justify-end mb-4">
+        <a
+            class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
+            href="{{ route('admin.category.trash')  }}">
+            Trash
+            <i class="fa-solid fa-trash"></i>
+        </a>
+    </div>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead
@@ -37,7 +45,7 @@
                                 Edit
                                 <i class="fa-solid fa-pen"></i>
                             </a>
-                            <form action="{{ route('admin.cate.subcate.update',$sCate->id)  }}"
+                            <form action="{{ route('admin.cate.subcate.softDelete',$sCate->id)  }}"
                                   method="POST">
                                 @csrf
                                 @method('DELETE')
