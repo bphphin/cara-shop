@@ -40,4 +40,9 @@ class SubCateController extends Controller
     }
 
 
+    public function softDelete($id) {
+        $isSuccess = SubCategory::destroy($id);
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.index');
+    }
+
 }
