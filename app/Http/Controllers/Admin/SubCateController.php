@@ -9,6 +9,20 @@ use Illuminate\Http\Request;
 
 class SubCateController extends Controller
 {
+
+    public function trashFashion() {
+        $subCates = SubCategory::onlyTrashed()->get();
+        return view('admin.pages.categories.sub-cate.fashions.trash-list',compact('subCates'));
+    }
+    public function trashBeauty() {
+        $subCates = SubCategory::onlyTrashed()->get();
+        return view('admin.pages.categories.sub-cate.beauty.trash-list',compact('subCates'));
+    }
+    public function trashAccessory() {
+        $subCates = SubCategory::onlyTrashed()->get();
+        return view('admin.pages.categories.sub-cate.accessory.trash-list',compact('subCates'));
+    }
+
     public function store(Request $request) {
         $cates = Category::all();
         if($request->method() === 'POST') {
@@ -44,5 +58,6 @@ class SubCateController extends Controller
         $isSuccess = SubCategory::destroy($id);
         return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.index');
     }
+
 
 }
