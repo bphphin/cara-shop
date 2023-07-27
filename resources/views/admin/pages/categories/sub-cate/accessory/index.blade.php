@@ -2,7 +2,7 @@
     <div class="flex justify-end mb-4">
         <a
             class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
-            href="{{ route('admin.category.trash')  }}">
+            href="{{ route('admin.cate.subcate.trashAccessory')  }}">
             Trash
             <i class="fa-solid fa-trash"></i>
         </a>
