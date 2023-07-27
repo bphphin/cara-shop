@@ -92,6 +92,7 @@
                 {{-- end box thời trang --}}
 
                 {{-- box phụ kiện, trang sức --}}
+                    @include('admin.pages.categories.sub-cate.accessory.index')
                 {{-- end box phụ kiện, trang sức --}}
 
                 {{-- box sắc đẹp --}}
