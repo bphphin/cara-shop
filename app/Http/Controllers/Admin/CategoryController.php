@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\CategoryRequest;
 
@@ -12,7 +13,9 @@ class CategoryController extends Controller
     public function index()
     {
         $cates = Category::paginate(6);
-        return view('admin.pages.categories.index', compact('cates'));
+        $subCates = SubCategory::all();
+//        dd($subCates);
+        return view('admin.pages.categories.index',['cates' => $cates,'subCates' => $subCates]);
     }
 
     public function trash()
