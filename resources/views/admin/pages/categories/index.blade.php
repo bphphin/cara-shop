@@ -20,6 +20,10 @@
                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+
                             New
                             Category</a>
+                        <a href="{{ route('admin.cate.subcate.store')  }}"
+                           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+
+                            New
+                            Sub Category</a>
                         <a
                             class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
                             href="{{ route('admin.category.trash')  }}">
@@ -84,15 +88,13 @@
                 {{-- end box default --}}
 
                 {{-- box thời trang --}}
-                @include('admin.pages.categories.cate-pages.factories')
+                    @include('admin.pages.categories.sub-cate.fashions.index')
                 {{-- end box thời trang --}}
 
                 {{-- box phụ kiện, trang sức --}}
-                @include('admin.pages.categories.cate-pages.accessories')
                 {{-- end box phụ kiện, trang sức --}}
 
                 {{-- box sắc đẹp --}}
-                @include('admin.pages.categories.cate-pages.beauties')
                 {{-- end box sắc đẹp --}}
             </div>
             {{ $cates->links('admin.layouts.pagination')  }}
