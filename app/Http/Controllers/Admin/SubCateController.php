@@ -24,5 +24,20 @@ class SubCateController extends Controller
         return view('admin.pages.categories.sub-cate.create-form',compact('cates'));
     }
 
-    
+    public function update(Request $request,$id) {
+        $subCate = SubCategory::find($id);
+        $cates = Category::all();
+        if($request->method() === 'POST') {
+            $isSuccess = SubCategory::whereId($id)->update([
+                'name' => $request->name,
+                'slug' => $request->slug ?? '',
+                'parent_id' => $request->parent_id,
+                'description' => $request->description ?? ''
+            ]);
+            return checkEndDisplayMsg($isSuccess,'success','Thành công','Cập nhật thành công','admin.category.index');
+        }
+        return view('admin.pages.categories.sub-cate.edit-form',['subCate' => $subCate,'cates' => $cates]);
+    }
+
+
 }
