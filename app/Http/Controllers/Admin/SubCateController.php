@@ -23,6 +23,12 @@ class SubCateController extends Controller
         return view('admin.pages.categories.sub-cate.accessory.trash-list',compact('subCates'));
     }
 
+
+    public function restore($id) {
+        $isSuccess = SubCategory::onlyTrashed()->whereId($id)->restore();
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Hoàn tác thành công','admin.category.index');
+    }
+
     public function store(Request $request) {
         $cates = Category::all();
         if($request->method() === 'POST') {
