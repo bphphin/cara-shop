@@ -96,6 +96,7 @@
                 {{-- end box phụ kiện, trang sức --}}
 
                 {{-- box sắc đẹp --}}
+                    @include('admin.pages.categories.sub-cate.beauty.index')
                 {{-- end box sắc đẹp --}}
             </div>
             {{ $cates->links('admin.layouts.pagination')  }}
