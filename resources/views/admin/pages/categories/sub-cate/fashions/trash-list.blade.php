@@ -49,11 +49,11 @@
                                             Restore
                                             <i class="fa-solid fa-rotate-right"></i>
                                         </a>
-                                        <form action="{{ route('admin.cate.subcate.softDelete',$sCate->id)  }}"
+                                        <form action="{{ route('admin.cate.subcate.destroy',$sCate->id)  }}"
                                               method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button
+                                            <button onclick="return confirm('Bạn có muốn xóa không??')"
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                                                 Remove
                                                 <i class="fa-solid fa-xmark"></i>
