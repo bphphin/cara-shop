@@ -66,4 +66,9 @@ class SubCateController extends Controller
     }
 
 
+    public function destroy($id) {
+        $isSuccess = SubCategory::whereId($id)->forceDelete();
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.category.index');
+    }
+
 }
