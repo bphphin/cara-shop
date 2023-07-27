@@ -63,9 +63,13 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
         Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::post('edit/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
 
+
+        // Sub Category
         Route::prefix('sub-category')->group(function() {
-//            Route::get('/',[SubCateController::class,'index'])->name('admin.cate.subcate.index');
            Route::match(['GET','POST'],'create',[SubCateController::class,'store'])->name('admin.cate.subcate.store');
+           Route::match(['GET','POST'],'edit/{id}',[SubCateController::class,'update'])->name('admin.cate.subcate.update');
+
+           Route::delete('soft-delete/{id}',[SubCateController::class,'softDelete'])->name('admin.cate.subcate.softDelete');
         });
     });
 
