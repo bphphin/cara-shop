@@ -70,6 +70,12 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
            Route::match(['GET','POST'],'edit/{id}',[SubCateController::class,'update'])->name('admin.cate.subcate.update');
 
            Route::delete('soft-delete/{id}',[SubCateController::class,'softDelete'])->name('admin.cate.subcate.softDelete');
+
+           Route::get('trash-fashion',[SubCateController::class,'trashFashion'])->name('admin.cate.subcate.trashFashion');
+           Route::get('trash-beauty',[SubCateController::class,'trashBeauty'])->name('admin.cate.subcate.trashBeauty');
+           Route::get('trash-accessory',[SubCateController::class,'trashAccessory'])->name('admin.cate.subcate.trashAccessory');
+
+           Route::get('restore/{id}',[SubCateController::class,'restore'])->name('admin.cate.subcate.restore');
         });
     });
 
