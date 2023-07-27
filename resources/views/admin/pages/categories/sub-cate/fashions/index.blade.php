@@ -32,12 +32,12 @@
                             {{ $sCate->getCateName()->name  }}
                         </td>
                         <td class="px-6 py-4 flex gap-x-4">
-                            <a href="{{ route('admin.category.edit',$sCate->id)  }}"
+                            <a href="{{ route('admin.cate.subcate.update',$sCate->id)  }}"
                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                 Edit
                                 <i class="fa-solid fa-pen"></i>
                             </a>
-                            <form action="{{ route('admin.category.softDelete',$sCate->id)  }}"
+                            <form action="{{ route('admin.cate.subcate.update',$sCate->id)  }}"
                                   method="POST">
                                 @csrf
                                 @method('DELETE')
