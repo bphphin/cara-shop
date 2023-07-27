@@ -44,10 +44,10 @@
                                         {{ $sCate->getCateName()->name  }}
                                     </td>
                                     <td class="px-6 py-4 flex gap-x-4">
-                                        <a href="{{ route('admin.cate.subcate.update',$sCate->id)  }}"
+                                        <a href="{{ route('admin.cate.subcate.restore',$sCate->id)  }}"
                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                            Edit
-                                            <i class="fa-solid fa-pen"></i>
+                                            Restore
+                                            <i class="fa-solid fa-rotate-right"></i>
                                         </a>
                                         <form action="{{ route('admin.cate.subcate.softDelete',$sCate->id)  }}"
                                               method="POST">
