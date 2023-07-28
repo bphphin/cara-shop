@@ -31,6 +31,7 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
     //Product
     Route::prefix('product')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
+        Route::match(['GET','POST'],'create',[ProductController::class,'store'])->name('admin.product.store');
     });
 
 
