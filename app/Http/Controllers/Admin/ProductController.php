@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        return view('admin.pages.products.index');
+        $products = Product::paginate(6);
+        return view('admin.pages.products.index',compact('products'));
     }
 
     public function store(Request $request) {
