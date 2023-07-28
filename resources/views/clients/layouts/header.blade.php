@@ -12,31 +12,31 @@
     </div>
     <div class="control">
         @if(Auth::check())
-            {{-- <div class="dropdown">
-                <p class="text-uppercase dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</p>
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">HTML</a></li>
-                    <li><a href="#">CSS</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                </ul>
-            </div> --}}
             @if(Auth::user()->role === 1)
-                <div class="d-flex align-items-center">
-                    <div>
-                        <p class="text-uppercase my-2">{{ Auth::user()->name }}</p>
-                    </div>
-                    <div>
-                        <a href="{{ route('admin') }}" class="text-decoration-none">Dashboard</a>
-                    </div>
+                <div class="btn-group">
+                    <p class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </p>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
+                    </ul>
                 </div>
             @else
-                <div class="d-flex align-items-center">
-                    <div>
-                        <p class="text-uppercase my-2">{{ Auth::user()->name }}</p>
+                <div class="d-flex align-items-center ms-2">
+                    <div class="btn-group me-2">
+                        <p class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </p>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Account Setting</a></li>
+                            <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
+                        </ul>
                     </div>
                     <div>
-                        <a href="{{ route('auth.logout') }}" class="text-decoration-none">Logout</a>
+                        <a href="#">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
                     </div>
                 </div>
             @endif
