@@ -8,6 +8,7 @@
     <title>@yield('title','Home Page')</title>
     <link rel="icon" href="{{ asset('assets/imgs/clothes-hanger.png') }}" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="{{ asset('assets/css/clients/home-client.css')  }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     @include('clients.layouts.header')
