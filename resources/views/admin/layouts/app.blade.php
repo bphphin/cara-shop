@@ -7,12 +7,13 @@
     <link rel="icon" href="{{ asset('assets/imgs/clothes-hanger.png') }}" type="image/gif" sizes="16x16">
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="{{ asset('assets/css/admin/dashboard.css')  }}">
-
+{{--    <link rel="stylesheet" href="{{ asset('assets/css/admin/shirt.css')  }}">--}}
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     {{--  tailwind  --}}
     <script src="https://cdn.tailwindcss.com"></script>
     {{-- ckeditor   --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
     {{--  sweet alert  --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
     <title>@yield('title','Dashboard')</title>
