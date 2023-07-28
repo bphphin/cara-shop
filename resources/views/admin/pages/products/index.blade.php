@@ -18,13 +18,13 @@
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 py-3 w-[100px]">
+                            <th scope="col" class="px-6 py-3">
                                 Name
                             </th>
-                            <th scope="col" class="px-6 py-3 w-[200px]">
+                            <th scope="col" class="px-6 py-3 w-[150px]">
                                 Image
                             </th>
-                            <th scope="col" class="px-6 py-3 w-[480px]">
+                            <th scope="col" class="px-6 py-3 w-[450px]">
                                 Description
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -33,38 +33,42 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4 flex gap-x-4">
-                                <a href=""
-                                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                    Detail
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href=""
-                                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                    Edit
-                                    <i class="fa-solid fa-pen"></i>
-                                </a>
-                                <a href=""
-                                   class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                                    Remove
-                                    <i class="fa-solid fa-pen"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach($products as $pro)
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $pro->name  }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    <img src="{{ asset('upload')."/".$pro->image  }}" alt="">
+                                </td>
+                                <td class="px-6 py-4">
+                                    {!! $pro->description !!}
+                                </td>
+                                <td class="px-6 py-4 flex gap-x-4">
+                                    <a href=""
+                                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                        Detail
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a href=""
+                                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                        Edit
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <a href=""
+                                       class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                                        Remove
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
-
+                {{ $products->links('admin.layouts.pagination')  }}
             </div>
         </div>
     </div>
