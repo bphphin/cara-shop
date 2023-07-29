@@ -17,7 +17,10 @@ class ProductController extends Controller
         return view('admin.pages.products.index',compact('products'));
     }
 
-
+    public function trash() {
+        $products = Product::onlyTrashed()->paginate(6);
+        return view('admin.pages.products.trash-list',compact('products'));
+    }
 
     public function store(Request $request) {
         $brands = Brand::all();
