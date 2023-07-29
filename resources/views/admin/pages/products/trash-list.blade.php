@@ -47,7 +47,7 @@
                                     {!! $pro->description !!}
                                 </td>
                                 <td class="px-6 py-4 flex gap-x-4">
-                                    <a href=""
+                                    <a href="{{ route('admin.product.restore',$pro->id)  }}"
                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Restore
                                         <i class="fa-solid fa-arrow-rotate-left"></i>
