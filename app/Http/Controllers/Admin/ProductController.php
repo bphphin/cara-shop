@@ -17,6 +17,8 @@ class ProductController extends Controller
         return view('admin.pages.products.index',compact('products'));
     }
 
+
+
     public function store(Request $request) {
         $brands = Brand::all();
         $cates = SubCategory::all();
@@ -51,4 +53,11 @@ class ProductController extends Controller
             'sizes' => $sizes
         ]);
     }
+
+
+    public function softDelete($id) {
+        $isSuccess = Product::destroy($id);
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.product.index');
+    }
+
 }
