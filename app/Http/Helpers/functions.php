@@ -5,3 +5,7 @@ function checkEndDisplayMsg($flat=true,$type,$title='',$mgs='',$route='') {
         return redirect()->route($route);
     }
 }
+function fail($type,$title='',$mgs='') {
+    Alert::$type($title, $mgs);
+    return back();
+}
