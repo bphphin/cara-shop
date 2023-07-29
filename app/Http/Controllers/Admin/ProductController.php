@@ -56,10 +56,10 @@ class ProductController extends Controller
                 'quantity' => $request->quantity,
                 'slug' => $request->slug,
                 'image' => $image ?? $product->image,
-                'cate_id' => $request->cate_id,
-                'brand_id' => $request->brand_id,
-                'color_id' => $request->color_id,
-                'size_id' => $request->size_id,
+                'cate_id' => $request->cate_id ?? $product->cate_id,
+                'brand_id' => $request->brand_id ?? $product->brand_id,
+                'color_id' => $request->color_id ?? $product->color_id,
+                'size_id' => $request->size_id ?? $product->size_id,
                 'description' => $request->description,
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Cập nhật thành công', 'admin.product.index');
