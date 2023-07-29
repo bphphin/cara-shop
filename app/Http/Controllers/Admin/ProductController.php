@@ -22,6 +22,12 @@ class ProductController extends Controller
         return view('admin.pages.products.trash-list',compact('products'));
     }
 
+
+    public function restore($id) {
+        $isSuccess = Product::onlyTrashed()->whereId($id)->restore();
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Hoàn tác thành công','admin.product.index');
+    }
+
     public function store(Request $request) {
         $brands = Brand::all();
         $cates = SubCategory::all();
