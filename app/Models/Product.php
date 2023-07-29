@@ -22,4 +22,8 @@ class Product extends Model
         'size_id',
         'description'
     ];
+
+    public function getCateName() {
+        return SubCategory::find($this->cate_id);
+    }
 }
