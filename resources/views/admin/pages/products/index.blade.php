@@ -9,7 +9,7 @@
                         Product</a>
                     <a
                         class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
-                        href="{{ route('admin.category.trash')  }}">
+                        href="{{ route('admin.product.trash')  }}">
                         Trash
                         <i class="fa-solid fa-trash"></i>
                     </a>
@@ -52,7 +52,7 @@
                                         Detail
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href=""
+                                    <a href="{{ route('admin.product.update',$pro->id)  }}"
                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Edit
                                         <i class="fa-solid fa-pen"></i>
