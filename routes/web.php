@@ -31,6 +31,7 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
     //Product
     Route::prefix('product')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
+        Route::get('trash-list', [ProductController::class, 'trash'])->name('admin.product.trash');
         Route::match(['GET','POST'],'create',[ProductController::class,'store'])->name('admin.product.store');
         Route::delete('soft-delete/{id}',[ProductController::class,'softDelete'])->name('admin.product.softDelete');
     });
