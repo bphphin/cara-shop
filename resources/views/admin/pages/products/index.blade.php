@@ -57,11 +57,15 @@
                                         Edit
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <a href=""
-                                       class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                                        Remove
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
+                                    <form action="{{ route('admin.product.softDelete',$pro->id)  }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                           class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                                            Remove
+                                            <i class="fa-solid fa-x"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
