@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-//use RealRashid\SweetAlert\Facades\Alert;
 Use Alert;
+use App\Http\Requests\Admin\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -27,7 +26,6 @@ class ProductController extends Controller
         return view('admin.pages.products.trash-list', compact('products'));
     }
 
-
     public function restore($id)
     {
         $isSuccess = Product::onlyTrashed()->whereId($id)->restore();
@@ -35,13 +33,18 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
+    public function edit($id) {
         $product = Product::find($id);
         $colors = Color::all();
         $sizes = Size::all();
         $cates = SubCategory::all();
         $brands = Brand::all();
+        return view('admin.pages.products.edit-form', compact('product', 'colors', 'sizes', 'cates', 'brands'));
+    }
+
+    public function update(ProductRequest $request, $id)
+    {
+
         if ($request->method() === 'POST') {
             if ($request->hasFile('image')) {
                 $originName = $request->file('image')->getClientOriginalName();
@@ -65,15 +68,25 @@ class ProductController extends Controller
             return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Cập nhật thành công', 'admin.product.index');
             fail('error','Lỗi rồi','Cập nhật không thành công');
         }
-        return view('admin.pages.products.edit-form', compact('product', 'colors', 'sizes', 'cates', 'brands'));
     }
 
-    public function store(Request $request)
-    {
+
+    public function create() {
         $brands = Brand::all();
         $cates = SubCategory::all();
         $colors = Color::all();
         $sizes = Size::all();
+        return view('admin.pages.products.create-form', [
+            'brands' => $brands,
+            'cates' => $cates,
+            'colors' => $colors,
+            'sizes' => $sizes
+        ]);
+    }
+
+    public function store(ProductRequest $request)
+    {
+
         if ($request->method() === 'POST') {
             if ($request->hasFile('image')) {
                 $originName = $request->file('image')->getClientOriginalName();
@@ -98,12 +111,6 @@ class ProductController extends Controller
             }
 
         }
-        return view('admin.pages.products.create-form', [
-            'brands' => $brands,
-            'cates' => $cates,
-            'colors' => $colors,
-            'sizes' => $sizes
-        ]);
     }
 
 
