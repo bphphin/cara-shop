@@ -120,7 +120,7 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
 
 // Clients
 Route::get('/', [HomeController::class, 'home'])->name('home-client');
-
+Route::get('product/{id}/{slug?}',[HomeController::class,'showProduct'])->name('home.product.show');
 
 // Login
 
