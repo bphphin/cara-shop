@@ -21,16 +21,36 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required',
-            'image' => 'file|required',
-            'price' => 'required|integer|max:10',
-            'quantity' => 'required|integer|min:1',
-            'cate_id' => 'required',
-            'size_id' => 'required',
-            'color_id' => 'required',
-            'brand_id'  => 'required',
-        ];
+        $currentMethod = $this->route()->getActionMethod(); // lấy phương thức khi submit
+        switch ($this->method()){
+            case 'POST':
+                switch ($currentMethod){
+                    case 'store':
+                        $rules = ['name' => 'required',
+                            'image' => 'file|required',
+                            'price' => 'required|integer',
+                            'quantity' => 'required|integer',
+                            'cate_id' => 'required',
+                            'size_id' => 'required',
+                            'color_id' => 'required',
+                            'brand_id'  => 'required',
+                            'slug' => 'required'
+                        ];
+                        break;
+                    case 'update':
+                        $rules = [
+                            'name' => 'required',
+                            'price' => 'required|integer',
+                            'quantity' => 'required|integer',
+                            'slug' => 'required',
+//                            'color_id' => 'required',
+                        ];
+                        break;
+                }
+                break;
+            default:
+        }
+        return $rules;
     }
 
     public function attributes()
@@ -43,7 +63,8 @@ class ProductRequest extends FormRequest
             'cate_id' => 'Danh mục',
             'brand_id' => 'Thương hiệu',
             'size_id' => 'Size',
-            'color_id' => 'Màu'
+            'color_id' => 'Màu',
+            'slug' => 'Slug'
         ];
     }
 
@@ -52,8 +73,6 @@ class ProductRequest extends FormRequest
         return [
             'required' => ':attribute không được để trống',
             'file' => ':attribute không đúng định dạng',
-            'min' => ':attribute không quá :min ký tự',
-            'max' => ':attribute không được quá :max ký tự',
             'integer' => ':attribute không phải là số'
         ];
     }
