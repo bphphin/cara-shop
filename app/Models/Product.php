@@ -20,6 +20,7 @@ class Product extends Model
         'brand_id',
         'color_id',
         'size_id',
+        'status_id',
         'description'
     ];
 
