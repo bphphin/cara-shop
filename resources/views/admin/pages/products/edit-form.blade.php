@@ -30,6 +30,9 @@
                                 <div class="my-4 flex justify-center">
                                     <img src="{{ asset('upload').'/'.$product->image  }}" alt="" class="w-[200px]">
                                 </div>
+                                @error('image')
+                                <p class="my-2 text-red-400">{{ $message  }}</p>
+                                @enderror
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="price" id=""
@@ -37,6 +40,9 @@
                                        placeholder=" " name="price" value="{{ $product->price  }}"/>
                                 <label for=""
                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Price</label>
+                                @error('price')
+                                <p class="my-2 text-red-400">{{ $message  }}</p>
+                                @enderror
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="quantity" id=""
@@ -44,6 +50,9 @@
                                        placeholder=" " name="quantity" value="{{ $product->quantity  }}"/>
                                 <label for=""
                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Quantity</label>
+                                @error('quantity')
+                                <p class="my-2 text-red-400">{{ $message  }}</p>
+                                @enderror
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <input type="text" name="slug" id=""
@@ -65,6 +74,9 @@
                                             value="{{ $cate->id }}" {{ $cate->id === $product->cate_id ? 'Selected' : ''  }}>{{ $cate->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('cate_id')
+                                <p class="my-2 text-red-400">{{ $message  }}</p>
+                                @enderror
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
@@ -75,6 +87,9 @@
                                         <option
                                             value="{{ $brand->id }}" {{ $brand->id === $product->brand_id ? 'Selected' : ''  }}>{{ $brand->name }}</option>
                                     @endforeach
+                                        @error('brand_id')
+                                        <p class="my-2 text-red-400">{{ $message  }}</p>
+                                        @enderror
                                 </select>
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
@@ -86,6 +101,9 @@
                                         <option
                                             value="{{ $size->id }}" {{ $size->id === $product->size_id ? 'Selected' : ''  }}>{{ $size->name }}</option>
                                     @endforeach
+                                        @error('size_id')
+                                        <p class="my-2 text-red-400">{{ $message  }}</p>
+                                        @enderror
                                 </select>
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
@@ -106,6 +124,9 @@
                                     @endforeach
                                 </div>
                                 <input type="hidden" name="color_id" id="color">
+                                @error('color_id')
+                                <p class="my-2 text-red-400">{{ $message  }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
