@@ -26,4 +26,8 @@ class Product extends Model
     public function getCateName() {
         return SubCategory::find($this->cate_id);
     }
+
+    public function getStatusProduct() {
+        return StatusProduct::find($this->status_id);
+    }
 }
