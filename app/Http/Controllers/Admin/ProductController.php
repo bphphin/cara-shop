@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Color;
 use App\Models\Product;
 use App\Models\Size;
+use App\Models\StatusProduct;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 Use Alert;
@@ -39,12 +40,13 @@ class ProductController extends Controller
         $sizes = Size::all();
         $cates = SubCategory::all();
         $brands = Brand::all();
-        return view('admin.pages.products.edit-form', compact('product', 'colors', 'sizes', 'cates', 'brands'));
+        $sttProduct = StatusProduct::all();
+        return view('admin.pages.products.edit-form', compact('product', 'colors', 'sizes', 'cates', 'brands','sttProduct'));
     }
 
     public function update(ProductRequest $request, $id)
     {
-
+        $product = Product::find($id);
         if ($request->method() === 'POST') {
             if ($request->hasFile('image')) {
                 $originName = $request->file('image')->getClientOriginalName();
@@ -63,6 +65,7 @@ class ProductController extends Controller
                 'brand_id' => $request->brand_id ?? $product->brand_id,
                 'color_id' => $request->color_id ?? $product->color_id,
                 'size_id' => $request->size_id ?? $product->size_id,
+                'status_id' => $request->status_id ?? $product->status_id,
                 'description' => $request->description,
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Cập nhật thành công', 'admin.product.index');
@@ -76,11 +79,13 @@ class ProductController extends Controller
         $cates = SubCategory::all();
         $colors = Color::all();
         $sizes = Size::all();
+        $sttProduct = StatusProduct::all();
         return view('admin.pages.products.create-form', [
             'brands' => $brands,
             'cates' => $cates,
             'colors' => $colors,
-            'sizes' => $sizes
+            'sizes' => $sizes,
+            'sttProduct' => $sttProduct
         ]);
     }
 
@@ -105,6 +110,7 @@ class ProductController extends Controller
                     'brand_id' => $request->brand_id,
                     'color_id' => $request->color_id,
                     'size_id' => $request->size_id,
+                    'status_id' => $request->status_id ?? $product->status_id,
                     'description' => $request->description,
                 ]);
                 return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Thêm mới thành công', 'admin.product.index');
