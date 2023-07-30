@@ -42,7 +42,7 @@
                 <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                 <div class="des">
                     <span>{{ $pro->getCateName()->name }}</span>
-                    <h5>{{ $pro->name }}</h5>
+                    <h5><a href="" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
