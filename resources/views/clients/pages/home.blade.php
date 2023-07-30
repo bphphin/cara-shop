@@ -38,23 +38,33 @@
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
             @foreach ($products as $pro)
-            <div class="pro">
-                <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
-                <div class="des">
-                    <span>{{ $pro->getCateName()->name }}</span>
-                    <h5><a href="" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                @if($pro->status_id === 1)
+                    <div class="pro">
+                        <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                        <div class="des">
+                            <span>{{ $pro->getCateName()->name }}</span>
+                            <h5><a href="" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4>{{ number_format($pro->price) }}</h4>
+                                </div>
+                                <div>
+                                    {{ $pro->getStatusProduct()->status  }}
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+{{--                        <a href="sproduct.html"><i class="fa-solid fa-cart-shopping cart"></i></a>--}}
+                        </a>
                     </div>
-                    <h4>{{ number_format($pro->price) }}</h4>
-                </div>
-                <a href="sproduct.html"><i class="fa-solid fa-cart-shopping cart"></i></a>
-                </a>
-            </div>
+                @endif
             @endforeach
         </div>
     </section>
@@ -71,141 +81,34 @@
         <h2>New Arrivals</h2>
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n1.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            @foreach($products as $pro)
+                @if($pro->status_id === 2)
+                    <div class="pro">
+                        <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                        <div class="des">
+                            <span>{{ $pro->getCateName()->name }}</span>
+                            <h5>{{ $pro->name  }}</h5>
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4>{{ number_format($pro->price) }}</h4>
+                                </div>
+                                <div>
+                                    {{ $pro->getStatusProduct()->status  }}
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                @endif
+            @endforeach
 
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n2.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n3.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n4.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n5.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n6.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n7.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-
-            </div>
-            <div class="pro">
-                <img src="{{ asset('assets/imgs/products/n8.jpg') }}" alt="">
-                <div class="des">
-                    <span>adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>$78</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
-            </div>
         </div>
     </section>
     {{-- End Product 2   --}}
