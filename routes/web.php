@@ -32,8 +32,10 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
     Route::prefix('product')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
         Route::get('trash-list', [ProductController::class, 'trash'])->name('admin.product.trash');
-        Route::match(['GET','POST'],'create',[ProductController::class,'store'])->name('admin.product.store');
-        Route::match(['GET','POST'],'edit/{id}',[ProductController::class,'update'])->name('admin.product.update');
+        Route::get('create',[ProductController::class,'create'])->name('admin.product.create');
+        Route::post('create',[ProductController::class,'store'])->name('admin.product.store');
+        Route::get('edit/{id}',[ProductController::class,'edit'])->name('admin.product.edit');
+        Route::post('edit/{id}',[ProductController::class,'update'])->name('admin.product.update');
         Route::delete('soft-delete/{id}',[ProductController::class,'softDelete'])->name('admin.product.softDelete');
         Route::get('restore/{id}',[ProductController::class,'restore'])->name('admin.product.restore');
     });
