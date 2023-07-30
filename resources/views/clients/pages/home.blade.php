@@ -40,10 +40,12 @@
             @foreach ($products as $pro)
                 @if($pro->status_id === 1)
                     <div class="pro">
-                        <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                        <a href="{{route('home.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                            <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                        </a>
                         <div class="des">
                             <span>{{ $pro->getCateName()->name }}</span>
-                            <h5><a href="" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <h5><a href="{{route('home.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -84,10 +86,12 @@
             @foreach($products as $pro)
                 @if($pro->status_id === 2)
                     <div class="pro">
-                        <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                        <a href="{{route('home.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                            <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                        </a>
                         <div class="des">
                             <span>{{ $pro->getCateName()->name }}</span>
-                            <h5>{{ $pro->name  }}</h5>
+                            <h5><a href="{{route('home.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -95,7 +99,6 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <h4>{{ number_format($pro->price) }}</h4>
                                 </div>
@@ -103,7 +106,6 @@
                                     {{ $pro->getStatusProduct()->status  }}
                                     <i class="fa-solid fa-heart"></i>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 @endif
