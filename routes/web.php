@@ -120,9 +120,14 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
 
 // Clients
 Route::get('/', [HomeController::class, 'home'])->name('home-client');
+
 Route::get('product/{id}/{slug?}',[HomeController::class,'showProduct'])->name('home.product.show');
+
 Route::get('shop-page',[HomeController::class,'shop'])->name('home.product.shop');
-Route::get('/cate-detail/{id}',[HomeController::class,'detailCate'])->name('home.cate.detail');
+
+Route::get('cate-detail/{id}',[HomeController::class,'detailCate'])->name('home.cate.detail');
+
+Route::get('product-from-sub-cate/{id}',[HomeController::class,'productFromSubCate'])->name('home.product.proFromSubCate');
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
