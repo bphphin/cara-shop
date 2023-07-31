@@ -4,7 +4,7 @@
         <div class="activity">
             <div class="py-20">
                 <div class="flex justify-end mb-4">
-                    <a href="{{ route('admin.product.store')  }}"
+                    <a href="{{ route('admin.product.create')  }}"
                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+
                         Product</a>
                     <a
@@ -52,7 +52,7 @@
                                         Detail
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('admin.product.update',$pro->id)  }}"
+                                    <a href="{{ route('admin.product.edit',$pro->id)  }}"
                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                         Edit
                                         <i class="fa-solid fa-pen"></i>
