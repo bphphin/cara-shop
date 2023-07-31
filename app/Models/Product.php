@@ -24,7 +24,7 @@ class Product extends Model
         'description'
     ];
 
-    public function getCateName() {
+    public function getSubCateName() {
         return SubCategory::find($this->cate_id);
     }
 
