@@ -2,7 +2,7 @@
     <a href="{{ route('home-client') }}" class="logo"><img src="{{ asset('assets/imgs/logo.png') }}" alt=""></a>
     <div class="">
         <ul id="navbar">
-            <li><a class="active" href="{{ route('home-client') }}">Home</a></li>
+            <li><a class="" href="{{ route('home-client') }}">Home</a></li>
             <li><a href="{{ route('home.product.shop')  }}">Shop</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>

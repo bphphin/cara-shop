@@ -41,7 +41,7 @@
                 <li>
                     @foreach($subCate as $sCate)
                         <ul class="nav_menu">
-                            <li><a href="">{{ $sCate->name  }}</a></li>
+                            <li><a href="{{ route('home.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a></li>
                         </ul>
                     @endforeach
 
