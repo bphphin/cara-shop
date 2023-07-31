@@ -34,7 +34,7 @@
     {{-- End Banner   --}}
     {{-- Begin Product 1   --}}
     <section id="product1" class="section-p1">
-        <h2>Featured Products</h2>
+        <h2 class="text-3xl">Featured Products</h2>
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
             @foreach ($products as $pro)
@@ -44,7 +44,7 @@
                             <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                         </a>
                         <div class="des">
-                            <span>{{ $pro->getCateName()->name }}</span>
+                            <span>{{ $pro->getSubCateName()->name }}</span>
                             <h5><a href="{{route('home.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
@@ -80,7 +80,7 @@
     {{--  End Banner Top  --}}
     {{-- Begin Product 2   --}}
     <section id="product1" class="section-p1">
-        <h2>New Arrivals</h2>
+        <h2 class="text-3xl">New Arrivals</h2>
         <p>Summer Collection New Morden Design</p>
         <div class="pro-container">
             @foreach($products as $pro)
@@ -90,7 +90,7 @@
                             <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                         </a>
                         <div class="des">
-                            <span>{{ $pro->getCateName()->name }}</span>
+                            <span>{{ $pro->getSubCateName()->name }}</span>
                             <h5><a href="{{route('home.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
