@@ -7,7 +7,7 @@
         </div>
 
         <div class="single-pro-detail">
-            <h6><a href="{{ route('home-client')  }}" class="text-gray-700">Home</a> / {{ $product->getCateName()->name  }}</h6>
+            <h6><a href="{{ route('home-client')  }}" class="text-gray-700">Home</a> / {{ $product->getSubCateName()->name  }}</h6>
             <h4>{{ $product->name  }}</h4>
             <h2>{{ number_format($product->price) }}</h2>
             <select name="size_id" id="" class="border">
