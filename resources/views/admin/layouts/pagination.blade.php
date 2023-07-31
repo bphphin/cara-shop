@@ -8,7 +8,7 @@
                 </li>
             @else
                 <li class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
-                    <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                    <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')" class="py-2">&lsaquo;</a>
                 </li>
             @endif
 
@@ -25,7 +25,7 @@
                         @if ($page == $paginator->currentPage())
                             <li class="active w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-teal-600 text-white" aria-current="page"><span>{{ $page }}</span></li>
                         @else
-                            <li class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in rounded-full"><a href="{{ $url }}">{{ $page }}</a></li>
+                            <li class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in rounded-full"><a href="{{ $url }}" class="py-2">{{ $page }}</a></li>
                         @endif
                     @endforeach
                 @endif
@@ -34,7 +34,7 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
-                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')" class="py-2">&rsaquo;</a>
                 </li>
             @else
                 <li class="disabled w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in rounded-full" aria-disabled="true" aria-label="@lang('pagination.next')">
