@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,5 +21,11 @@ class HomeController extends Controller
         $product = Product::find($id);
         $sizes = Size::all();
         return view('clients.pages.detail',compact('product','sizes'));
+    }
+
+    public function shop() {
+        $products = Product::paginate(4);
+        $cates = Category::all();
+        return view('clients.pages.shop',compact('products','cates'));
     }
 }
