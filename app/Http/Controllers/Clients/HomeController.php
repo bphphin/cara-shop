@@ -28,13 +28,15 @@ class HomeController extends Controller
     }
 
 
-    // route shop-page
+    // shop-page
     public function shop() {
         $products = Product::paginate(4);
         $cates = Category::all();
         return view('clients.pages.shop',compact('products','cates'));
     }
 
+
+    // detail cate end display product default from category
     public function detailCate($id) {
         $subCate = SubCategory::where('parent_id','=',$id)->get();
         $productToCate = DB::table('categories')
@@ -45,5 +47,12 @@ class HomeController extends Controller
             ->limit(4)->get();
 //        dd($productToCate);
         return view('clients.pages.detail-category',compact('subCate','productToCate'));
+    }
+
+
+    public function productFromSubCate($id) {
+        $subCate = SubCategory::all();
+        $proFromSubCate = Product::where('cate_id','=',$id)->get();
+        return view('clients.pages.detail-pro-from-subcate',compact('proFromSubCate','subCate'));
     }
 }
