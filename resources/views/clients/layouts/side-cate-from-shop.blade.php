@@ -7,7 +7,7 @@
         <li>
             @foreach($cates as $cate)
                 <ul class="nav_menu">
-                    <li><a href="#">{{ $cate->name  }}</a></li>
+                    <li><a href="{{ route('home.cate.detail',$cate->id)  }}">{{ $cate->name  }}</a></li>
                 </ul>
             @endforeach
         </li>
