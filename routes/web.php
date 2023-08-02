@@ -138,6 +138,9 @@ Route::get('about',[SiteController::class,'about'])->name('site.about');
 
 // Blog page
 Route::get('blog',[SiteController::class,'blog'])->name('site.blog');
+
+// Contact page
+Route::get('contact',[SiteController::class,'contact'])->name('site.contact');
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
