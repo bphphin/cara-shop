@@ -860,7 +860,7 @@ footer .copyright {
 /* Blog page */
 
 #page-header.blog-header {
-    background-image: url('../../imgs/banner/b19.jpg');
+    background-image: url(../../imgs/banner/b19.jpg);
 }
 
 #blog {

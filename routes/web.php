@@ -133,7 +133,8 @@ Route::get('product-from-sub-cate/{id}',[SiteController::class,'productFromSubCa
 //Search product
 Route::post('search-query',[SiteController::class,'searchProductHome'])->name('site.product.search');
 
-
+//About page
+Route::get('about',[SiteController::class,'about'])->name('site.about');
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
