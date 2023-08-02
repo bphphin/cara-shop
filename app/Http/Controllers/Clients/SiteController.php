@@ -8,7 +8,11 @@ use App\Models\Product;
 use App\Models\Size;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Alert;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
@@ -58,6 +62,54 @@ class SiteController extends Controller
         $subCate = SubCategory::all();
         $productBySearch = Product::where('name','LIKE',"%$name%")->get();
         return view('clients.pages.view-product-search',compact('productBySearch','subCate'));
+    }
+
+    // Cart
+    public function cart() {
+        return view('clients.pages.cart');
+    }
+
+    //Add to cart
+
+    public function addToCart(Request $request) {
+        if(!$request->has('pro_id')) {
+            toast()->error('Lỗi');
+            return back();
+        }
+        $proId = $request->get('pro_id');
+        $productToCart = Product::find($proId);
+        if($request->quantity > $productToCart->quantity) {
+            toast()->error('Số lượng sản phẩm không hợp lệ');
+            return back();
+        }
+        try {
+            $isSuccess = Cart::create([
+                'pro_id' => $proId,
+                'user_id' => Auth::user()->id,
+                'size_id' => $request->size_id,
+                'price' => $productToCart->price,
+                'quantity' => $request->quantity,
+                'total_price' => ($productToCart->price * $request->quantity)
+            ]);
+            return checkEndDisplayMsg($isSuccess,'success','Thành công','Thêm giỏ hàng thành công','site.cart');
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    // About Page
+    public function about() {
+        return view('clients.pages.about');
+    }
+
+    //Blog Page
+    public function blog() {
+        return view('clients.pages.blog');
+    }
+
+    //Contact Page
+    public function contact() {
+        return view('clients.pages.contact');
     }
 
 }
