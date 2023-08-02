@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubCateController;
+use App\Http\Controllers\Clients\SiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -121,13 +122,18 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
 // Clients
 Route::get('/', [HomeController::class, 'home'])->name('home-client');
 
-Route::get('product/{id}/{slug?}',[HomeController::class,'showProduct'])->name('home.product.show');
+Route::get('product/{id}/{slug?}',[SiteController::class,'showProduct'])->name('site.product.show');
 
-Route::get('shop-page',[HomeController::class,'shop'])->name('home.product.shop');
+Route::get('shop-page',[SiteController::class,'shop'])->name('site.product.shop');
 
-Route::get('cate-detail/{id}',[HomeController::class,'detailCate'])->name('home.cate.detail');
+Route::get('cate-detail/{id}',[SiteController::class,'detailCate'])->name('site.cate.detail');
 
-Route::get('product-from-sub-cate/{id}',[HomeController::class,'productFromSubCate'])->name('home.product.proFromSubCate');
+Route::get('product-from-sub-cate/{id}',[SiteController::class,'productFromSubCate'])->name('site.product.proFromSubCate');
+
+//Search product
+Route::post('search-query',[SiteController::class,'searchProductHome'])->name('site.product.search');
+
+
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
