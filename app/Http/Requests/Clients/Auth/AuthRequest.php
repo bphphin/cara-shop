@@ -28,10 +28,8 @@ class AuthRequest extends FormRequest
                 switch ($currentMethod) {
                     case 'login':
                         $rules = [
-                            'name' => 'required|min:5|',
                             'email' => 'required|email',
                             'password' => 'required|min:3',
-                            'password_confirm' => 'required|same:password|min:3'
                         ];
                         break;
                     case 'register':
