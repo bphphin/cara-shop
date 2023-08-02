@@ -25,10 +25,7 @@
                 <button class="normal"> Xem giỏ hàng</button>
             </div>
         </div>
-        <form action="" class="search border">
-            <input type="text" placeholder="Search product">
-            <button class="normal me-1">Search</button>
-        </form>
+        @include('clients.layouts.form-search-product')
     </section>
 
     <section id="product1" class="section-p1 p-shop">
