@@ -13,38 +13,51 @@ use Illuminate\Support\Facades\DB;
 class SiteController extends Controller
 {
     // detail product
-    public function showProduct($id,$slug) {
+    public function showProduct($id, $slug)
+    {
         $product = Product::find($id);
         $sizes = Size::all();
-        return view('clients.pages.detail-product',compact('product','sizes'));
+        return view('clients.pages.detail-product', compact('product', 'sizes'));
     }
 
 
     // shop-page
-    public function shop() {
+    public function shop()
+    {
         $products = Product::paginate(4);
         $cates = Category::all();
-        return view('clients.pages.shop',compact('products','cates'));
+        return view('clients.pages.shop', compact('products', 'cates'));
     }
 
     // detail cate end display product default from category
-    public function detailCate($id) {
-        $subCate = SubCategory::where('parent_id','=',$id)->get();
+    public function detailCate($id)
+    {
+        $subCate = SubCategory::where('parent_id', '=', $id)->get();
         $productToCate = DB::table('categories')
-            ->leftJoin('sub_categories','sub_categories.parent_id','=','categories.id')
-            ->leftJoin('products','products.cate_id','=','sub_categories.id')
-            ->where('parent_id','=',$id)
-            ->select('sub_categories.name as subCateName','categories.name as cateName','products.*')
+            ->leftJoin('sub_categories', 'sub_categories.parent_id', '=', 'categories.id')
+            ->leftJoin('products', 'products.cate_id', '=', 'sub_categories.id')
+            ->where('parent_id', '=', $id)
+            ->select('sub_categories.name as subCateName', 'categories.name as cateName', 'products.*')
             ->limit(4)->get();
 //        dd($productToCate);
-        return view('clients.pages.detail-category',compact('subCate','productToCate'));
+        return view('clients.pages.detail-category', compact('subCate', 'productToCate'));
     }
 
     // product from sub cate
-    public function productFromSubCate($id) {
+    public function productFromSubCate($id)
+    {
         $subCate = SubCategory::all();
-        $proFromSubCate = Product::where('cate_id','=',$id)->get();
-        return view('clients.pages.detail-pro-from-subcate',compact('proFromSubCate','subCate'));
+        $proFromSubCate = Product::where('cate_id', '=', $id)->get();
+        return view('clients.pages.detail-pro-from-subcate', compact('proFromSubCate', 'subCate'));
+    }
+
+    //search product
+    public function searchProductHome(Request $request)
+    {
+        $name = $request->name;
+        $subCate = SubCategory::all();
+        $productBySearch = Product::where('name','LIKE',"%$name%")->get();
+        return view('clients.pages.view-product-search',compact('productBySearch','subCate'));
     }
 
 }
