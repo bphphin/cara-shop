@@ -4,9 +4,9 @@
         <ul id="navbar">
             <li><a class="" href="{{ route('home-client') }}">Home</a></li>
             <li><a href="{{ route('site.product.shop')  }}">Shop</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="{{ route('site.blog')  }}">Blog</a></li>
             <li><a href="{{ route('site.about')  }}">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{ route('site.contact')  }}">Contact</a></li>
 
         </ul>
     </div>

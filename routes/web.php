@@ -135,6 +135,9 @@ Route::post('search-query',[SiteController::class,'searchProductHome'])->name('s
 
 //About page
 Route::get('about',[SiteController::class,'about'])->name('site.about');
+
+// Blog page
+Route::get('blog',[SiteController::class,'blog'])->name('site.blog');
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
