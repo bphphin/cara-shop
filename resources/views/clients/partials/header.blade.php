@@ -3,7 +3,7 @@
     <div class="">
         <ul id="navbar">
             <li><a class="" href="{{ route('home-client') }}">Home</a></li>
-            <li><a href="{{ route('home.product.shop')  }}">Shop</a></li>
+            <li><a href="{{ route('site.product.shop')  }}">Shop</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
