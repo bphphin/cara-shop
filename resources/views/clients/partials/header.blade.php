@@ -23,8 +23,15 @@
                     </ul>
                 </div>
             @else
-                <div class="d-flex align-items-center ms-2">
-                    <div class="btn-group me-2">
+                <div class="d-flex align-items-center ms-2 gap-x-3">
+                    <a href="">
+                        <img src="{{ Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded">
+                    </a>
+                    <a href="{{ route('site.cart') }}">
+                        <img src="{{ asset('assets/imgs/shopping-bag.png') }}" alt="" class="object-contain w-[30px] rounded">
+                    </a>
+                    {{-- Drop down --}}
+                    {{-- <div class="btn-group me-2">
                         <p class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </p>
@@ -32,15 +39,14 @@
                             <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Account Setting</a></li>
                             <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
                         </ul>
-                    </div>
-                    <div>
+                    </div> --}}
+                    {{-- <div>
                         <a href="#">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
             @endif
-
         @else
             <a href="{{ route('auth.loginForm') }}">Log In</a>
             <a href="{{ route('auth.registerForm') }}">Sign Up</a>

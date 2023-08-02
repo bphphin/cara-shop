@@ -58,7 +58,7 @@
             </ul>
         </div>
         <div class="pro-container">
-            @foreach($productBySearch as $product)
+            @forelse($productBySearch as $product)
                 <div class="pro">
                     <a href="{{route('site.product.show',['id' => $product->id,'slug' => $product->slug])}}">
                         <img src="{{ asset('upload').'/'.$product->image }}" alt="">
@@ -78,7 +78,9 @@
                     </div>
                     <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
                 </div>
-            @endforeach
+                @empty
+                <p>Không có kết quả mà bạn muốn tìm</p>
+            @endforelse
         </div>
     </section>
     <div class="mb-3">

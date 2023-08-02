@@ -56,7 +56,7 @@
             @endforeach
         </div>
     </section>
-    <div class="mb-3">
+    <div class="flex justify-center mb-6">
         {{ $products->links('admin.layouts.pagination')  }}
     </div>
     @include('clients.layouts.form-feedback')

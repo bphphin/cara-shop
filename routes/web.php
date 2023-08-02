@@ -141,6 +141,7 @@ Route::get('blog',[SiteController::class,'blog'])->name('site.blog');
 
 // Contact page
 Route::get('contact',[SiteController::class,'contact'])->name('site.contact');
+Route::get('cart',[SiteController::class,'cart'])->name('site.cart');
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
