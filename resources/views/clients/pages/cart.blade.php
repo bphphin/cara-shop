@@ -5,6 +5,7 @@
         <p>LEAVE A MESSAGE, We love to hear from you!</p>
     </section>
 
+    @if (Auth::check())
     <section id="cart" class="section-p1">
         <table width="100%">
             <thead>
@@ -18,19 +19,23 @@
                 </tr>
             </thead>
             <tbody class="cart-box">
+                @foreach ($carts as $cart)
                 <tr class="pro-box">
                     <td><i class="far fa-times-circle"></i></td>
-                    <td><img src="{{ asset('assets/imgs/products/f1.jpg') }}" alt=""></td>
-                    <td>Cartoon Astronaut T-Shirts</td>
-                    <td>$118.19</td>
-                    <td><input type="number" value="1" min="1"></td>
-                    <td>$118.19</td>
+                    <td><img src="{{ asset('upload')."/".$cart->image }}" alt=""></td>
+                    <td>{{ $cart->proName }}</td>
+                    <td>{{ number_format($cart->price) }}</td>
+                    <form action="" method="post">
+                        <td><input type="number" value="{{ $cart->quantity }}" min="1" class="border w-[40px] h-[40px] text-center"></td>
+                    </form>
+                    <td>{{ number_format($cart->total_price) }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </section>
 
-    <section id="cart-add" class="section-p1">
+    <section id="cart-add" class="section-p1 justify-content-end">
         <div id="subtotal">
             <h3>Cart totals</h3>
             <table>
@@ -50,5 +55,9 @@
             <button class="normal">Proceed to checkout</button>
         </div>
     </section>
+    @else
+    <p>Đăng nhập để mua sắm</p>
+    @endif
+
 
 @endsection
