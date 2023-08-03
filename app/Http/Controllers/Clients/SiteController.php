@@ -74,7 +74,7 @@ class SiteController extends Controller
                 ->leftJoin('products','products.id','=','carts.pro_id')
                 ->leftJoin('sizes','sizes.id','=','carts.size_id')
                 ->where('user_id','=',$userId)
-                ->select('carts.*','products.id','products.name as proName','products.image','users.id','users.name as username')->get();
+                ->select('carts.*','products.id as pro_id','products.name as proName','products.image','users.name as username')->get();
                 return view('clients.pages.cart',compact('carts'));
         }
         return back();
@@ -107,6 +107,35 @@ class SiteController extends Controller
             return $th->getMessage();
         }
     }
+
+    //Update cart
+    public function updateCart(Request $request) {
+        if($request->has('id') && $request->has('pro_id')) {
+            $cartId = $request->get('id');
+            $proId = $request->get('pro_id');
+            $quantityByProduct = Product::find($proId);
+
+            if($request->quantity < 0) {
+                Cart::destroy($cartId);
+                return back();
+            }
+            if($request->quantity > $quantityByProduct->quantity) {
+                toast('Cập nhật không thành công','warning');
+                return back();
+            }
+            try {
+                Cart::where('id',$cartId)->update([
+                    'quantity' => $request->quantity
+                ]);
+                toast('Cập nhật thành công','success');
+                return back();
+            } catch (\Throwable $th) {
+                return $th->getMessage();
+            }
+        }
+        return back();
+    }
+
 
     // About Page
     public function about() {
