@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Alert;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Session;
+use function Ramsey\Collection\Map\get;
 
 class SiteController extends Controller
 {
@@ -66,7 +67,17 @@ class SiteController extends Controller
 
     // Cart
     public function cart() {
-        return view('clients.pages.cart');
+        if(Auth::check()) {
+            $userId = Auth::user()->id;
+            $carts = DB::table('carts')
+                ->leftJoin('users','users.id','=','carts.user_id')
+                ->leftJoin('products','products.id','=','carts.pro_id')
+                ->leftJoin('sizes','sizes.id','=','carts.size_id')
+                ->where('user_id','=',$userId)
+                ->select('carts.*','products.id','products.name as proName','products.image','users.id','users.name as username')->get();
+                return view('clients.pages.cart',compact('carts'));
+        }
+        return back();
     }
 
     //Add to cart
