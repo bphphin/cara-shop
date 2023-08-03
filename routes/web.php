@@ -145,6 +145,7 @@ Route::get('contact',[SiteController::class,'contact'])->name('site.contact');
 // Cart
 Route::get('cart',[SiteController::class,'cart'])->name('site.cart');
 Route::post('add-to-card',[SiteController::class,'addToCart'])->name('site.addToCart')->middleware(['isLogin']);
+Route::post('update-card',[SiteController::class,'updateCart'])->name('site.updateCart');
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
