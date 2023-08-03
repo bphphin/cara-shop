@@ -149,8 +149,11 @@ Route::get('cart',[SiteController::class,'cart'])->name('site.cart');
 Route::post('add-to-card',[SiteController::class,'addToCart'])->name('site.addToCart')->middleware(['isLogin']);
 Route::post('update-card',[SiteController::class,'updateCart'])->name('site.updateCart');
 
+
+// Account
 Route::prefix('account')->group(function() {
     Route::get('my-account',[ProfileController::class,'profile'])->name('home.account.profile');
+    Route::post('my-account',[ProfileController::class,'update'])->name('home.account-update');
 });
 // Login
 
