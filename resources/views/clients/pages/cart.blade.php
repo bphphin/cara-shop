@@ -33,6 +33,7 @@
                         <form action="{{ route('site.updateCart') }}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $cart->id }}">
+                            <input type="hidden" name="pro_id" value="{{ $cart->pro_id }}">
                             <input type="number" value="{{ $cart->quantity }}" class="border w-[40px] h-[40px] text-center" name="quantity">
                             <button class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Update</button>
                         </form>
