@@ -124,30 +124,30 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
 // Clients
 Route::get('/', [HomeController::class, 'home'])->name('home-client');
 
-Route::get('product/{id}/{slug?}',[SiteController::class,'showProduct'])->name('site.product.show');
+Route::get('product/{id}/{slug?}',[SiteController::class,'showProduct'])->name('home.site.product.show');
 
-Route::get('shop-page',[SiteController::class,'shop'])->name('site.product.shop');
+Route::get('shop-page',[SiteController::class,'shop'])->name('home.site.product.shop');
 
-Route::get('cate-detail/{id}',[SiteController::class,'detailCate'])->name('site.cate.detail');
+Route::get('cate-detail/{id}',[SiteController::class,'detailCate'])->name('home.site.cate.detail');
 
-Route::get('product-from-sub-cate/{id}',[SiteController::class,'productFromSubCate'])->name('site.product.proFromSubCate');
+Route::get('product-from-sub-cate/{id}',[SiteController::class,'productFromSubCate'])->name('home.site.product.proFromSubCate');
 
 //Search product
-Route::post('search-query',[SiteController::class,'searchProductHome'])->name('site.product.search');
+Route::post('search-query',[SiteController::class,'searchProductHome'])->name('home.site.product.search');
 
 //About page
-Route::get('about',[SiteController::class,'about'])->name('site.about');
+Route::get('about',[SiteController::class,'about'])->name('home.site.about');
 
 // Blog page
-Route::get('blog',[SiteController::class,'blog'])->name('site.blog');
+Route::get('blog',[SiteController::class,'blog'])->name('home.site.blog');
 
 // Contact page
-Route::get('contact',[SiteController::class,'contact'])->name('site.contact');
+Route::get('contact',[SiteController::class,'contact'])->name('home.site.contact');
 
 // Cart
-Route::get('cart',[SiteController::class,'cart'])->name('site.cart');
-Route::post('add-to-card',[SiteController::class,'addToCart'])->name('site.addToCart')->middleware(['isLogin']);
-Route::post('update-card',[SiteController::class,'updateCart'])->name('site.updateCart');
+Route::get('cart',[SiteController::class,'cart'])->name('home.site.cart');
+Route::post('add-to-card',[SiteController::class,'addToCart'])->name('home.site.addToCart')->middleware(['isLogin']);
+Route::post('update-card',[SiteController::class,'updateCart'])->name('home.site.updateCart');
 
 
 // Account

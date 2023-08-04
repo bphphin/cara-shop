@@ -3,10 +3,10 @@
     <div class="">
         <ul id="navbar">
             <li><a class="" href="{{ route('home-client') }}">Home</a></li>
-            <li><a href="{{ route('site.product.shop')  }}">Shop</a></li>
-            <li><a href="{{ route('site.blog')  }}">Blog</a></li>
-            <li><a href="{{ route('site.about')  }}">About</a></li>
-            <li><a href="{{ route('site.contact')  }}">Contact</a></li>
+            <li><a href="{{ route('home.site.product.shop')  }}">Shop</a></li>
+            <li><a href="{{ route('home.site.blog')  }}">Blog</a></li>
+            <li><a href="{{ route('home.site.about')  }}">About</a></li>
+            <li><a href="{{ route('home.site.contact')  }}">Contact</a></li>
 
         </ul>
     </div>
@@ -24,8 +24,8 @@
                 </div>
             @else
                 <div class="d-flex align-items-center ms-2 gap-x-3">
-                    <a href="">
-                        <img src="{{ Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded">
+                    <a href="{{ route('home.account.profile') }}">
+                        <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded">
                     </a>
                     <a href="{{ route('site.cart') }}">
                         <img src="{{ asset('assets/imgs/shopping-bag.png') }}" alt="" class="object-contain w-[30px] rounded">

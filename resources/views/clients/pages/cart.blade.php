@@ -30,7 +30,7 @@
                     <td>{{ $cart->proName }}</td>
                     <td>{{ number_format($cart->price) }}</td>
                     <td>
-                        <form action="{{ route('site.updateCart') }}" method="post">
+                        <form action="{{ route('home.site.updateCart') }}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $cart->id }}">
                             <input type="hidden" name="pro_id" value="{{ $cart->pro_id }}">

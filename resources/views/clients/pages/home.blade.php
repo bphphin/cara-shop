@@ -40,12 +40,12 @@
             @foreach ($products as $pro)
                 @if($pro->status_id === 1)
                     <div class="pro">
-                        <a href="{{route('site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
                             <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                         </a>
                         <div class="des">
                             <span>{{ $pro->getSubCateName()->name }}</span>
-                            <h5><a href="{{route('site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -86,12 +86,12 @@
             @foreach($products as $pro)
                 @if($pro->status_id === 2)
                     <div class="pro">
-                        <a href="{{route('site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
                             <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                         </a>
                         <div class="des">
                             <span>{{ $pro->getSubCateName()->name }}</span>
-                            <h5><a href="{{route('site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>

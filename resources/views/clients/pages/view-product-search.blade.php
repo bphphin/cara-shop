@@ -38,7 +38,7 @@
                 <li>
                     @foreach($subCate as $sCate)
                         <ul class="nav_menu">
-                            <li><a href="{{ route('site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a></li>
+                            <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a></li>
                         </ul>
                     @endforeach
 
@@ -60,12 +60,12 @@
         <div class="pro-container">
             @forelse($productBySearch as $product)
                 <div class="pro">
-                    <a href="{{route('site.product.show',['id' => $product->id,'slug' => $product->slug])}}">
+                    <a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])}}">
                         <img src="{{ asset('upload').'/'.$product->image }}" alt="">
                     </a>
                     <div class="des">
                         <span>{{ $product->getSubCateName()->name  }}</span>
-                        <h5><a href="{{route('site.product.show',['id' => $product->id,'slug' => $product->slug])}}" class="text-decoration-none text-body-secondary">{{ $product->name }}</a></h5>
+                        <h5><a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])}}" class="text-decoration-none text-body-secondary">{{ $product->name }}</a></h5>
 
                         <div class="star">
                             <i class="fas fa-star"></i>

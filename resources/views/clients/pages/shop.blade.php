@@ -11,8 +11,8 @@
             <h4><i class="fa-sharp fa-solid fa-cart-shopping"></i> Giỏ hàng</h4>
             <div class="cart-item">
                 <div class="product-list">
-                    <div class="product-list-img"><img
-                            src="{{ asset('assets/imgs/products/f1.jpg')  }}" alt=""></div>
+                    <div class="product-list-img">
+                        <img src="{{ asset('assets/imgs/products/f1.jpg')  }}" alt=""></div>
                     <div class="product-info">
                         <h6>Cartoon Astronaut T-Shirts</h6>
                         <span>Số lượng:1</span>
@@ -38,10 +38,14 @@
         <div class="pro-container">
             @foreach($products as $pro)
                 <div class="pro">
-                    <img src="{{ asset('upload'). "/$pro->image"  }}" alt="">
+                    <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                        <img src="{{ asset('upload'). "/$pro->image"  }}" alt="">
+                    </a>
                     <div class="des">
                         <span>{{ $pro->getSubCateName()->name  }}</span>
-                        <h5>{{ $pro->name  }}</h5>
+                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                            <h5>{{ $pro->name  }}</h5>
+                        </a>
                         <div class="star">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
