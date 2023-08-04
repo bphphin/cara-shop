@@ -19,6 +19,9 @@ class CheckLogin
             toast('Vui lòng đăng nhập để mua sắm','info');
             return back();
         }
+        if(Auth::user()->role !== 0) {
+            return back();
+        }
         return $next($request);
     }
 }

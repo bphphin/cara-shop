@@ -145,15 +145,20 @@ Route::get('blog',[SiteController::class,'blog'])->name('home.site.blog');
 Route::get('contact',[SiteController::class,'contact'])->name('home.site.contact');
 
 // Cart
-Route::get('cart',[SiteController::class,'cart'])->name('home.site.cart');
-Route::post('add-to-card',[SiteController::class,'addToCart'])->name('home.site.addToCart')->middleware(['isLogin']);
-Route::post('update-card',[SiteController::class,'updateCart'])->name('home.site.updateCart');
+Route::middleware(['isLogin'])->group(function() {
+    Route::get('cart',[SiteController::class,'cart'])->name('home.site.cart');
+    Route::post('add-to-card',[SiteController::class,'addToCart'])->name('home.site.addToCart');
+    Route::post('update-card',[SiteController::class,'updateCart'])->name('home.site.updateCart');
+});
 
 
 // Account
-Route::prefix('account')->group(function() {
-    Route::get('my-account',[ProfileController::class,'profile'])->name('home.account.profile');
-    Route::post('my-account',[ProfileController::class,'update'])->name('home.account-update');
+
+Route::middleware(['isLogin'])->group(function() {
+    Route::prefix('account')->group(function() {
+        Route::get('my-account',[ProfileController::class,'profile'])->name('home.account.profile');
+        Route::post('my-account',[ProfileController::class,'update'])->name('home.account-update');
+    });
 });
 // Login
 
