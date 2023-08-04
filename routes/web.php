@@ -40,6 +40,7 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
         Route::get('edit/{id}',[ProductController::class,'edit'])->name('admin.product.edit');
         Route::post('edit/{id}',[ProductController::class,'update'])->name('admin.product.update');
         Route::delete('soft-delete/{id}',[ProductController::class,'softDelete'])->name('admin.product.softDelete');
+        Route::delete('delete/{id}',[ProductController::class,'destroy'])->name('admin.product.destroy');
         Route::get('restore/{id}',[ProductController::class,'restore'])->name('admin.product.restore');
     });
 
