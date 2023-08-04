@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\CategoryRequest;
-
+use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index()
@@ -34,7 +34,7 @@ class CategoryController extends Controller
         if($request->method() === 'POST') {
             $isSuccess = Category::create([
                 'name' => $request->name,
-                'slug' => $request->slug ?? '',
+                'slug' => Str::slug($request->name),
                 'description' => $request->description ?? ''
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Thêm mới thành công', 'admin.category.index');
@@ -58,7 +58,7 @@ class CategoryController extends Controller
         if ($request->method() === 'POST') {
             $isSuccess = Category::where('id', $id)->update([
                 'name' => $request->name,
-                'slug' => $request->slug ?? '',
+                'slug' => Str::slug($request->name),
                 'description' => $request->description ?? ''
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Cập nhật thành công', 'admin.category.index');

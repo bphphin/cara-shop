@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\BrandRequest;
-
+use Illuminate\Support\Str;
 class BrandController extends Controller
 {
     public function index()
@@ -31,7 +31,7 @@ class BrandController extends Controller
         if ($request->method() === 'POST') {
             $isSuccess = Brand::create([
                 'name' => $request->name,
-                'slug' => $request->slug ?? '',
+                'slug' => Str::slug($request->name),
                 'description' => $request->description ?? '',
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Thêm mới thành công', 'admin.brand.index');
@@ -49,7 +49,7 @@ class BrandController extends Controller
         if ($request->method() === 'POST') {
             $isSuccess = Brand::where('id', $id)->update([
                 'name' => $request->name,
-                'slug' => $request->slug ?? '',
+                'slug' => Str::slug($request->name),
                 'description' => $request->description ?? ''
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Cập nhật thành công', 'admin.brand.index');

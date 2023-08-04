@@ -12,7 +12,7 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 Use Alert;
 use App\Http\Requests\Admin\ProductRequest;
-
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function index()
@@ -54,22 +54,21 @@ class ProductController extends Controller
                 $extension = $request->file('image')->getClientOriginalExtension();
                 $image = $fileName . '-' . time() . '.' . $extension;
 
+                $isSuccess = Product::where('id', $id)->update([
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'quantity' => $request->quantity,
+                    'slug' => Str::slug($request->name),
+                    'image' => $image ?? $product->image,
+                    'cate_id' => $request->cate_id ?? $product->cate_id,
+                    'brand_id' => $request->brand_id ?? $product->brand_id,
+                    'color_id' => $request->color_id ?? $product->color_id,
+                    'size_id' => $request->size_id ?? $product->size_id,
+                    'status_id' => $request->status_id ?? $product->status_id,
+                    'description' => $request->description,
+                ]);
+                return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Cập nhật thành công', 'admin.product.index');
             }
-            $isSuccess = Product::where('id', $id)->update([
-                'name' => $request->name,
-                'price' => $request->price,
-                'quantity' => $request->quantity,
-                'slug' => $request->slug,
-                'image' => $image ?? $product->image,
-                'cate_id' => $request->cate_id ?? $product->cate_id,
-                'brand_id' => $request->brand_id ?? $product->brand_id,
-                'color_id' => $request->color_id ?? $product->color_id,
-                'size_id' => $request->size_id ?? $product->size_id,
-                'status_id' => $request->status_id ?? $product->status_id,
-                'description' => $request->description,
-            ]);
-            return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Cập nhật thành công', 'admin.product.index');
-            fail('error','Lỗi rồi','Cập nhật không thành công');
         }
     }
 
@@ -91,7 +90,6 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-
         if ($request->method() === 'POST') {
             if ($request->hasFile('image')) {
                 $originName = $request->file('image')->getClientOriginalName();
@@ -104,13 +102,13 @@ class ProductController extends Controller
                     'name' => $request->name,
                     'price' => $request->price,
                     'quantity' => $request->quantity,
-                    'slug' => $request->slug,
+                    'slug' => Str::slug($request->name),
                     'image' => $image,
                     'cate_id' => $request->cate_id,
                     'brand_id' => $request->brand_id,
                     'color_id' => $request->color_id,
                     'size_id' => $request->size_id,
-                    'status_id' => $request->status_id ?? $product->status_id,
+                    'status_id' => $request->status_id,
                     'description' => $request->description,
                 ]);
                 return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Thêm mới thành công', 'admin.product.index');
@@ -126,4 +124,8 @@ class ProductController extends Controller
         return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.product.index');
     }
 
+    public function destroy($id) {
+        $isSuccess = Product::whereId($id)->forceDelete();
+        return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa thành công','admin.product.index');
+    }
 }
