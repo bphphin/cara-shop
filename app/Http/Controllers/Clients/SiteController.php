@@ -87,51 +87,62 @@ class SiteController extends Controller
             toast()->error('Lỗi');
             return back();
         }
-        $proId = $request->get('pro_id');
-        $productToCart = Product::find($proId);
-        if($request->quantity > $productToCart->quantity) {
-            toast()->error('Số lượng sản phẩm không hợp lệ');
+        if(Auth::check()) {
+            if(Auth::user()->role !== 1) {
+                $proId = $request->get('pro_id');
+                $productToCart = Product::find($proId);
+                if($request->quantity > $productToCart->quantity) {
+                    toast()->error('Số lượng sản phẩm không hợp lệ');
+                    return back();
+                }
+                try {
+                    $isSuccess = Cart::create([
+                        'pro_id' => $proId,
+                        'user_id' => Auth::user()->id,
+                        'size_id' => $request->size_id,
+                        'price' => $productToCart->price,
+                        'quantity' => $request->quantity,
+                        'total_price' => ($productToCart->price * $request->quantity)
+                    ]);
+                    return checkEndDisplayMsg($isSuccess,'success','Thành công','Thêm giỏ hàng thành công','site.cart');
+                } catch (\Throwable $th) {
+                    return $th->getMessage();
+                }
+            }
             return back();
         }
-        try {
-            $isSuccess = Cart::create([
-                'pro_id' => $proId,
-                'user_id' => Auth::user()->id,
-                'size_id' => $request->size_id,
-                'price' => $productToCart->price,
-                'quantity' => $request->quantity,
-                'total_price' => ($productToCart->price * $request->quantity)
-            ]);
-            return checkEndDisplayMsg($isSuccess,'success','Thành công','Thêm giỏ hàng thành công','site.cart');
-        } catch (\Throwable $th) {
-            return $th->getMessage();
-        }
+        return back();
     }
 
     //Update cart
     public function updateCart(Request $request) {
-        if($request->has('id') && $request->has('pro_id')) {
-            $cartId = $request->get('id');
-            $proId = $request->get('pro_id');
-            $quantityByProduct = Product::find($proId);
-
-            if($request->quantity < 0) {
-                Cart::destroy($cartId);
-                return back();
+        if(Auth::check()) {
+            if(Auth::user()->role !== 1) {
+                if($request->has('id') && $request->has('pro_id')) {
+                    $cartId = $request->get('id');
+                    $proId = $request->get('pro_id');
+                    $quantityByProduct = Product::find($proId);
+        
+                    if($request->quantity < 0) {
+                        Cart::destroy($cartId);
+                        return back();
+                    }
+                    if($request->quantity > $quantityByProduct->quantity) {
+                        toast('Cập nhật không thành công','warning');
+                        return back();
+                    }
+                    try {
+                        Cart::where('id',$cartId)->update([
+                            'quantity' => $request->quantity
+                        ]);
+                        toast('Cập nhật thành công','success');
+                        return back();
+                    } catch (\Throwable $th) {
+                        return $th->getMessage();
+                    }
+                }
             }
-            if($request->quantity > $quantityByProduct->quantity) {
-                toast('Cập nhật không thành công','warning');
-                return back();
-            }
-            try {
-                Cart::where('id',$cartId)->update([
-                    'quantity' => $request->quantity
-                ]);
-                toast('Cập nhật thành công','success');
-                return back();
-            } catch (\Throwable $th) {
-                return $th->getMessage();
-            }
+            return back();
         }
         return back();
     }
