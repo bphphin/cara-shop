@@ -4,14 +4,11 @@
         <div class="activity">
             <div class="py-20">
                 <div class="flex justify-end mb-4">
-                    <a href="{{ route('admin.product.store')  }}"
-                       class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded-full">+
-                        Product</a>
                     <a
                         class="bg-[#f687b3] hover:bg-[#f687b3] text-white font-bold py-2 px-4 rounded-full"
-                        href="{{ route('admin.category.trash')  }}">
-                        Trash
-                        <i class="fa-solid fa-trash"></i>
+                        href="{{ route('admin.product.index')  }}">
+                        Back
+                        <i class="fa-solid fa-rotate-left"></i>
                     </a>
                 </div>
                 <div class="relative overflow-x-auto">
@@ -52,7 +49,7 @@
                                         Restore
                                         <i class="fa-solid fa-arrow-rotate-left"></i>
                                     </a>
-                                    <form action="{{ route('admin.product.softDelete',$pro->id)  }}" method="POST">
+                                    <form action="{{ route('admin.product.destroy',$pro->id)  }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button

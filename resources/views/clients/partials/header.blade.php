@@ -27,7 +27,7 @@
                     <a href="{{ route('home.account.profile') }}">
                         <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded">
                     </a>
-                    <a href="{{ route('site.cart') }}">
+                    <a href="{{ route('home.site.cart') }}">
                         <img src="{{ asset('assets/imgs/shopping-bag.png') }}" alt="" class="object-contain w-[30px] rounded">
                     </a>
                     {{-- Drop down --}}
