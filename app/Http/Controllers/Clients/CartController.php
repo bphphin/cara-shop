@@ -120,7 +120,7 @@ class CartController extends Controller
                 ->leftJoin('sizes','sizes.id','=','carts.size_id')
                 ->where('user_id','=',$userId)
                 ->select('carts.*','products.id as pro_id','products.name as proName','products.image','users.name as username')->get();
-                return view('clients.pages.checkout',compact('carts'));
+                return view('clients.pages.orders.checkout',compact('carts'));
         }
         return back();
     }
@@ -151,8 +151,8 @@ class CartController extends Controller
                     DB::statement("UPDATE products SET quantity = quantity - $item->quantity WHERE id = $item->pro_id");
                     Cart::destroy($item->id);
                 }
-                Alert::success('Thành công', 'Mua hàng thành công');
-                return redirect()->route('home-client');
+                // Alert::success('Thành công', 'Mua hàng thành công');
+                return redirect()->route('home.cart.order');
             } catch (\Throwable $th) {
                 return $th->getMessage();
             }
