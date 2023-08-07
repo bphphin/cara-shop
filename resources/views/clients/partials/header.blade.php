@@ -28,7 +28,7 @@
                         <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded mt-3">
                     </a>
                     <a href="{{ route('home.cart') }}">
-                        <span class="bg-red-500 text-white-50 text-[10px] text-center ml-4 w-[25px]" style="border-radius: 50%">{{ count($carts) ?? 0 }}</span>
+                        {{-- <span class="bg-red-500 text-white-50 text-[10px] text-center ml-4 w-[25px]" style="border-radius: 50%">{{ count($carts) ?? [] }}</span> --}}
                         <img src="{{ asset('assets/imgs/shopping-bag.png') }}" alt="" class="object-contain w-[30px] rounded">
                     </a>
                     {{-- Drop down --}}
