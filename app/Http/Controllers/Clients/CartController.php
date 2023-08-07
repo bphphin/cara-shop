@@ -149,6 +149,7 @@ class CartController extends Controller
                         'total_price' => ($item->quantity * $item->price)
                     ]);
                     DB::statement("UPDATE products SET quantity = quantity - $item->quantity WHERE id = $item->pro_id");
+                    Cart::destroy($item->id);
                 }
                 Alert::success('Thành công', 'Mua hàng thành công');
                 return redirect()->route('home-client');
