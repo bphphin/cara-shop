@@ -154,6 +154,7 @@ Route::middleware(['isLogin'])->group(function() {
     Route::get('cart-checkout',[CartController::class,'checkout'])->name('home.cart.checkout');
     Route::get('cart-delete/{id}',[CartController::class,'destroy'])->name('home.cart.destroy');
     Route::post('complete-checkout',[CartController::class,'completeCheckout'])->name('home.cart.completeCheckout');
+    Route::view('order-success','clients.pages.orders.order-success')->name('home.cart.order');
 });
 
 
