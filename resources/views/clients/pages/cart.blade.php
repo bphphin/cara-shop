@@ -4,7 +4,6 @@
         <h2>#let's_talk</h2>
         <p>LEAVE A MESSAGE, We love to hear from you!</p>
     </section>
-    @if (Auth::check())
     @if(count($carts) > 0)
     <section id="cart" class="section-p1">
         <table width="100%">
@@ -25,12 +24,16 @@
             <tbody class="cart-box">
                 @foreach ($carts as $cart)
                 <tr class="pro-box">
-                    <td><i class="far fa-times-circle"></i></td>
+                    <td>
+                        <a href="{{ route('home.site.cart.destroy',$cart->id) }}" onclick="return confirm(`Bạn có muốn xóa không??`)">
+                            <i class="far fa-times-circle"></i>
+                        </a>
+                    </td>
                     <td><img src="{{ asset('upload')."/".$cart->image }}" alt=""></td>
                     <td>{{ $cart->proName }}</td>
                     <td>{{ number_format($cart->price) }}</td>
                     <td>
-                        <form action="{{ route('home.site.updateCart') }}" method="post">
+                        <form action="{{ route('home.site.cart.updateCart') }}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $cart->id }}">
                             <input type="hidden" name="pro_id" value="{{ $cart->pro_id }}">
@@ -61,7 +64,7 @@
                     <td><strong>{{ number_format($total) }}</strong></td>
                 </tr>
             </table>
-            <button class="normal">Proceed to checkout</button>
+            <a class="btn btn-success" href="{{ route('home.site.cart.checkout') }}">Proceed to checkout</a>
         </div>
     </section>
     @else
@@ -70,8 +73,5 @@
         <p class="text-center text-sm text-gray-400">Giỏ hàng của bạn đang trống</p>
         <a href="{{ route('home-client') }}" class="w-[200px] text-center block text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 my-2 mx-auto">Mua sắm nào</a>
     </div>
-    @endif
-    @else
-    <a href="{{ route('auth.loginForm') }}" class="w-[200px] text-center block text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 my-2 mx-auto">Đăng nhập tại đây</a>
     @endif
 @endsection
