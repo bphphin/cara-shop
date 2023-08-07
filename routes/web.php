@@ -148,11 +148,12 @@ Route::get('contact',[SiteController::class,'contact'])->name('home.site.contact
 
 // Cart
 Route::middleware(['isLogin'])->group(function() {
-    Route::get('cart',[CartController::class,'cart'])->name('home.site.cart');
-    Route::post('add-to-card',[CartController::class,'addToCart'])->name('home.site.cart.addToCart');
-    Route::post('update-card',[CartController::class,'updateCart'])->name('home.site.cart.updateCart');
-    Route::get('cart-checkout',[CartController::class,'checkout'])->name('home.site.cart.checkout');
-    Route::get('cart-delete/{id}',[CartController::class,'destroy'])->name('home.site.cart.destroy');
+    Route::get('cart',[CartController::class,'cart'])->name('home.cart');
+    Route::post('add-to-card',[CartController::class,'addToCart'])->name('home.cart.addToCart');
+    Route::post('update-card',[CartController::class,'updateCart'])->name('home.cart.updateCart');
+    Route::get('cart-checkout',[CartController::class,'checkout'])->name('home.cart.checkout');
+    Route::get('cart-delete/{id}',[CartController::class,'destroy'])->name('home.cart.destroy');
+    Route::post('complete-checkout',[CartController::class,'completeCheckout'])->name('home.cart.completeCheckout');
 });
 
 
