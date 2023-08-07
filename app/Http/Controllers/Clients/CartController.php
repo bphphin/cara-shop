@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Alert;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -50,7 +53,7 @@ class CartController extends Controller
                         'quantity' => $request->quantity,
                         'total_price' => ($productToCart->price * $request->quantity)
                     ]);
-                    return checkEndDisplayMsg($isSuccess,'success','Thành công','Thêm giỏ hàng thành công','home.site.cart');
+                    return checkEndDisplayMsg($isSuccess,'success','Thành công','Thêm giỏ hàng thành công','home.cart');
                 } catch (\Throwable $th) {
                     return $th->getMessage();
                 }
@@ -68,7 +71,7 @@ class CartController extends Controller
                     $cartId = $request->get('id');
                     $proId = $request->get('pro_id');
                     $quantityByProduct = Product::find($proId);
-        
+
                     if($request->quantity <= 0) {
                         // dd(1);
                         Cart::destroy($cartId);
@@ -100,7 +103,7 @@ class CartController extends Controller
     public function destroy($id) {
         try {
             $isSuccess = Cart::destroy($id);
-            return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa sản phẩm thành công','home.site.cart');
+            return checkEndDisplayMsg($isSuccess,'success','Thành công','Xóa sản phẩm thành công','home.cart');
         } catch (\Throwable $th) {
             return $th->getMessage();
         }
@@ -119,6 +122,40 @@ class CartController extends Controller
                 ->select('carts.*','products.id as pro_id','products.name as proName','products.image','users.name as username')->get();
                 return view('clients.pages.checkout',compact('carts'));
         }
+        return back();
+    }
+
+    // complete checkout
+    public function completeCheckout(Request $request) {
+        // dd($cart->all());
+        if(Auth::check()) {
+            try {
+                $order = new Order();
+                $orderDetail = new OrderDetail();
+                $carts = Cart::all();
+                // dd($carts);
+                $user_id = Auth::user()->id;
+                $order->user_id = $user_id;
+                $order->username = $request->username;
+                $order->address = $request->address;
+                $order->phone = $request->phone;
+                $order->save();
+                foreach($carts as $item) {
+                    // dd($item);
+                    $orderDetail->order_id = $order->id;
+                    $orderDetail->pro_id = $item->pro_id;
+                    $orderDetail->price = $item->price;
+                    $orderDetail->quantity = $item->quantity;
+                    $orderDetail->total_price = ($item->quantity * $item->price);
+                    DB::statement("UPDATE products SET quantity = quantity - $item->quantity WHERE id = $item->pro_id");
+                    $orderDetail->save();
+                }
+                dd("OK");
+            } catch (\Throwable $th) {
+                return $th->getMessage();
+            }
+        }
+        Alert::error('Không thành công');
         return back();
     }
 
