@@ -25,7 +25,7 @@
                 @foreach ($carts as $cart)
                 <tr class="pro-box">
                     <td>
-                        <a href="{{ route('home.site.cart.destroy',$cart->id) }}" onclick="return confirm(`Bạn có muốn xóa không??`)">
+                        <a href="{{ route('home.cart.destroy',$cart->id) }}" onclick="return confirm(`Bạn có muốn xóa không??`)">
                             <i class="far fa-times-circle"></i>
                         </a>
                     </td>
@@ -33,7 +33,7 @@
                     <td>{{ $cart->proName }}</td>
                     <td>{{ number_format($cart->price) }}</td>
                     <td>
-                        <form action="{{ route('home.site.cart.updateCart') }}" method="post">
+                        <form action="{{ route('home.cart.updateCart') }}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $cart->id }}">
                             <input type="hidden" name="pro_id" value="{{ $cart->pro_id }}">
@@ -64,7 +64,7 @@
                     <td><strong>{{ number_format($total) }}</strong></td>
                 </tr>
             </table>
-            <a class="btn btn-success" href="{{ route('home.site.cart.checkout') }}">Proceed to checkout</a>
+            <a class="btn btn-success" href="{{ route('home.cart.checkout') }}">Proceed to checkout</a>
         </div>
     </section>
     @else

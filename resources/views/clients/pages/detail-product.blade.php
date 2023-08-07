@@ -7,7 +7,7 @@
         </div>
 
         <div class="single-pro-detail">
-            <form action="{{ route('home.site.cart.addToCart') }}" method="POST">
+            <form action="{{ route('home.cart.addToCart') }}" method="POST">
                 @csrf
                 <h6><a href="{{ route('home-client')  }}" class="text-gray-700">Home</a> / {{ $product->getSubCateName()->name  }}</h6>
                 <h4>{{ $product->name  }}</h4>
