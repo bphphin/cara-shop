@@ -131,7 +131,6 @@ class CartController extends Controller
         if(Auth::check()) {
             try {
                 $order = new Order();
-                $orderDetail = new OrderDetail();
                 $carts = Cart::all();
                 // dd($carts);
                 $user_id = Auth::user()->id;
@@ -140,17 +139,19 @@ class CartController extends Controller
                 $order->address = $request->address;
                 $order->phone = $request->phone;
                 $order->save();
+
                 foreach($carts as $item) {
-                    // dd($item);
-                    $orderDetail->order_id = $order->id;
-                    $orderDetail->pro_id = $item->pro_id;
-                    $orderDetail->price = $item->price;
-                    $orderDetail->quantity = $item->quantity;
-                    $orderDetail->total_price = ($item->quantity * $item->price);
+                    OrderDetail::create([
+                        'order_id' => $order->id,
+                        'pro_id' => $item->pro_id,
+                        'price' => $item->price,
+                        'quantity' => $item->quantity,
+                        'total_price' => ($item->quantity * $item->price)
+                    ]);
                     DB::statement("UPDATE products SET quantity = quantity - $item->quantity WHERE id = $item->pro_id");
-                    $orderDetail->save();
                 }
-                dd("OK");
+                Alert::success('Thành công', 'Mua hàng thành công');
+                return redirect()->route('home-client');
             } catch (\Throwable $th) {
                 return $th->getMessage();
             }
