@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\SubCateController;
 use App\Http\Controllers\Clients\SiteController;
 use App\Http\Controllers\Clients\Users\ProfileController;
+use App\Http\Controllers\Clients\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,9 +148,11 @@ Route::get('contact',[SiteController::class,'contact'])->name('home.site.contact
 
 // Cart
 Route::middleware(['isLogin'])->group(function() {
-    Route::get('cart',[SiteController::class,'cart'])->name('home.site.cart');
-    Route::post('add-to-card',[SiteController::class,'addToCart'])->name('home.site.addToCart');
-    Route::post('update-card',[SiteController::class,'updateCart'])->name('home.site.updateCart');
+    Route::get('cart',[CartController::class,'cart'])->name('home.site.cart');
+    Route::post('add-to-card',[CartController::class,'addToCart'])->name('home.site.cart.addToCart');
+    Route::post('update-card',[CartController::class,'updateCart'])->name('home.site.cart.updateCart');
+    Route::get('cart-checkout',[CartController::class,'checkout'])->name('home.site.cart.checkout');
+    Route::get('cart-delete/{id}',[CartController::class,'destroy'])->name('home.site.cart.destroy');
 });
 
 
@@ -161,6 +164,7 @@ Route::middleware(['isLogin'])->group(function() {
         Route::post('my-account',[ProfileController::class,'update'])->name('home.account-update');
     });
 });
+
 // Login
 
 Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
