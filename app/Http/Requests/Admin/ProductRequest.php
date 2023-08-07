@@ -26,7 +26,8 @@ class ProductRequest extends FormRequest
             case 'POST':
                 switch ($currentMethod){
                     case 'store':
-                        $rules = ['name' => 'required',
+                        $rules = [
+                            'name' => 'required',
                             'image' => 'file|required',
                             'price' => 'required|integer',
                             'quantity' => 'required|integer',
@@ -34,7 +35,6 @@ class ProductRequest extends FormRequest
                             'size_id' => 'required',
                             'color_id' => 'required',
                             'brand_id'  => 'required',
-                            'slug' => 'required'
                         ];
                         break;
                     case 'update':
@@ -42,8 +42,6 @@ class ProductRequest extends FormRequest
                             'name' => 'required',
                             'price' => 'required|integer',
                             'quantity' => 'required|integer',
-                            'slug' => 'required',
-//                            'color_id' => 'required',
                         ];
                         break;
                 }
@@ -64,7 +62,6 @@ class ProductRequest extends FormRequest
             'brand_id' => 'Thương hiệu',
             'size_id' => 'Size',
             'color_id' => 'Màu',
-            'slug' => 'Slug'
         ];
     }
 
