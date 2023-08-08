@@ -42,13 +42,13 @@
             <div id="coupon">
                 <h3>Your Infomation</h3>
                 <div class="mt-2">
-                    <input type="text" name="username" value="{{ Auth::user()->name }}" class="">
+                    <input type="text" name="username" value="{{ Auth::user()->name }}" class="" placeholder="Enter your name">
                 </div>
                 <div class="mt-2">
-                    <input type="text" name="address" value="{{ Auth::user()->address }}" class="">
+                    <input type="text" name="address" value="{{ Auth::user()->address }}" class="" placeholder="Enter your address">
                 </div>
                 <div class="mt-2" class="mr-3">
-                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="">
+                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="" placeholder="Enter your phone">
                 </div>
             </div>
             <div id="subtotal">
