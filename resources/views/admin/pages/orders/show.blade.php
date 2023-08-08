@@ -37,7 +37,7 @@
                 {{-- Begin Table --}}
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    @if (count($orders) > 0)
+                    @if (count($order) > 0)
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -52,15 +52,27 @@
                                     Ngày đặt hàng
                                 </th>
                                 <th scope="col" class="px-6 py-3 ">
-                                    Tên khách hàng
+                                    Tên sản phẩm
+                                </th>
+                                <th scope="col" class="px-6 py-3 ">
+                                    Tên danh mục
+                                </th>
+                                <th scope="col" class="px-6 py-3 ">
+                                    Tên thương hiệu
+                                </th>
+                                <th scope="col" class="px-6 py-3 ">
+                                    Giá
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Action
+                                    Số lượng
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Tổng tiền
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($orders as $order)
+                            @foreach ($order as $o)
                                 <tr
                                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <td class="w-4 p-4">
@@ -72,15 +84,25 @@
                                     </td>
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $order->created_at }}
+                                        {{ $o->created_at }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ $order->username }}
+                                        {{ $o->pro_name }}
                                     </td>
-                                    <td class="flex items-center px-6 py-4 space-x-3">
-                                        <a href="{{ route('admin.order.show',$order->id) }}"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline">Xem chi tiết
-                                        </a>
+                                    <td class="px-6 py-4">
+                                        {{ $o->brand_name }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $o->cate_name }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ number_format($o->order_price) }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ number_format($o->order_quantity)  }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ number_format(($o->order_quantity * $o->order_price))  }}
                                     </td>
                                 </tr>
                             @endforeach
