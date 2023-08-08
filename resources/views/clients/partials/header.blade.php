@@ -25,7 +25,7 @@
             @else
                 <div class="d-flex align-items-center ms-2 gap-x-3">
                     <a href="{{ route('home.account.profile') }}">
-                        <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded mt-3">
+                        <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded ">
                     </a>
                     <a href="{{ route('home.cart') }}">
                         {{-- <span class="bg-red-500 text-white-50 text-[10px] text-center ml-4 w-[25px]" style="border-radius: 50%">{{ count($carts) ?? [] }}</span> --}}
