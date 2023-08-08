@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SubCateController;
 use App\Http\Controllers\Clients\SiteController;
 use App\Http\Controllers\Clients\Users\ProfileController;
@@ -93,6 +94,11 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
         });
     });
 
+
+    // Order
+    Route::prefix('order')->group(function() {
+        Route::get('/',[OrderController::class,'index'])->name('admin.order.index');
+    });
 
     //Attribute
     Route::prefix('attribute')->group(function () {
