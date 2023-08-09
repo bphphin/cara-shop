@@ -8,21 +8,23 @@ use App\Models\Product;
 use App\Models\Size;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Alert;
-use App\Models\Cart;
-use Illuminate\Support\Facades\Session;
-use function Ramsey\Collection\Map\get;
 
 class SiteController extends Controller
 {
     // detail product
-    public function showProduct($id, $slug)
+    public function showProduct($id, $slug,Request $request)
     {
-        $product = Product::find($id);
-        $sizes = Size::all();
-        return view('clients.pages.detail-product', compact('product', 'sizes'));
+        if($request->has('cate')) {
+            $cate_id = $request->get('cate');
+            $similarProductByCate = Product::where('cate_id','=',$cate_id)->where('id','<>',$id)->limit(4)->get();
+            // dd($similarProductByCate);
+            $product = Product::find($id);
+            $sizes = Size::all();
+            return view('clients.pages.detail-product', compact('product', 'sizes','similarProductByCate'));
+        }
+        toast('Lỗi','error');
+        return back();
     }
 
 
@@ -65,6 +67,9 @@ class SiteController extends Controller
         return view('clients.pages.view-product-search',compact('productBySearch','subCate'));
     }
 
+    // public function similarProductByCate(Request $request) {
+    //     dd($request->cate);
+    // }
 
     // About Page
     public function about() {
