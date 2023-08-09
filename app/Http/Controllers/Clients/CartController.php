@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Alert;
+use App\Mail\OrderMail;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -152,6 +154,7 @@ class CartController extends Controller
                     Cart::destroy($item->id);
                 }
                 // Alert::success('Thành công', 'Mua hàng thành công');
+                Mail::to(Auth::user()->email)->send(new OrderMail());
                 return redirect()->route('home.cart.order');
             } catch (\Throwable $th) {
                 return $th->getMessage();
