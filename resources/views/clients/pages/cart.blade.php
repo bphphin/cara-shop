@@ -1,4 +1,7 @@
 @extends('clients.layouts.app')
+
+@section('title') Giỏ hàng @endsection
+
 @section('app')
     <section id="page-header" class="about-header">
         <h2>#let's_talk</h2>

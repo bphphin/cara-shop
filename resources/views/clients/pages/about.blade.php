@@ -1,4 +1,5 @@
 @extends('clients.layouts.app')
+@section('title') About @endsection
 @section('app')
     <section id="page-header" class="about-header">
         <h2>#KnowUs</h2>

@@ -1,4 +1,6 @@
 @extends('clients.layouts.app')
+@section('title') Blog @endsection
+
 @section('app')
     <section id="page-header" class="blog-header">     
         <h2>#readmore</h2>
