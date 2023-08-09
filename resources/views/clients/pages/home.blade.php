@@ -40,12 +40,12 @@
             @foreach ($products as $pro)
                 @if($pro->status_id === 1)
                     <div class="pro">
-                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}">
                             <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                         </a>
                         <div class="des">
                             <span>{{ $pro->getSubCateName()->name }}</span>
-                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -63,8 +63,6 @@
                                 </div>
                             </div>
                         </div>
-{{--                        <a href="sproduct.html"><i class="fa-solid fa-cart-shopping cart"></i></a>--}}
-                        </a>
                     </div>
                 @endif
             @endforeach
@@ -86,12 +84,12 @@
             @foreach($products as $pro)
                 @if($pro->status_id === 2)
                     <div class="pro">
-                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
+                        <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}">
                             <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
                         </a>
                         <div class="des">
                             <span>{{ $pro->getSubCateName()->name }}</span>
-                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -110,7 +108,6 @@
                     </div>
                 @endif
             @endforeach
-
         </div>
     </section>
     {{-- End Product 2   --}}
