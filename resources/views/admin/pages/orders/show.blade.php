@@ -2,9 +2,9 @@
 @section('app')
     <div class="dash-content">
         <div class="activity">
-            <div class="">
+            <div class="py-20">
                 {{-- Begin search --}}
-                <form action="" method="">
+                {{-- <form action="" method="">
                     <div class="flex flex-col p-2 py-6 m-h-screen">
                         <div class="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-2 mb-5 sticky"
                             style="top: 5px">
@@ -31,7 +31,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
                 {{-- End search --}}
 
                 {{-- Begin Table --}}
