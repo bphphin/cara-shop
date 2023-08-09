@@ -1,4 +1,6 @@
 @extends('clients.layouts.app')
+@section('title') Sản phẩm @endsection
+
 @section('app')
 
     <section id="page-header">
