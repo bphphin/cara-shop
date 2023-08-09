@@ -67,7 +67,7 @@
             @if(count($proFromSubCate) > 0)
                 @foreach($proFromSubCate as $prToSubCate)
                     <div class="pro">
-                        <a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])}}">
+                        <a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])."?cate=$prToSubCate->cate_id"}}">
                             <img src="{{ asset('upload').'/'.$prToSubCate->image }}" alt="">
                         </a>
                         <div class="des">

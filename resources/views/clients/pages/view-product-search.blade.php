@@ -60,7 +60,7 @@
         <div class="pro-container">
             @forelse($productBySearch as $product)
                 <div class="pro">
-                    <a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])}}">
+                    <a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])."?cate=$product->cate_id"}}">
                         <img src="{{ asset('upload').'/'.$product->image }}" alt="">
                     </a>
                     <div class="des">

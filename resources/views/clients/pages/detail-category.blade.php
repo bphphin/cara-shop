@@ -41,7 +41,7 @@
                 <li>
                     @foreach($subCate as $sCate)
                         <ul class="nav_menu">
-                            <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a></li>
+                            <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)."cate=$sCate->cate_id"  }}">{{ $sCate->name  }}</a></li>
                         </ul>
                     @endforeach
 
@@ -63,7 +63,7 @@
         <div class="pro-container">
             @foreach($productToCate as $prToCate)
                 <div class="pro">
-                    <a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])}}">
+                    <a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])."?cate=$prToCate->cate_id"}}">
                         <img src="{{ asset('upload').'/'.$prToCate->image }}" alt="">
                     </a>
                     <div class="des">
