@@ -22,6 +22,7 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         $currentMethod = $this->route()->getActionMethod(); // lấy phương thức khi submit
+        $rules = [];
         switch ($this->method()){
             case 'POST':
                 switch ($currentMethod){
