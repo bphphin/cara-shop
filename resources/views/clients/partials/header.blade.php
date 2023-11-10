@@ -19,7 +19,7 @@
                     </p>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{ route('account.logout') }}">Logout</a></li>
                     </ul>
                 </div>
             @else
@@ -28,29 +28,13 @@
                         <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded ">
                     </a>
                     <a href="{{ route('home.cart') }}">
-                        {{-- <span class="bg-red-500 text-white-50 text-[10px] text-center ml-4 w-[25px]" style="border-radius: 50%">{{ count($carts) ?? [] }}</span> --}}
                         <img src="{{ asset('assets/imgs/shopping-bag.png') }}" alt="" class="object-contain w-[30px] rounded">
                     </a>
-                    {{-- Drop down --}}
-                    {{-- <div class="btn-group me-2">
-                        <p class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </p>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Account Setting</a></li>
-                            <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
-                        </ul>
-                    </div> --}}
-                    {{-- <div>
-                        <a href="#">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
-                    </div> --}}
                 </div>
             @endif
         @else
-            <a href="{{ route('auth.loginForm') }}">Log In</a>
-            <a href="{{ route('auth.registerForm') }}">Sign Up</a>
+            <a href="{{ route('account.login') }}">Log In</a>
+            <a href="{{ route('account.register') }}">Sign Up</a>
         @endif
     </div>
 

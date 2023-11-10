@@ -27,6 +27,27 @@ use App\Http\Controllers\Clients\CartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+
+//Auth Module
+// Login
+
+Route::prefix('account')->controller(AuthController::class)->group(function() {
+    //Login
+    Route::match(['GET','POST'],'login','login')->name('account.login');
+    //Register
+    Route::match(['GET','POST'],'register', 'register')->name('account.register');
+    // Logout
+    Route::get('logout', 'logout')->name('account.logout');
+});
+
+
+
+
+
+
+
 // Admin
 
 Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
@@ -174,13 +195,3 @@ Route::middleware(['isLogin'])->group(function() {
     });
 });
 
-// Login
-
-Route::get('login', [AuthController::class, 'loginForm'])->name('auth.loginForm');
-Route::post('login', [AuthController::class, 'login'])->name('auth.login');
-// Register
-Route::get('register', [AuthController::class, 'registerForm'])->name('auth.registerForm');
-Route::post('register', [AuthController::class, 'register'])->name('auth.register');
-// Logout
-Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
-Route::view('not-found', 'errors.404')->name('404');
