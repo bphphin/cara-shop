@@ -50,7 +50,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" value="{{ Auth::user()->email }}" name="email">
+                                        <input type="text" class="form-control" value="{{ Auth::user()->email }}" name="email" disabled>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
