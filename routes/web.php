@@ -31,8 +31,6 @@ use App\Http\Controllers\Clients\CartController;
 
 
 //Auth Module
-// Login
-
 Route::prefix('account')->controller(AuthController::class)->group(function() {
     //Login
     Route::match(['GET','POST'],'login','login')->name('account.login');
@@ -44,31 +42,23 @@ Route::prefix('account')->controller(AuthController::class)->group(function() {
 
 
 
-
-
-
-
 // Admin
-
 Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('admin');
 
-    //Product
-    Route::prefix('product')->group(function () {
-        Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
-        Route::get('trash-list', [ProductController::class, 'trash'])->name('admin.product.trash');
-        Route::get('create',[ProductController::class,'create'])->name('admin.product.create');
-        Route::post('create',[ProductController::class,'store'])->name('admin.product.store');
-        Route::get('edit/{id}',[ProductController::class,'edit'])->name('admin.product.edit');
-        Route::post('edit/{id}',[ProductController::class,'update'])->name('admin.product.update');
-        Route::delete('soft-delete/{id}',[ProductController::class,'softDelete'])->name('admin.product.softDelete');
-        Route::delete('delete/{id}',[ProductController::class,'destroy'])->name('admin.product.destroy');
-        Route::get('restore/{id}',[ProductController::class,'restore'])->name('admin.product.restore');
+    //Product Module
+    Route::prefix('product')->controller(ProductController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.product.index');
+        Route::get('trash-list', 'trash')->name('admin.product.trash');
+        Route::match(['GET','POST'],'create', 'store')->name('admin.product.store');
+        Route::match(['GET','POST'],'edit/{id}', 'update')->name('admin.product.update');
+        Route::delete('soft-delete/{id}', 'softDelete')->name('admin.product.softDelete');
+        Route::delete('delete/{id}', 'destroy')->name('admin.product.destroy');
+        Route::get('restore/{id}', 'restore')->name('admin.product.restore');
     });
 
-
-    //Brand
+    //Brand Module
     Route::prefix('brand')->group(function () {
         Route::get('/', [BrandController::class, 'index'])->name('admin.brand.index');
         Route::get('trash-list', [BrandController::class, 'trash'])->name('admin.brand.trash');
