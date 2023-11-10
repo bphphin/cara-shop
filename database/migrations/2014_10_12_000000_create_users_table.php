@@ -12,11 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $avatarDefault = 'https://cdn-icons-png.flaticon.com/512/1255/1255974.png';
+            $table->increments('id');
             $table->string('name');
+            $table->string('avatar')->default($avatarDefault);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->tinyInteger('role')->default(0);
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
