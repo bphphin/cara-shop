@@ -145,7 +145,7 @@ Route::controller(SiteController::class)->group(function () {
 
 // Cart Module
 Route::middleware(['isLogin'])->prefix('cart')->controller(CartController::class)->group(function () {
-    Route::get('cart', '/')->name('home.cart');
+    Route::get('/', 'cart')->name('home.cart');
     Route::post('add-to-card', 'addToCart')->name('home.cart.addToCart');
     Route::post('update-card', 'updateCart')->name('home.cart.updateCart');
     Route::get('cart-checkout', 'checkout')->name('home.cart.checkout');
