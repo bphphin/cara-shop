@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Clients;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Size;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
@@ -32,7 +34,13 @@ class SiteController extends Controller
     {
         $products = Product::paginate(4);
         $cates = Category::all();
-        return view('clients.pages.shop', compact('products', 'cates'));
+        $carts = DB::table('carts')
+            ->leftJoin('users','users.id','=','carts.user_id')
+            ->leftJoin('products','products.id','=','carts.pro_id')
+            ->leftJoin('sizes','sizes.id','=','carts.size_id')
+            ->where('user_id','=',Auth::user()?->id)
+            ->select('carts.*','products.id as pro_id','products.name as proName','products.image','users.name as username')->get();
+        return view('clients.pages.shop', compact('products', 'cates','carts'));
     }
 
     // detail cate end display product default from category
@@ -45,8 +53,13 @@ class SiteController extends Controller
             ->where('parent_id', '=', $id)
             ->select('sub_categories.name as subCateName', 'categories.name as cateName', 'products.*')
             ->limit(4)->get();
-//        dd($productToCate);
-        return view('clients.pages.detail-category', compact('subCate', 'productToCate'));
+        $carts = DB::table('carts')
+            ->leftJoin('users','users.id','=','carts.user_id')
+            ->leftJoin('products','products.id','=','carts.pro_id')
+            ->leftJoin('sizes','sizes.id','=','carts.size_id')
+            ->where('user_id','=',Auth::user()?->id)
+            ->select('carts.*','products.id as pro_id','products.name as proName','products.image','users.name as username')->get();
+        return view('clients.pages.detail-category', compact('subCate', 'productToCate','carts'));
     }
 
     // product from sub cate
@@ -54,7 +67,13 @@ class SiteController extends Controller
     {
         $subCate = SubCategory::all();
         $proFromSubCate = Product::where('cate_id', '=', $id)->get();
-        return view('clients.pages.detail-pro-from-subcate', compact('proFromSubCate', 'subCate'));
+        $carts = DB::table('carts')
+            ->leftJoin('users','users.id','=','carts.user_id')
+            ->leftJoin('products','products.id','=','carts.pro_id')
+            ->leftJoin('sizes','sizes.id','=','carts.size_id')
+            ->where('user_id','=',Auth::user()?->id)
+            ->select('carts.*','products.id as pro_id','products.name as proName','products.image','users.name as username')->get();
+        return view('clients.pages.detail-pro-from-subcate', compact('proFromSubCate', 'subCate','carts'));
     }
 
     //search product
@@ -65,10 +84,6 @@ class SiteController extends Controller
         $productBySearch = Product::where('name','LIKE',"%$name%")->get();
         return view('clients.pages.view-product-search',compact('productBySearch','subCate'));
     }
-
-    // public function similarProductByCate(Request $request) {
-    //     dd($request->cate);
-    // }
 
     // About Page
     public function about() {
