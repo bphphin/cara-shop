@@ -41,7 +41,7 @@
             @foreach($products as $pro)
                 <div class="pro">
                     <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}">
-                        <img src="{{ asset('upload'). "/$pro->image"  }}" alt="">
+                        <img src="{{ $pro->image }}" alt="">
                     </a>
                     <div class="des">
                         <span>{{ $pro->getSubCateName()->name  }}</span>

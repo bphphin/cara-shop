@@ -32,7 +32,7 @@
                             <i class="far fa-times-circle"></i>
                         </a>
                     </td>
-                    <td><img src="{{ asset('upload')."/".$cart->image }}" alt=""></td>
+                    <td><img src="{{ $cart->image }}" alt=""></td>
                     <td>{{ $cart->proName }}</td>
                     <td>{{ number_format($cart->price) }}</td>
                     <td>

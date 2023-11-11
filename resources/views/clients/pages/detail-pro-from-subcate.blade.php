@@ -42,7 +42,8 @@
                     @foreach($subCate as $sCate)
                         @if($sCate->parent_id === 1)
                             <ul class="nav_menu">
-                                <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a>
+                                <li>
+                                    <a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a>
                                 </li>
                             </ul>
                         @endif
@@ -68,11 +69,13 @@
                 @foreach($proFromSubCate as $prToSubCate)
                     <div class="pro">
                         <a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])."?cate=$prToSubCate->cate_id"}}">
-                            <img src="{{ asset('upload').'/'.$prToSubCate->image }}" alt="">
+                            <img src="{{ $prToSubCate->image }}" alt="">
                         </a>
                         <div class="des">
                             <span>{{ $prToSubCate->getSubCateName()->name  }}</span>
-                            <h5><a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])}}" class="text-decoration-none text-body-secondary">{{ $prToSubCate->name }}</a></h5>
+                            <h5>
+                                <a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])}}"
+                                   class="text-decoration-none text-body-secondary">{{ $prToSubCate->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>

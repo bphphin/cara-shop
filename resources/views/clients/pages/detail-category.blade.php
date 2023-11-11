@@ -41,7 +41,9 @@
                 <li>
                     @foreach($subCate as $sCate)
                         <ul class="nav_menu">
-                            <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)."cate=$sCate->cate_id"  }}">{{ $sCate->name  }}</a></li>
+                            <li>
+                                <a href="{{ route('home.site.product.proFromSubCate',$sCate->id)."cate=$sCate->cate_id"  }}">{{ $sCate->name  }}</a>
+                            </li>
                         </ul>
                     @endforeach
 
@@ -64,11 +66,13 @@
             @foreach($productToCate as $prToCate)
                 <div class="pro">
                     <a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])."?cate=$prToCate->cate_id"}}">
-                        <img src="{{ asset('upload').'/'.$prToCate->image }}" alt="">
+                        <img src="{{ $prToCate->image }}" alt="">
                     </a>
                     <div class="des">
                         <span>{{ $prToCate->cateName  }}/{{ $prToCate->subCateName  }}</span>
-                        <h5><a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])}}" class="text-decoration-none text-body-secondary">{{ $prToCate->name }}</a></h5>
+                        <h5>
+                            <a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])}}"
+                               class="text-decoration-none text-body-secondary">{{ $prToCate->name }}</a></h5>
 
                         <div class="star">
                             <i class="fas fa-star"></i>
@@ -85,7 +89,7 @@
         </div>
     </section>
     <div class="mb-3">
-{{--        {{ $products->links('admin.layouts.pagination')  }}--}}
+        {{--        {{ $products->links('admin.layouts.pagination')  }}--}}
     </div>
     @include('clients.layouts.form-feedback')
 @endsection
