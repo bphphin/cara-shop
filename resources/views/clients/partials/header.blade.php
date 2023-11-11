@@ -24,8 +24,8 @@
                 </div>
             @else
                 <div class="d-flex align-items-center ms-2 gap-x-3">
-                    <a href="{{ route('home.account.profile') }}">
-                        <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded ">
+                    <a href="{{ route('clients.profile') }}">
+                        <img src="{{ Auth::user()->avatar }}" alt="" class="object-contain w-[30px] rounded ">
                     </a>
                     <a href="{{ route('home.cart') }}">
                         <img src="{{ asset('assets/imgs/shopping-bag.png') }}" alt="" class="object-contain w-[30px] rounded">

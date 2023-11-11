@@ -5,7 +5,7 @@
 @section('app')
     <div class="container">
         <div class="main-body">
-            <form action="{{ route('home.account-update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('clients.profile') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                 <div class="row">
@@ -13,9 +13,9 @@
                         <div class="card h-[350px]">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ asset('upload').'/'.Auth::user()->avatar }}" alt="Admin"
+                                    <img src="{{ Auth::user()->avatar }}" alt="Admin"
                                          class="rounded-circle p-1"
-                                         width="110">
+                                         width="110" id="avatarPreview">
                                     <div class="mt-3">
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <label class="block">
@@ -28,7 +28,7 @@
                                                 file:bg-blue-500 file:text-white
                                                 hover:file:bg-blue-600
                                                 hover:cursor-pointer
-                                            " name="avatar"/>
+                                            " name="avatar" id="avatar" onchange="changeImg()"/>
                                         </label>
                                     </div>
                                 </div>
@@ -93,3 +93,20 @@
         </div>
     </div>
 @endsection
+@push('script')
+    <script>
+
+        //change image
+        function changeImg() {
+            const avatar = document.querySelector('#avatar').files[0];
+            const avatarPreview = document.querySelector('#avatarPreview');
+            const reader = new FileReader();
+            reader.addEventListener('load', () => {
+                avatarPreview.src = reader.result;
+            });
+            if (avatar) {
+                reader.readAsDataURL(avatar);
+            }
+        }
+    </script>
+@endpush
