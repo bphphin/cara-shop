@@ -12,6 +12,8 @@ use App\Models\SubCategory;
 use Alert;
 use App\Http\Requests\Admin\ProductRequest;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Str;
+
 class ProductController extends Controller
 {
 
@@ -45,7 +47,7 @@ class ProductController extends Controller
         if ($request->method() === 'POST') {
 
             $data = $request->except('image');
-
+            $data['slug'] = Str::slug($request->get('name'));
             if($request->hasFile('image')) {
                 $data['image'] = Cloudinary::upload($request->file('image')->getRealPath(),array(
                     'folder' => 'Cara/Products',
@@ -109,7 +111,8 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $isSuccess = Product::whereId($id)->forceDelete();
+//        $product = Product::onlyTrashed()->where('id',$id)->first();
+        $isSuccess = Product::where('id',$id)->forceDelete();
         return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.product.index');
     }
 }
