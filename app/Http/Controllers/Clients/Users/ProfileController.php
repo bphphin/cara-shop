@@ -6,37 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProfileController extends Controller
 {
-    public function profile() {
+    public function profile(Request $request)
+    {
+        if ($request->getMethod() === 'POST') {
+
+            $data = $request->except(['_token','avatar']);
+            if($request->hasFile('avatar')) {
+                $data['avatar'] = Cloudinary::upload($request->file('avatar')->getRealPath(),array(
+                    'folder' => 'Cara/Profile',
+                    'overwrite' => TRUE,
+                    'resource_type' => 'image'
+                ))->getSecurePath();
+            }
+            User::where('id',Auth::user()?->id)->update($data);
+            toast('Cập nhật tài khoản thành công', 'success');
+            return back();
+        }
         return view('clients.pages.users.profile');
     }
 
-    public function update(Request $request) {
-        if($request->has('id')) {
-            $user_id = $request->id;
-            $userDefault = User::find($user_id);
-            try {
-                $originName = $request->file('avatar')->getClientOriginalName();
-                $fileName = pathinfo($originName,PATHINFO_FILENAME);
-                $extension = $request->file('avatar')->getClientOriginalExtension();
-                $avatar = $fileName . '-' . time() . '.' . $extension;
-                $request->file('avatar')->move('upload/',$avatar);
-                User::where('id',$user_id)->update([
-                    'name' => $request->name ?? $userDefault->name,
-                    'email' => $request->email ?? $userDefault->email,
-                    'phone' => $request->phone ?? $userDefault->phone,
-                    'address' => $request->address ?? $userDefault->address,
-                    'avatar' => $avatar ?? $userDefault->avatar,
-                ]);
-                toast('Cập nhật tài khoản thành công','success');
-                return back();
-            } catch (\Throwable $th) {
-                return $th->getMessage();
-            }
-        }
-        toast('Có lỗi xảy ra, vui lòng thử lại','error');
-        return back();
-    }
 }

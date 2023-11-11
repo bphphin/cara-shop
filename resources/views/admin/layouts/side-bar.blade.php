@@ -1,11 +1,5 @@
 <nav>
     <div class="logo-name">
-{{--        @if(Auth::check())--}}
-{{--        <div class="logo-image">--}}
-{{--            <img src="images/logo.png" alt="">--}}
-{{--            <p>{{ Auth::user()->name  }}</p>--}}
-{{--        </div>--}}
-{{--        @endif--}}
         <a href="{{ route('home-client')  }}">
             <span class="logo_name">CaraShop</span>
         </a>
@@ -38,13 +32,13 @@
                     <span class="link-name">Customer</span>
                 </a></li>
             <li><a href="{{ route('admin.order.index')  }}">
-                <i class="fa-solid fa-thumbtack"></i>
-                <span class="link-name">Order Manager</span>
-            </a></li>
+                    <i class="fa-solid fa-thumbtack"></i>
+                    <span class="link-name">Order Manager</span>
+                </a></li>
         </ul>
 
         <ul class="logout-mode">
-            <li><a href="{{ route('auth.logout')  }}">
+            <li><a href="{{ route('account.logout')  }}">
                     <i class="uil uil-signout"></i>
                     <span class="link-name">Logout</span>
                 </a></li>

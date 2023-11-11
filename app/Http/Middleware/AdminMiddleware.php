@@ -19,11 +19,9 @@ class AdminMiddleware
         if(Auth::check()) {
             if(Auth::user()->role === 1) {
                 return $next($request);
-            }else {
-                return redirect()->route('404');
             }
-        }else {
-            return view('errors.404');
+            return abort(404);
         }
+        return abort(404);
     }
 }

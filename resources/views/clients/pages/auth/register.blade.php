@@ -10,68 +10,63 @@
     <link rel="stylesheet" href="{{ asset('assets/css/clients/home-client.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/clients/login.css') }}">
     <style>
-        body{
+        body {
             background-color: #a1a1a17c;
         }
     </style>
 </head>
 <body>
-    <div class="model">
-        <div class="model_heading d-flex align-items-center">
+<div class="model">
+    <div class="model_heading d-flex align-items-center">
         <span>Đăng ký</span>
-        <span><a href="{{ route('auth.loginForm') }}" class="text-decoration-none">Đăng nhập</a></span>
-        </div>
-{{--        @if ($errors->any())--}}
-{{--            @foreach ($errors->all() as $error)--}}
-{{--                <div>{{$error}}</div>--}}
-{{--            @endforeach--}}
-{{--        @endif--}}
-        <form action="" method="POST">
-            @csrf
-            <p>Họ và tên</p>
-            <input type="text" name="name" value="{{ old('name')  }}">
-            @error('name')
-            <style>
-                input[name="name"] {
-                    border: 1px solid red;
-                }
-            </style>
-            <span class="text-danger my-2">{{ $message }}</span>
-            @enderror
-            <p>Email</p>
-            <input type="text" name="email" value="{{ old('email')  }}">
-            @error('email')
-            <style>
-                input[name="email"] {
-                    border: 1px solid red;
-                }
-            </style>
-            <span class="text-danger my-2">{{ $message }}</span>
-            @enderror
-            <p>Mật khẩu</p>
-            <input type="password" name="password">
-            @error('password')
-            <style>
-                input[name="password"] {
-                    border: 1px solid red;
-                }
-            </style>
-            <span class="text-danger my-2">{{ $message }}</span>
-            @enderror
-            <p>Xác nhận mật khẩu</p>
-            <input type="password" name="password_confirm">
-            @error('password_confirm')
-            <style>
-                input[name="password_confirm"] {
-                    border: 1px solid red;
-                }
-            </style>
-            <span class="text-danger my-2">{{ $message }}</span>
-            @enderror
-            <button class="normal text-white">Đăng ký</button>
-        </form>
+        <span><a href="{{ route('account.login') }}" class="text-decoration-none">Đăng nhập</a></span>
     </div>
-    @include('sweetalert::alert')
-    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+    <form action="" method="POST">
+        @csrf
+        <p>Họ và tên</p>
+        <input type="text" name="name" value="{{ old('name')  }}">
+        @error('name')
+        <style>
+            input[name="name"] {
+                border: 1px solid red;
+            }
+        </style>
+        <span class="text-danger my-2">{{ $message }}</span>
+        @enderror
+        <p>Email</p>
+        <input type="text" name="email" value="{{ old('email')  }}">
+        @error('email')
+        <style>
+            input[name="email"] {
+                border: 1px solid red;
+            }
+        </style>
+        <span class="text-danger my-2">{{ $message }}</span>
+        @enderror
+        <p>Mật khẩu</p>
+        <input type="password" name="password">
+        @error('password')
+        <style>
+            input[name="password"] {
+                border: 1px solid red;
+            }
+        </style>
+        <span class="text-danger my-2">{{ $message }}</span>
+        @enderror
+        <p>Xác nhận mật khẩu</p>
+        <input type="password" name="password_confirm">
+        @error('password_confirm')
+        <style>
+            input[name="password_confirm"] {
+                border: 1px solid red;
+            }
+        </style>
+        <span class="text-danger my-2">{{ $message }}</span>
+        @enderror
+        <button class="normal text-white">Đăng ký</button>
+    </form>
+</div>
+@include('sweetalert::alert')
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 </body>
 </html>

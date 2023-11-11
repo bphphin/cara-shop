@@ -13,19 +13,27 @@
         <div class="cart-list">
             <h4><i class="fa-sharp fa-solid fa-cart-shopping"></i> Giỏ hàng</h4>
             <div class="cart-item">
-                <div class="product-list">
-                    <div class="product-list-img"><img
-                            src="{{ asset('assets/imgs/products/f1.jpg')  }}" alt=""></div>
-                    <div class="product-info">
-                        <h6>Cartoon Astronaut T-Shirts</h6>
-                        <span>Số lượng:1</span>
-                    </div>
-                    <div class="product-price">
-                        <span>$78</span>
-                        <button class="normal">Xóa</button>
-                    </div>
-                </div>
-                <button class="normal"> Xem giỏ hàng</button>
+                @if($carts->count() > 0)
+                    @foreach($carts as $item)
+                        <div class="product-list">
+                            <div class="product-list-img">
+                                <img src="{{ $item->image }}" alt=""></div>
+                            <div class="product-info">
+                                <h6>{{ $item->proName  }}</h6>
+                                <span>Số lượng: {{ $item->quantity  }}</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="{{ route('home.cart')  }}"
+                               class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900
+                       focus:outline-none bg-white rounded-full border border-gray-200
+                       hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200
+                       dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
+                       dark:hover:text-white dark:hover:bg-gray-700">
+                                Xem giỏ hàng</a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
         @include('clients.layouts.form-search-product')
@@ -41,7 +49,9 @@
                 <li>
                     @foreach($subCate as $sCate)
                         <ul class="nav_menu">
-                            <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)."cate=$sCate->cate_id"  }}">{{ $sCate->name  }}</a></li>
+                            <li>
+                                <a href="{{ route('home.site.product.proFromSubCate',$sCate->id)."cate=$sCate->cate_id"  }}">{{ $sCate->name  }}</a>
+                            </li>
                         </ul>
                     @endforeach
 
@@ -64,11 +74,13 @@
             @foreach($productToCate as $prToCate)
                 <div class="pro">
                     <a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])."?cate=$prToCate->cate_id"}}">
-                        <img src="{{ asset('upload').'/'.$prToCate->image }}" alt="">
+                        <img src="{{ $prToCate->image }}" alt="">
                     </a>
                     <div class="des">
                         <span>{{ $prToCate->cateName  }}/{{ $prToCate->subCateName  }}</span>
-                        <h5><a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])}}" class="text-decoration-none text-body-secondary">{{ $prToCate->name }}</a></h5>
+                        <h5>
+                            <a href="{{route('home.site.product.show',['id' => $prToCate->id,'slug' => $prToCate->slug])}}"
+                               class="text-decoration-none text-body-secondary">{{ $prToCate->name }}</a></h5>
 
                         <div class="star">
                             <i class="fas fa-star"></i>
@@ -85,7 +97,7 @@
         </div>
     </section>
     <div class="mb-3">
-{{--        {{ $products->links('admin.layouts.pagination')  }}--}}
+        {{--        {{ $products->links('admin.layouts.pagination')  }}--}}
     </div>
     @include('clients.layouts.form-feedback')
 @endsection
