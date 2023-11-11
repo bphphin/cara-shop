@@ -67,7 +67,7 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
         Route::delete('delete/{id}', 'destroy')->name('admin.brand.destroy');
     });
 
-    // Categories
+    // Categories Module
     Route::prefix('category')->controller(CategoryController::class)->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
         Route::get('trash-list', 'trash')->name('admin.category.trash');
@@ -78,7 +78,7 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
         Route::delete('delete/{id}', 'destroy')->name('admin.category.destroy');
 
 
-        // Sub Category
+        // Sub Category Module
         Route::prefix('sub-category')->controller(SubCateController::class)->group(function () {
             Route::get('trash-fashion', 'trashFashion')->name('admin.cate.subcate.trashFashion');
             Route::get('trash-beauty', 'trashBeauty')->name('admin.cate.subcate.trashBeauty');
@@ -92,37 +92,35 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
     });
 
 
-    // Order
-    Route::prefix('order')->group(function () {
-        Route::get('/', [OrderController::class, 'index'])->name('admin.order.index');
-        Route::get('/{id}', [OrderController::class, 'show'])->name('admin.order.show');
+    // Order Module
+    Route::prefix('order')->controller(OrderController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.order.index');
+        Route::get('/{id}', 'show')->name('admin.order.show');
     });
 
-    //Attribute
+    //Attribute Module
     Route::prefix('attribute')->group(function () {
         Route::get('/', [AttributeController::class, 'index'])->name('admin.att.index');
 
-        //Size
-        Route::prefix('size')->group(function () {
-
-            Route::get('/', [SizeController::class, 'index'])->name('admin.att.size.index');
-            Route::get('detail/{id}', [SizeController::class, 'show'])->name('admin.att.size.show');
-            Route::match(['GET', 'POST'], 'create', [SizeController::class, 'store'])->name('admin.att.size.store');
-            Route::delete('delete/{id}', [SizeController::class, 'destroy'])->name('admin.att.size.destroy');
-//            Route::get('delete/{id}',[SizeController::class,'destroy'])->name('admin.att.size.destroy');
-            Route::match(['GET', 'POST'], 'edit/{id}', [SizeController::class, 'update'])->name('admin.att.size.update');
+        //Size Module
+        Route::prefix('size')->controller(SizeController::class)->group(function () {
+            Route::get('/', 'index')->name('admin.att.size.index');
+            Route::get('detail/{id}', 'show')->name('admin.att.size.show');
+            Route::match(['GET', 'POST'], 'create', 'store')->name('admin.att.size.store');
+            Route::match(['GET', 'POST'], 'edit/{id}', 'update')->name('admin.att.size.update');
+            Route::delete('delete/{id}', 'destroy')->name('admin.att.size.destroy');
         });
 
-        //Color
-        Route::prefix('color')->group(function () {
-            Route::match(['GET', 'POST'], 'create', [ColorController::class, 'store'])->name('admin.att.color.store');
-            Route::match(['GET', 'POST'], 'edit/{id}', [ColorController::class, 'update'])->name('admin.att.color.update');
-            Route::delete('delete/{id}', [ColorController::class, 'destroy'])->name('admin.att.color.destroy');
+        //Color Module
+        Route::prefix('color')->controller(ColorController::class)->group(function () {
+            Route::match(['GET', 'POST'], 'create', 'store')->name('admin.att.color.store');
+            Route::match(['GET', 'POST'], 'edit/{id}', 'update')->name('admin.att.color.update');
+            Route::delete('delete/{id}', 'destroy')->name('admin.att.color.destroy');
         });
     });
-    Route::prefix('customer')->group(function () {
-        Route::get('/', [CustomerController::class, 'index'])->name('admin.customer.index');
-        Route::match(['GET', 'POST'], 'edit/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
+    Route::prefix('customer')->controller(CustomerController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.customer.index');
+        Route::match(['GET', 'POST'], 'edit/{id}', 'update')->name('admin.customer.update');
     });
 });
 
@@ -130,44 +128,35 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
 // Clients
 Route::get('/', [HomeController::class, 'home'])->name('home-client');
 
-Route::get('product/{id}/{slug?}', [SiteController::class, 'showProduct'])->name('home.site.product.show');
+Route::controller(SiteController::class)->group(function () {
+    Route::get('product/{id}/{slug?}', 'showProduct')->name('home.site.product.show');
+    Route::get('shop-page', 'shop')->name('home.site.product.shop');
+    Route::get('cate-detail/{id}', 'detailCate')->name('home.site.cate.detail');
+    Route::get('product-from-sub-cate/{id}', 'productFromSubCate')->name('home.site.product.proFromSubCate');
+    //Search product
+    Route::post('search-query', 'searchProductHome')->name('home.site.product.search');
+    //About page
+    Route::get('about', 'about')->name('home.site.about');
+    // Blog page
+    Route::get('blog', 'blog')->name('home.site.blog');
+    // Contact page
+    Route::get('contact', 'contact')->name('home.site.contact');
+});
 
-Route::get('shop-page', [SiteController::class, 'shop'])->name('home.site.product.shop');
-
-Route::get('cate-detail/{id}', [SiteController::class, 'detailCate'])->name('home.site.cate.detail');
-
-Route::get('product-from-sub-cate/{id}', [SiteController::class, 'productFromSubCate'])->name('home.site.product.proFromSubCate');
-
-//Search product
-Route::post('search-query', [SiteController::class, 'searchProductHome'])->name('home.site.product.search');
-
-//About page
-Route::get('about', [SiteController::class, 'about'])->name('home.site.about');
-
-// Blog page
-Route::get('blog', [SiteController::class, 'blog'])->name('home.site.blog');
-
-// Contact page
-Route::get('contact', [SiteController::class, 'contact'])->name('home.site.contact');
-
-// Cart
-Route::middleware(['isLogin'])->group(function () {
-    Route::get('cart', [CartController::class, 'cart'])->name('home.cart');
-    Route::post('add-to-card', [CartController::class, 'addToCart'])->name('home.cart.addToCart');
-    Route::post('update-card', [CartController::class, 'updateCart'])->name('home.cart.updateCart');
-    Route::get('cart-checkout', [CartController::class, 'checkout'])->name('home.cart.checkout');
-    Route::get('cart-delete/{id}', [CartController::class, 'destroy'])->name('home.cart.destroy');
-    Route::post('complete-checkout', [CartController::class, 'completeCheckout'])->name('home.cart.completeCheckout');
+// Cart Module
+Route::middleware(['isLogin'])->prefix('cart')->controller(CartController::class)->group(function () {
+    Route::get('cart', '/')->name('home.cart');
+    Route::post('add-to-card', 'addToCart')->name('home.cart.addToCart');
+    Route::post('update-card', 'updateCart')->name('home.cart.updateCart');
+    Route::get('cart-checkout', 'checkout')->name('home.cart.checkout');
+    Route::get('cart-delete/{id}', 'destroy')->name('home.cart.destroy');
+    Route::post('complete-checkout', 'completeCheckout')->name('home.cart.completeCheckout');
     Route::view('order-success', 'clients.pages.orders.order-success')->name('home.cart.order');
 });
 
 
-// Account
-
-Route::middleware(['isLogin'])->group(function () {
-    Route::prefix('account')->group(function () {
-        Route::get('my-account', [ProfileController::class, 'profile'])->name('home.account.profile');
-        Route::post('my-account', [ProfileController::class, 'update'])->name('home.account-update');
-    });
+// Profile
+Route::middleware(['isLogin'])->prefix('profile')->controller(ProfileController::class)->group(function () {
+    Route::match(['GET', 'POST'], '/', 'profile')->name('clients.profile');
 });
 
