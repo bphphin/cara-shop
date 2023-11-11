@@ -24,7 +24,7 @@
                     @endphp
                     @foreach ($carts as $cart)
                         <tr class="pro-box">
-                            <td><img src="{{ asset('upload')."/".$cart->image }}" alt="" class="mx-auto"></td>
+                            <td><img src="{{ $cart->image }}" alt="" class="mx-auto"></td>
                             <td>{{ $cart->proName }}</td>
                             <td>{{ number_format($cart->price) }}</td>
                             <td>{{ $cart->quantity }}</td>
