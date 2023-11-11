@@ -14,7 +14,6 @@ class CategoryController extends Controller
     {
         $cates = Category::paginate(6);
         $subCates = SubCategory::all();
-//        dd($subCates);
         return view('admin.pages.categories.index',['cates' => $cates,'subCates' => $subCates]);
     }
 
@@ -24,10 +23,6 @@ class CategoryController extends Controller
         return view('admin.pages.categories.trash-list', compact('cates'));
     }
 
-    public function create()
-    {
-        return view('admin.pages.categories.create-form');
-    }
 
     public function store(CategoryRequest $request)
     {
@@ -39,7 +34,7 @@ class CategoryController extends Controller
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Thêm mới thành công', 'admin.category.index');
         }
-
+        return view('admin.pages.categories.create-form');
     }
 
     public function restore($id)
@@ -48,13 +43,8 @@ class CategoryController extends Controller
         return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Hoàn tác thành công', 'admin.category.trash');
     }
 
-    public function edit($id)
-    {
-        $cate = Category::find($id);
-        return view('admin.pages.categories.edit-form', compact('cate'));
-    }
-
     public function update(Request $request,$id) {
+        $cate = Category::find($id);
         if ($request->method() === 'POST') {
             $isSuccess = Category::where('id', $id)->update([
                 'name' => $request->name,
@@ -63,23 +53,18 @@ class CategoryController extends Controller
             ]);
             return checkEndDisplayMsg($isSuccess, 'success', 'Success', 'Cập nhật thành công', 'admin.category.index');
         }
+        return view('admin.pages.categories.edit-form', compact('cate'));
     }
+
     public function softDelete($id)
     {
         $isSuccess = Category::destroy($id);
         return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.category.index');
-
     }
 
     public function destroy($id)
     {
         $isSuccess = Category::whereId($id)->forceDelete();
-//        if($isSuccess) {
-//            $title = 'Delete User!';
-//            $text = "Are you sure you want to delete?";
-//            confirmDelete($title, $text);
-//        }
-//        return redirect()->route('admin.category.trash');
         return checkEndDisplayMsg($isSuccess, 'success', 'Thành công', 'Xóa thành công', 'admin.category.trash');
     }
 }

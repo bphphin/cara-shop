@@ -68,34 +68,26 @@ Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
     });
 
     // Categories
-    Route::prefix('category')->group(function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
-        Route::get('trash-list', [CategoryController::class, 'trash'])->name('admin.category.trash');
-
-        Route::get('create', [CategoryController::class, 'create'])->name('admin.category.create');
-        Route::post('create', [CategoryController::class, 'store'])->name('admin.category.store');
-        Route::delete('soft-delete/{id}', [CategoryController::class, 'softDelete'])->name('admin.category.softDelete');
-//       Route::get('delete/{id}',[CategoryController::class,'destroy'])->name('admin.category.destroy');
-        Route::delete('delete/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
-        Route::get('restore/{id}', [CategoryController::class, 'restore'])->name('admin.category.restore');
-        Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
-        Route::post('edit/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::prefix('category')->controller(CategoryController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.category.index');
+        Route::get('trash-list', 'trash')->name('admin.category.trash');
+        Route::get('restore/{id}', 'restore')->name('admin.category.restore');
+        Route::match(['GET','POST'],'create','store')->name('admin.category.store');
+        Route::match(['GET','POST'],'edit/{id}', 'update')->name('admin.category.update');
+        Route::delete('soft-delete/{id}', 'softDelete')->name('admin.category.softDelete');
+        Route::delete('delete/{id}', 'destroy')->name('admin.category.destroy');
 
 
         // Sub Category
-        Route::prefix('sub-category')->group(function () {
-            Route::match(['GET', 'POST'], 'create', [SubCateController::class, 'store'])->name('admin.cate.subcate.store');
-            Route::match(['GET', 'POST'], 'edit/{id}', [SubCateController::class, 'update'])->name('admin.cate.subcate.update');
-
-            Route::delete('soft-delete/{id}', [SubCateController::class, 'softDelete'])->name('admin.cate.subcate.softDelete');
-
-            Route::delete('delete/{id}', [SubCateController::class, 'destroy'])->name('admin.cate.subcate.destroy');
-
-            Route::get('trash-fashion', [SubCateController::class, 'trashFashion'])->name('admin.cate.subcate.trashFashion');
-            Route::get('trash-beauty', [SubCateController::class, 'trashBeauty'])->name('admin.cate.subcate.trashBeauty');
-            Route::get('trash-accessory', [SubCateController::class, 'trashAccessory'])->name('admin.cate.subcate.trashAccessory');
-
-            Route::get('restore/{id}', [SubCateController::class, 'restore'])->name('admin.cate.subcate.restore');
+        Route::prefix('sub-category')->controller(SubCateController::class)->group(function () {
+            Route::get('trash-fashion', 'trashFashion')->name('admin.cate.subcate.trashFashion');
+            Route::get('trash-beauty', 'trashBeauty')->name('admin.cate.subcate.trashBeauty');
+            Route::get('trash-accessory', 'trashAccessory')->name('admin.cate.subcate.trashAccessory');
+            Route::get('restore/{id}', 'restore')->name('admin.cate.subcate.restore');
+            Route::match(['GET', 'POST'], 'create', 'store')->name('admin.cate.subcate.store');
+            Route::match(['GET', 'POST'], 'edit/{id}', 'update')->name('admin.cate.subcate.update');
+            Route::delete('soft-delete/{id}', 'softDelete')->name('admin.cate.subcate.softDelete');
+            Route::delete('delete/{id}', 'softDelete')->name('admin.cate.subcate.destroy');
         });
     });
 
