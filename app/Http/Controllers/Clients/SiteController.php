@@ -22,6 +22,9 @@ class SiteController extends Controller
             $similarProductByCate = Product::where('cate_id','=',$cate_id)->where('id','<>',$id)->limit(4)->get();
             $product = Product::find($id);
             $sizes = Size::all();
+            Product::where('id',$id)->update([
+                'view' => $product->view + 1
+            ]);
             return view('clients.pages.detail-product', compact('product', 'sizes','similarProductByCate'));
         }
         toast('Lỗi','error');
