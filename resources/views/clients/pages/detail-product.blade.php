@@ -11,7 +11,7 @@
             <form action="{{ route('home.cart.addToCart') }}" method="POST">
                 @csrf
                 <h6><a href="{{ route('home-client')  }}" class="text-gray-700">Home</a>
-                    / {{ $product->getSubCateName()->name  }}</h6>
+                    / {{ $product->subCate->name  }}</h6>
                 <h4>{{ $product->name  }}</h4>
                 <input type="hidden" value="{{ $product->id }}" name="pro_id">
                 <h2>{{ number_format($product->price) }}</h2>
@@ -44,7 +44,7 @@
                             <img src="{{ $pro->image }}" alt="">
                         </a>
                         <div class="des">
-                            <span>{{ $pro->getSubCateName()->name }}</span>
+                            <span>{{ $pro->subCate->name }}</span>
                             <h5>
                                 <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}"
                                    class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
@@ -60,7 +60,7 @@
                                     <h4>{{ number_format($pro->price) }}</h4>
                                 </div>
                                 <div>
-                                    {{ $pro->getStatusProduct()->status  }}
+                                    {{ $pro->statusProduct->status  }}
                                     <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>

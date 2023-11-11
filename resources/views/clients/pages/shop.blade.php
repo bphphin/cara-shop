@@ -47,7 +47,7 @@
                         <img src="{{ $pro->image }}" alt="">
                     </a>
                     <div class="des">
-                        <span>{{ $pro->getSubCateName()->name  }}</span>
+                        <span>{{ $pro->subCate->name  }}</span>
                         <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])}}">
                             <h5>{{ $pro->name  }}</h5>
                         </a>
