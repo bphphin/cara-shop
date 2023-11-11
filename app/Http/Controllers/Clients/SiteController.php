@@ -18,7 +18,6 @@ class SiteController extends Controller
         if($request->has('cate')) {
             $cate_id = $request->get('cate');
             $similarProductByCate = Product::where('cate_id','=',$cate_id)->where('id','<>',$id)->limit(4)->get();
-            // dd($similarProductByCate);
             $product = Product::find($id);
             $sizes = Size::all();
             return view('clients.pages.detail-product', compact('product', 'sizes','similarProductByCate'));
