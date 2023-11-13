@@ -16,6 +16,9 @@ use App\Http\Controllers\Admin\SubCateController;
 use App\Http\Controllers\Clients\SiteController;
 use App\Http\Controllers\Clients\Users\ProfileController;
 use App\Http\Controllers\Clients\CartController;
+use App\Http\Controllers\Clients\RatingController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +44,7 @@ Route::prefix('account')->controller(AuthController::class)->group(function () {
 
 
 // Admin
-Route::prefix('dashboard')->middleware(['isAdmin', 'auth'])->group(function () {
+Route::prefix('dashboard')->middleware('isAdmin')->group(function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('admin');
 
@@ -143,8 +146,13 @@ Route::controller(SiteController::class)->group(function () {
     Route::get('contact', 'contact')->name('home.site.contact');
 });
 
+// Rating
+Route::controller(RatingController::class)->middleware('rating')->group(function() {
+    Route::post('rating','rating')->name('home.rating');
+});
+
 // Cart Module
-Route::middleware(['isLogin'])->prefix('cart')->controller(CartController::class)->group(function () {
+Route::middleware('addToCart')->prefix('cart')->controller(CartController::class)->group(function () {
     Route::get('/', 'cart')->name('home.cart');
     Route::post('add-to-card', 'addToCart')->name('home.cart.addToCart');
     Route::post('update-card', 'updateCart')->name('home.cart.updateCart');
@@ -156,7 +164,7 @@ Route::middleware(['isLogin'])->prefix('cart')->controller(CartController::class
 
 
 // Profile
-Route::middleware(['isLogin'])->prefix('profile')->controller(ProfileController::class)->group(function () {
+Route::middleware('auth')->prefix('profile')->controller(ProfileController::class)->group(function () {
     Route::match(['GET', 'POST'], '/', 'profile')->name('clients.profile');
 });
 
