@@ -17,8 +17,8 @@ use App\Http\Controllers\Clients\SiteController;
 use App\Http\Controllers\Clients\Users\ProfileController;
 use App\Http\Controllers\Clients\CartController;
 use App\Http\Controllers\Clients\RatingController;
-
-
+use App\Http\Controllers\Clients\HomeProductController;
+use App\Http\Controllers\Clients\HomeCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,18 +132,27 @@ Route::prefix('dashboard')->middleware('isAdmin')->group(function () {
 Route::get('/', [HomeController::class, 'home'])->name('home-client');
 
 Route::controller(SiteController::class)->group(function () {
-    Route::get('product/{id}/{slug?}', 'showProduct')->name('home.site.product.show');
-    Route::get('shop-page', 'shop')->name('home.site.product.shop');
-    Route::get('cate-detail/{id}', 'detailCate')->name('home.site.cate.detail');
-    Route::get('product-from-sub-cate/{id}', 'productFromSubCate')->name('home.site.product.proFromSubCate');
-    //Search product
-    Route::post('search-query', 'searchProductHome')->name('home.site.product.search');
     //About page
     Route::get('about', 'about')->name('home.site.about');
     // Blog page
     Route::get('blog', 'blog')->name('home.site.blog');
     // Contact page
     Route::get('contact', 'contact')->name('home.site.contact');
+});
+
+
+// Product
+Route::controller(HomeProductController::class)->group(function() {
+    Route::get('product/{id}/{slug?}', 'showProduct')->name('home.site.product.show');
+    Route::get('shop-page', 'shop')->name('home.site.product.shop');
+    Route::get('product-from-sub-cate/{id}', 'productFromSubCate')->name('home.site.product.proFromSubCate');
+    //Search product
+    Route::post('search-query', 'searchProductHome')->name('home.site.product.search');
+});
+
+// Category
+Route::controller(HomeCategoryController::class)->group(function() {
+    Route::get('cate-detail/{id}', 'detailCate')->name('home.site.cate.detail');
 });
 
 // Rating
