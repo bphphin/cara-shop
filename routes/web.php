@@ -148,7 +148,8 @@ Route::controller(SiteController::class)->group(function () {
 
 // Rating
 Route::controller(RatingController::class)->middleware('rating')->group(function() {
-    Route::post('rating','rating')->name('home.rating');
+    Route::post('rating','rating')->name('home.rating.store');
+    Route::delete('delete/{rating}','destroy')->name('home.rating.destroy');
 });
 
 // Cart Module
