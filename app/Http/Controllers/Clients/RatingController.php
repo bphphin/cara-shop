@@ -23,4 +23,10 @@ class RatingController extends Controller
         toast('Có lỗi xảy ra, vui lòng kiểm tra lại','error');
         return back();
     }
+
+    public function destroy(Rating $rating){
+        $rating->delete();
+        toast('Xóa bình luận thành công','success');
+        return back();
+    }
 }
