@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Rating;
 use App\Models\Size;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -22,10 +23,15 @@ class SiteController extends Controller
             $similarProductByCate = Product::where('cate_id','=',$cate_id)->where('id','<>',$id)->limit(4)->get();
             $product = Product::find($id);
             $sizes = Size::all();
+            $ratings = Rating::query()->leftJoin('users','users.id','=','ratings.user_id')
+                ->leftJoin('products','products.id','=','ratings.product_id')
+                ->select('ratings.*','users.name as username','users.avatar as user_avatar','products.name as product_name')
+                ->where('product_id',$id)
+                ->paginate(5);
             Product::where('id',$id)->update([
                 'view' => $product->view + 1
             ]);
-            return view('clients.pages.detail-product', compact('product', 'sizes','similarProductByCate'));
+            return view('clients.pages.detail-product', compact('product', 'sizes','similarProductByCate','ratings'));
         }
         toast('Lỗi','error');
         return back();
