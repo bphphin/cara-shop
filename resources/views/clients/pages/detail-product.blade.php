@@ -1,5 +1,4 @@
 @extends('clients.layouts.app')
-
 @section('title') Chi tiết sản phẩm @endsection
 @section('app')
     <section id="prodetails" class="section-p1">
@@ -29,8 +28,27 @@
         </div>
     </section>
     <section id="comment" class="section-p1">
-        <h4>Bình luận - nhận xét sản phẩm</h4>
-        <div></div>
+        <div>
+            <form action="{{ route('home.rating')  }}" method="POST">
+                @csrf
+                <label for="">
+                    Đánh giá của bạn về sản phẩm
+                    <div id="rateYo"></div>
+                    <input type="hidden" name="rating" id="rating">
+                    <input type="hidden" name="product_id" value="{{ $product?->id  }}">
+                </label>
+                <textarea name="review" id="review" cols="30" rows="3" class="block w-full px-2 py-2 text-sm
+                text-gray-800 bg-white border-1 dark:bg-gray-800 focus:ring-0
+                dark:text-white dark:placeholder-gray-400 rounded"></textarea>
+                <button type="submit"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none
+                        bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700
+                        focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800
+                        dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 my-2">
+                    Post
+                </button>
+            </form>
+        </div>
     </section>
     @include('clients.layouts.form-feedback')
     <section id="product1" class="section-p1">
@@ -73,3 +91,17 @@
         @endif
     </section>
 @endsection
+@push('script')
+    <script>
+        jQuery(function () {
+
+            jQuery("#rateYo").rateYo({
+                rating: 0,
+                starWidth: "30px",
+            }).on("rateyo.set", function (e, data) {
+                jQuery("#rating").val(data.rating);
+                console.log(data.rating);
+            });
+        });
+    </script>
+@endpush
