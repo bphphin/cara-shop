@@ -155,7 +155,6 @@
                 starWidth: "20px",
             }).on("rateyo.set", function (e, data) {
                 jQuery("#rating").val(data.rating);
-                console.log(data.rating);
             });
         });
         jQuery(function () {
@@ -164,7 +163,6 @@
                 rating: jQuery(".ratingInput").val(),
                 starWidth: "15px",
             });
-            console.log(jQuery(".ratingInput").val());
         });
     </script>
 @endpush
