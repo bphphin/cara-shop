@@ -32,10 +32,16 @@
                                 Xem giỏ hàng</a>
                         </div>
                     @endforeach
-                @endif
+                @else
+                    <p class="text-center text-sm text-gray-400">Giỏ hàng của bạn đang trống</p>
+                    <a href="{{ route('home-client') }}"
+                       class="w-[200px] text-center block text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 my-2 mx-auto">Mua
+                        sắm nào</a>
             </div>
+            @endif
         </div>
-        @include('clients.layouts.form-search-product')
+        </div>
+        @livewire('home-search-product')
     </section>
 
     <section id="product1" class="section-p1 p-shop">
