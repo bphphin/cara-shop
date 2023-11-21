@@ -167,9 +167,10 @@ Route::middleware('addToCart')->prefix('cart')->controller(CartController::class
     Route::post('add-to-card', 'addToCart')->name('home.cart.addToCart');
     Route::post('update-card', 'updateCart')->name('home.cart.updateCart');
     Route::get('checkout', 'checkout')->name('home.cart.checkout');
+    Route::post('checkout-step','checkoutStep')->name('home.cart.checkout-step');
     Route::get('delete/{id}', 'destroy')->name('home.cart.destroy');
-    Route::post('complete-checkout', 'completeCheckout')->name('home.cart.completeCheckout');
-    Route::view('order-success', 'clients.pages.orders.order-success')->name('home.cart.order');
+    Route::get('order-success', 'success')->name('home.cart.order-success');
+    Route::view('success','clients.pages.orders.order-success')->name('order-success');
 });
 
 
