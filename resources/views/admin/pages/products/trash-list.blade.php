@@ -38,7 +38,7 @@
                                     {{ $pro->name  }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    <img src="{{ asset('upload')."/".$pro->image  }}" alt="">
+                                    <img src="{{ $pro->image  }}" alt="">
                                 </td>
                                 <td class="px-6 py-4">
                                     {!! $pro->description !!}

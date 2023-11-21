@@ -4,15 +4,15 @@
         <h2>#let's_talk</h2>
         <p>LEAVE A MESSAGE, We love to hear from you!</p>
     </section>
-    <form action="{{ route('home.cart.completeCheckout') }}" method="POST">
+    <form action="{{ route('home.cart.checkout-step') }}" method="POST">
         @csrf
         <section id="cart" class="section-p1">
             <table width="100%">
                 <thead>
                     <tr>
                         <td>Image</td>
-                        <td >Product</td>
-                        <td >Price</td>
+                        <td>Product</td>
+                        <td>Price</td>
                         <td>Quatity</td>
                         <td>Subtotal</td>
                     </tr>
@@ -24,8 +24,8 @@
                     @endphp
                     @foreach ($carts as $cart)
                         <tr class="pro-box">
-                            <td><img src="{{ asset('upload')."/".$cart->image }}" alt="" class="mx-auto"></td>
-                            <td>{{ $cart->proName }}</td>
+                            <td><img src="{{ $cart->image }}" alt="" class="mx-auto"></td>
+                            <td class="w-[222px]">{{ $cart->proName }}</td>
                             <td>{{ number_format($cart->price) }}</td>
                             <td>{{ $cart->quantity }}</td>
                             <td>{{ number_format($cart->quantity * $cart->price) }}</td>

@@ -13,19 +13,27 @@
         <div class="cart-list">
             <h4><i class="fa-sharp fa-solid fa-cart-shopping"></i> Giỏ hàng</h4>
             <div class="cart-item">
-                <div class="product-list">
-                    <div class="product-list-img"><img
-                            src="{{ asset('assets/imgs/products/f1.jpg')  }}" alt=""></div>
-                    <div class="product-info">
-                        <h6>Cartoon Astronaut T-Shirts</h6>
-                        <span>Số lượng:1</span>
-                    </div>
-                    <div class="product-price">
-                        <span>$78</span>
-                        <button class="normal">Xóa</button>
-                    </div>
-                </div>
-                <button class="normal"> Xem giỏ hàng</button>
+                @if($carts->count() > 0)
+                    @foreach($carts as $item)
+                        <div class="product-list">
+                            <div class="product-list-img">
+                                <img src="{{ $item->image }}" alt=""></div>
+                            <div class="product-info">
+                                <h6>{{ $item->proName  }}</h6>
+                                <span>Số lượng: {{ $item->quantity  }}</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="{{ route('home.cart')  }}"
+                               class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900
+                       focus:outline-none bg-white rounded-full border border-gray-200
+                       hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200
+                       dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
+                       dark:hover:text-white dark:hover:bg-gray-700">
+                                Xem giỏ hàng</a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
         @include('clients.layouts.form-search-product')
@@ -42,7 +50,8 @@
                     @foreach($subCate as $sCate)
                         @if($sCate->parent_id === 1)
                             <ul class="nav_menu">
-                                <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a>
+                                <li>
+                                    <a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a>
                                 </li>
                             </ul>
                         @endif
@@ -68,11 +77,13 @@
                 @foreach($proFromSubCate as $prToSubCate)
                     <div class="pro">
                         <a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])."?cate=$prToSubCate->cate_id"}}">
-                            <img src="{{ asset('upload').'/'.$prToSubCate->image }}" alt="">
+                            <img src="{{ $prToSubCate->image }}" alt="">
                         </a>
                         <div class="des">
                             <span>{{ $prToSubCate->getSubCateName()->name  }}</span>
-                            <h5><a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])}}" class="text-decoration-none text-body-secondary">{{ $prToSubCate->name }}</a></h5>
+                            <h5>
+                                <a href="{{route('home.site.product.show',['id' => $prToSubCate->id,'slug' => $prToSubCate->slug])}}"
+                                   class="text-decoration-none text-body-secondary">{{ $prToSubCate->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>

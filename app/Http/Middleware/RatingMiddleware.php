@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class RatingMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,13 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()) {
-            if(Auth::user()->role === 1) {
-                return $next($request);
-            }
-            return abort(404);
+        if(!Auth::check()) {
+            toast('Vui lòng đăng nhập bình luận','info');
+            return back();
         }
-        return abort(404);
+        if(Auth::user()->role !== 0) {
+            return back();
+        }
+        return $next($request);
     }
 }

@@ -23,6 +23,7 @@ class AuthRequest extends FormRequest
     {
         // lấy ra phương thức cần sử lý
         $currentMethod = $this->route()->getActionMethod();
+        $rules = [];
         switch ($this->method()) { // $this->method() kiểm tra xem phương thức submit là phương thức gì
             case 'POST':
                 switch ($currentMethod) {
@@ -50,6 +51,7 @@ class AuthRequest extends FormRequest
         }
         return $rules;
     }
+
     public function messages()
     {
         return [

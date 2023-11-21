@@ -41,11 +41,13 @@
                 @if($pro->status_id === 1)
                     <div class="pro">
                         <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}">
-                            <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                            <img src="{{ $pro->image }}" alt="">
                         </a>
                         <div class="des">
-                            <span>{{ $pro->getSubCateName()->name }}</span>
-                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <span>{{ $pro->subCate->name }}</span>
+                            <h5>
+                                <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}"
+                                   class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -58,7 +60,7 @@
                                     <h4>{{ number_format($pro->price) }}</h4>
                                 </div>
                                 <div>
-                                    {{ $pro->getStatusProduct()->status  }}
+                                    {{ $pro->statusProduct->status  }}
                                     <i class="fa-solid fa-heart"></i>
                                 </div>
                             </div>
@@ -85,11 +87,13 @@
                 @if($pro->status_id === 2)
                     <div class="pro">
                         <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}">
-                            <img src="{{ asset('upload').'/'.$pro->image }}" alt="">
+                            <img src="{{ $pro->image }}" alt="">
                         </a>
                         <div class="des">
-                            <span>{{ $pro->getSubCateName()->name }}</span>
-                            <h5><a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}" class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
+                            <span>{{ $pro->subCate->name }}</span>
+                            <h5>
+                                <a href="{{route('home.site.product.show',['id' => $pro->id,'slug' => $pro->slug])."?cate=$pro->cate_id"}}"
+                                   class="text-decoration-none text-body-secondary">{{ $pro->name }}</a></h5>
                             <div class="star">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -97,13 +101,13 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                                <div>
-                                    <h4>{{ number_format($pro->price) }}</h4>
-                                </div>
-                                <div>
-                                    {{ $pro->getStatusProduct()->status  }}
-                                    <i class="fa-solid fa-heart"></i>
-                                </div>
+                            <div>
+                                <h4>{{ number_format($pro->price) }}</h4>
+                            </div>
+                            <div>
+                                {{ $pro->statusProduct->status  }}
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
                         </div>
                     </div>
                 @endif

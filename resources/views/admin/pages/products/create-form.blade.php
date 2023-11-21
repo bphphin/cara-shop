@@ -136,7 +136,6 @@
         }
 
         //change image
-
         function changeImg() {
             const img = document.querySelector('#img').files[0];
             const imgPreview = document.querySelector('#imgPreview');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
@@ -23,11 +24,11 @@ class Product extends Model
         'description'
     ];
 
-    public function getSubCateName() {
-        return SubCategory::find($this->cate_id);
+    public function subCate(): BelongsTo {
+        return $this->belongsTo(SubCategory::class,'cate_id','id');
     }
 
-    public function getStatusProduct() {
-        return StatusProduct::find($this->status_id);
+    public function statusProduct(): BelongsTo {
+        return $this->belongsTo(StatusProduct::class,'status_id','id');
     }
 }

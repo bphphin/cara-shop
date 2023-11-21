@@ -38,7 +38,9 @@
                 <li>
                     @foreach($subCate as $sCate)
                         <ul class="nav_menu">
-                            <li><a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a></li>
+                            <li>
+                                <a href="{{ route('home.site.product.proFromSubCate',$sCate->id)  }}">{{ $sCate->name  }}</a>
+                            </li>
                         </ul>
                     @endforeach
 
@@ -61,11 +63,13 @@
             @forelse($productBySearch as $product)
                 <div class="pro">
                     <a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])."?cate=$product->cate_id"}}">
-                        <img src="{{ asset('upload').'/'.$product->image }}" alt="">
+                        <img src="{{ $product->image }}" alt="">
                     </a>
                     <div class="des">
                         <span>{{ $product->getSubCateName()->name  }}</span>
-                        <h5><a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])}}" class="text-decoration-none text-body-secondary">{{ $product->name }}</a></h5>
+                        <h5>
+                            <a href="{{route('home.site.product.show',['id' => $product->id,'slug' => $product->slug])}}"
+                               class="text-decoration-none text-body-secondary">{{ $product->name }}</a></h5>
 
                         <div class="star">
                             <i class="fas fa-star"></i>
@@ -78,7 +82,7 @@
                     </div>
                     <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
                 </div>
-                @empty
+            @empty
                 <p>Không có kết quả mà bạn muốn tìm</p>
             @endforelse
         </div>

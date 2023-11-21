@@ -4,8 +4,7 @@ function checkEndDisplayMsg($flat=true,$type,$title='',$mgs='',$route='') {
         Alert::$type($title, $mgs);
         return redirect()->route($route);
     }
-}
-function fail($type,$title='',$mgs='') {
-    Alert::$type($title, $mgs);
-    return back();
+    Alert::error('Failed', 'Có lỗi xảy ra');
+    return redirect()->back();
+
 }
